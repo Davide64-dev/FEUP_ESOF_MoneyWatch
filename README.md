@@ -5,9 +5,7 @@
 
 ### Vision Statement
 
-Start by defining a clear and concise vision for your app, to help members of the team, contributors, and users into focusing their often disparate views into a concise, visual, and short textual form. It provides a "high concept" of the product for marketers, developers, and managers.
-
-A product vision describes the essential of the product and sets the direction to where a product is headed, and what the product will deliver in the future. 
+MoneyWatch is an app to make people's lives easier by providing a way to understand their expenses and make wiser choices to increase their savings. Our app will be able to tell you where you spend your money and will give you tips on how to spend it and where to spend it. This way you will have much more control about your life savings and expenses.
 
 **We favor a catchy and concise statement, ideally one sentence.**
 
