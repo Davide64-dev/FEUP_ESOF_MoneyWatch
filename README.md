@@ -12,7 +12,8 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 
 ### Main Features
-   - Allowing the users to add his expenses to the app.
+   - Allows the user to add their expenses to the app.
+      - Every time the user makes a purchase, he should open the app and register the information. The app should store the information
    - Track the expenses that were made in a specific time and by category.
    - Forum where users can share their ideias with one another
    - Built-in tips inside the app
