@@ -29,4 +29,8 @@ Our vision is to make people's lives easier by providing a way to understand the
 Indicate an  initial/tentative list of assumptions and dependencies 
 
 - Student timetable from sigarra
-- 
+
+## Requirements
+........
+
+### Use case model
