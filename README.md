@@ -15,7 +15,7 @@ Our vision is to make people's lives easier by providing a way to understand the
    - Allows the user to add their expenses to the app
       - Every time the user makes a purchase, he should open the app and register the information. The app should store the information
    - Tracking the expenses made in a certain time and by category
-      - If the user wants to see how much he saved in a certain period of time. The app should provide organised statistics by time and category.
+      - If the user wants to see how much he saved in a certain period of time, the app should provide organised statistics by time and category.
    - A forum where users can share their ideas with others.
       - The users that have some doubt about anything about finance will have a forum that allows them to interchange their ideas and grow theirs savings together.
    - Built-in tips inside the app
