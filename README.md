@@ -33,4 +33,10 @@ Indicate an  initial/tentative list of assumptions and dependencies
 ## Requirements
 ........
 
-### Use case model
+### User Stories
+
+1. As a smoker, I want to track the money I saved so far since I stoped smoking so that I will be more motivated to stop smoking
+
+2. As a user of the app, I want to add my expenses so that I will have organised data about my cashflow
+
+3. As a user of the app, I want to write a comment about my knowledge about something so that I will help some people with my tips
