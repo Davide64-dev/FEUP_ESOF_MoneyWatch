@@ -45,8 +45,11 @@ Indicate an  initial/tentative list of assumptions and dependencies
 
 4. As a smoker, I want to track the money I saved so far since I stoped smoking so that I will be more motivated to stop smoking - Feature 5
 
-5. In my daily routine as an investor, I have to keep spending and investing cash to make even more money. Sometimes I spend more than I should so if I had a budget cap applied to my finances, I wouldn't make as many mistakes in the future. - Feature 6
+5. In my daily routine as an investor, I have to keep spending and investing cash to make even more money. Sometimes I spend more than I should so if I had a budget cap applied to my finances, I wouldn't make as many mistakes in the future. 
+  - Feature 6
 
-6. As a user of the app, I want to be able to connect through Facebook instead of a regular login so that I can save time the next time I login. - Feature 7
+6. As a user of the app, I want to be able to connect through Facebook instead of a regular login so that I can save time the next time I login. 
+  - Feature 7
 
-7. As a new user of the app, I want to be able to create an account in the app so that I can save all my progress through the app - Feature 7
+7. As a new user of the app, I want to be able to create an account in the app so that I can save all my progress through the app 
+  - Feature 7
