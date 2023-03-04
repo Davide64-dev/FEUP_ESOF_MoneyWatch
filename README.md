@@ -36,9 +36,9 @@ Indicate an  initial/tentative list of assumptions and dependencies
 ## Requirements
 ........
 
-### User Stories
+## User Stories
 
-## Feature 1
+### Feature 1
 
 1. As a user, I want to add a new purchase to the app so that I will be able to check it later.
 
@@ -54,7 +54,7 @@ Indicate an  initial/tentative list of assumptions and dependencies
 
 7. As a user, I want to add the price of the new purchase in a lot of different currencies to the app in order to make the app make the coin conversion to my main currency so that I don't need to search how much I've spent in my currency
 
-## Feature 2
+### Feature 2
 
 1. As a user, I want to check how much I'vse spent in the last month by category, so that I willbe able to cut expenses more efficiently.
 
@@ -62,7 +62,7 @@ Indicate an  initial/tentative list of assumptions and dependencies
 
 3. As a user, I want to be able to add new categories of spending so thjat I can personalize my statistics by my own.
 
-## Feature 3
+### Feature 3
 
 1. As a user, I want to be able to dd a doubt in a forum organized by category that users can make, so that other people can answer me and we can interchange our ideas
 
@@ -78,16 +78,16 @@ Indicate an  initial/tentative list of assumptions and dependencies
 
 7. As a user, I want to be able to sort all the posts in the forum by a lot of options such as by date, title and others, so that I can search in the page more efficiently
 
-## Feature 4
+### Feature 4
 
 1. As a user, I want to get an advice everytime I am spending more than usual, so that I can act against it.
 
 1. As a user, I want to be able to disable the built-in tips option so that I won't have to deal with them anymore.
 
-## Feature 5
+### Feature 5
 
 1. As a smoker, I want to have an habit tracker that tells me how much I've saved since I stopped smoking.
 
 2. As a user, I want to add what I used to spend in some bad habit so that when I stop that addicition, I can see automatically how much I've saved since then.
 
-## Feature 7
+### Feature 7
