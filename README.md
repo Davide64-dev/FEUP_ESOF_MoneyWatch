@@ -30,23 +30,64 @@ Our vision is to make people's lives easier by providing a way to understand the
 ### Assumptions and dependencies
 Indicate an  initial/tentative list of assumptions and dependencies 
 
-- Student timetable from sigarra
+- Google account (if the user wants to login with the Google)
+- Google Translator - To translate text written in the forum for the main language of the user
 
 ## Requirements
 ........
 
 ### User Stories
 
-1. As a user of the app, I want to add my expenses so that I will have organised data about my cashflow - Feature 1, 2
+## Feature 1
 
-2. As a user of the app, I want to write a comment about my knowledge about something so that I will help some people with my tips - Feature 3
+1. As a user, I want to add a new purchase to the app so that I will be able to check it later.
 
-3. As a young entrepreneur, I want to have a safe space where I could be guided to make better financial choices and to discuss my ideas with other people. - Feature 4
+2. As a user, I want to add a category to a purchase when I'm adding it so that I can see where I have spent more money.
 
-4. As a smoker, I want to track the money I saved so far since I stoped smoking so that I will be more motivated to stop smoking - Feature 5
+3. As a user, I want to be able to add recorring expense with a frequency chosen by me so that I don't need to add them everytime I made them.
 
-5. In my daily routine as an investor, I have to keep spending and investing cash to make even more money. Sometimes I spend more than I should so if I had a budget cap applied to my finances, I wouldn't make as many mistakes in the future. - Feature 6
+4. As a user that made a mistake, I want to be able to cancel (and edit) an expense that I've made to be able to correct my mistake.
 
-6. As a user of the app, I want to be able to connect through Facebook instead of a regular login so that I can save time the next time I login. - Feature 7
+5. As a user, I want to be able to add an description to my expense so that I can remember in what I have spent that money.
 
-7. As a new user of the app, I want to be able to create an account in the app so that I can save all my progress through the app - Feature 7
+6. As a user, I want to be able to add a picture of the biull of the expense so that I can check all the information about the purchase
+
+7. As a user, I want to add the price of the new purchase in a lot of different currencies to the app in order to make the app make the coin conversion to my main currency so that I don't need to search how much I've spent in my currency
+
+## Feature 2
+
+1. As a user, I want to check how much I'vse spent in the last month by category, so that I willbe able to cut expenses more efficiently.
+
+2. As a user, I want to check my expenses giving a start and a final day so that U can see in which times I've spent more money.
+
+3. As a user, I want to be able to add new categories of spending so thjat I can personalize my statistics by my own.
+
+## Feature 3
+
+1. As a user, I want to be able to dd a doubt in a forum organized by category that users can make, so that other people can answer me and we can interchange our ideas
+
+2. As a user, I want to be able to have a forum organized by category so that I can check the themes that interest me the most.
+
+3. As a user, I want to be able to search the themes that interest me in forum so that I can be more efficient in my search.
+
+4. As a user, I want to be able to write my text in a whole different languages so that I can contribute to the forum, even though I don't speak English.
+
+5. As a user, I want to have a quick translator of the other users' texts so that I can understand what the user wants to say.
+
+6. As a user, I want to be able to delete and edit the text I've added so that I can eliminate a text that I don't think it's useful anymore.
+
+7. As a user, I want to be able to sort all the posts in the forum by a lot of options such as by date, title and others, so that I can search in the page more efficiently
+
+## Feature 4
+
+1. As a user, I want to get an advice everytime I am spending more than usual, so that I can act against it.
+
+1. As a user, I want to be able to disable the built-in tips option so that I won't have to deal with them anymore.
+
+## Feature 5
+
+1. As a smoker, I want to have an habit tracker that tells me how much I've saved since I stopped smoking.
+
+2. As a user, I want to add what I used to spend in some bad habit so that when I stop that addicition, I can see automatically how much I've saved since then.
+
+## Feature 7
