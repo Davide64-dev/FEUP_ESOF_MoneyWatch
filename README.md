@@ -28,7 +28,6 @@ Our vision is to make people's lives easier by providing a way to understand the
       - Users can register in many different ways, such as Facebook, Google etc. 
 
 ### Assumptions and dependencies
-Indicate an  initial/tentative list of assumptions and dependencies 
 
 - Google account (if the user wants to login with the Google)
 - Google Translator - To translate text written in the forum for the main language of the user
@@ -40,54 +39,62 @@ Indicate an  initial/tentative list of assumptions and dependencies
 
 ### Feature 1
 
-1. As a user, I want to add a new purchase to the app so that I will be able to check it later.
+1. As a user, I want to add a new purchase to the app so I can review it later.
 
-2. As a user, I want to add a category to a purchase when I'm adding it so that I can see where I have spent more money.
+2. As a user, when I add a purchase, I want to add a category so I can see where I spent more money.
 
-3. As a user, I want to be able to add recorring expense with a frequency chosen by me so that I don't need to add them everytime I made them.
+3. As a user, I want to be able to add purchases at the frequency I choose so I don't have to add them every time I make them.
 
-4. As a user that made a mistake, I want to be able to cancel (and edit) an expense that I've made to be able to correct my mistake.
+4. As a user who has made a mistake, I want to be able to cancel (and edit) an issue I've made so that I can correct my mistake.
 
-5. As a user, I want to be able to add an description to my expense so that I can remember in what I have spent that money.
+5. As a user, I want to be able to add a description to my expenses so I can remember what I spent the money on.
 
 6. As a user, I want to be able to add a picture of the biull of the expense so that I can check all the information about the purchase
 
-7. As a user, I want to add the price of the new purchase in a lot of different currencies to the app in order to make the app make the coin conversion to my main currency so that I don't need to search how much I've spent in my currency
+7. As a user, I'd like to add the price of a new purchase in many different currencies to the app so that the app does the coin conversion to my main currency so that I don't have to search for how much I spent in my currency
 
 ### Feature 2
 
-1. As a user, I want to check how much I'vse spent in the last month by category, so that I willbe able to cut expenses more efficiently.
+1. As a user, I want to check how much I spent in each category last month so that I can spend more efficiently.
 
-2. As a user, I want to check my expenses giving a start and a final day so that U can see in which times I've spent more money.
+2. As a user, I like to check my spending by giving a start day and an end day so that I can see what times I spent more money.
 
-3. As a user, I want to be able to add new categories of spending so thjat I can personalize my statistics by my own.
+3. As a user, I want to be able to add new expense categories so that I can customize my stats to my own liking.
 
 ### Feature 3
 
-1. As a user, I want to be able to dd a doubt in a forum organized by category that users can make, so that other people can answer me and we can interchange our ideas
+1. As a user, I would like to be able to ask a question in a forum organized by categories that users can create, so that other people can answer me and we can exchange ideas
 
-2. As a user, I want to be able to have a forum organized by category so that I can check the themes that interest me the most.
+2. As a user, I would like to have a forum organized by category so that I can check the topics that interest me the most.
 
-3. As a user, I want to be able to search the themes that interest me in forum so that I can be more efficient in my search.
+3. As a user, I want to be able to search the forum for the topics that interest me so that I can make my search more efficient.
 
-4. As a user, I want to be able to write my text in a whole different languages so that I can contribute to the forum, even though I don't speak English.
+4. As a user, I'd like to be able to write my text in different languages so that I can contribute to the forum even if I don't speak English.
 
-5. As a user, I want to have a quick translator of the other users' texts so that I can understand what the user wants to say.
+5. As a user, I want to have a quick translator for other users' texts so that I can understand what the user is trying to say.
 
-6. As a user, I want to be able to delete and edit the text I've added so that I can eliminate a text that I don't think it's useful anymore.
+6. As a user, I want to be able to delete and edit the text I add, so that I can remove text I no longer find useful.
 
-7. As a user, I want to be able to sort all the posts in the forum by a lot of options such as by date, title and others, so that I can search in the page more efficiently
+7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently
 
 ### Feature 4
 
-1. As a user, I want to get an advice everytime I am spending more than usual, so that I can act against it.
+1. As a user, I would like to receive a notice every time I spend more than usual so that I can take action against it.
 
-1. As a user, I want to be able to disable the built-in tips option so that I won't have to deal with them anymore.
+2. As a user, I'd like to have the ability to disable the built-in tips so I don't have to deal with them anymore.
 
 ### Feature 5
 
-1. As a smoker, I want to have an habit tracker that tells me how much I've saved since I stopped smoking.
+1. As a smoker, I'd like to have a tracker that shows me how much I've saved since quitting smoking so that I'm even more motivated.
 
-2. As a user, I want to add what I used to spend in some bad habit so that when I stop that addicition, I can see automatically how much I've saved since then.
+2. As a user, I want to indicate how much money I've spent on a bad habit so that when I stop that habit, I can automatically see how much I've saved since then.
 
 ### Feature 7
+
+1. As a new user of the app, I would like to be able to create a new account with my e-mail so that I can use the app
+
+2. As a new user I would like to be able to log in with Google so I do not have to create a new account first
+
+3. As a user of the app, I would like to receive a warning every time someone tries to log in to the app and the password is wrong so I feel safer.
+
+4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it
