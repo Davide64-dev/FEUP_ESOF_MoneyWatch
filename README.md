@@ -23,7 +23,7 @@ Our vision is to make people's lives easier by providing a way to understand the
    5. Addiction Tracking
       - The app will have a feature that will allow the users to track their addictions and see the money they have saved since they started tracking.
    6. Creation of budgets inside the app.
-      - The app displays a message when a user spends more money than usual in a category.
+      - The users should be able to add a budget os spending in some category
    7. Diverse Register/Login ways
       - Users can register in many different ways, such as Facebook, Google etc. 
 
@@ -88,6 +88,10 @@ Our vision is to make people's lives easier by providing a way to understand the
 1. As a smoker, I'd like to have a tracker that shows me how much I've saved since quitting smoking so that I'm even more motivated.
 
 2. As a user, I want to indicate how much money I've spent on a bad habit so that when I stop that habit, I can automatically see how much I've saved since then.
+
+### Feature 6
+
+1. As a user, I want to be able to add a budget in some category so that I can garantee I don't spend more money than usual
 
 ### Feature 7
 
