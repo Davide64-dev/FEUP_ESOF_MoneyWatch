@@ -94,42 +94,42 @@ Acceptance test: From the history menu, I can edit a text box to write the start
 
 1. As a user, I would like to receive a notice every time I spend more than usual so that I can take action against it.
 
-   Acceptance test: From the main menu, you can press a button where you can write a budget limit. Every time you spend more than the limit established you will get a warning.
+   *Acceptance test:* From the main menu, you can press a button where you can write a budget limit. Every time you spend more than the limit established you will get a warning.
 
 2. As a user, I'd like to have the ability to disable the built-in tips so I don't have to deal with them anymore.
 
-   Acceptance test: The built-in tips can be avoided by disabling them in the options menu.
+   *Acceptance test:* The built-in tips can be avoided by disabling them in the options menu.
 
 ### Feature 5
 
 1. As a smoker, I'd like to have a tracker that shows me how much I've saved since quitting smoking so that I'm even more motivated.
 
-   Acceptance test: The app will track your expenses (as explained in other features) so that you know when you are spending/saving more than you did before.
+   *Acceptance test:* The app will track your expenses (as explained in other features) so that you know when you are spending/saving more than you did before.
 
 2. As a user, I want to indicate how much money I've spent on a bad habit so that when I stop that habit, I can automatically see how much I've saved since then.
 
-   Acceptance test: ***VER NA AULA***
+   *Acceptance test:* ***VER NA AULA***
 
 ### Feature 6
 
 1. As a user, I want to be able to add a budget in some category so that I can guarantee I don't spend more money than usual.
 
-   Acceptance test: From the main menu, select the category menu and create a new one by pressing the "create" button. When the creation is finished you can establish a budget limit on that same category by editing it.
+   *Acceptance test:* From the main menu, select the category menu and create a new one by pressing the "create" button. When the creation is finished you can establish a budget limit on that same category by editing it.
 
 ### Feature 7
 
 1. As a new user of the app, I would like to be able to create a new account with my e-mail so that I can use the app.
 
-   Acceptance test: When you open the app for the first time, to have an account you need to register. Click the register button, enter your e-mail and the password you wish to use. After that you have an account. 
+   *Acceptance test:* When you open the app for the first time, to have an account you need to register. Click the register button, enter your e-mail and the password you wish to use. After that you have an account. 
 
 2. As a new user I would like to be able to log in with Google so I do not have to create a new account first.
 
-   Acceptance test: When you open the app for the first time you can register via Google. Click the google button and you will be redirected to Google login screen. After the login is done you can use the app.
+   *Acceptance test:* When you open the app for the first time you can register via Google. Click the google button and you will be redirected to Google login screen. After the login is done you can use the app.
 
 3. As a user of the app, I would like to receive a warning every time someone tries to log in to the app and the password is wrong so I feel safer.
 
-   Acceptance test: 
+   *Acceptance test:* 
 
 4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it.
 
-   Acceptance test: When you open the app for the first time you can press a button to skip all the register/login stuff. Without an account all your data will be lost if you unninstall the app.
+   *Acceptance test:* When you open the app for the first time you can press a button to skip all the register/login stuff. Without an account all your data will be lost if you unninstall the app.
