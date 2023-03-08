@@ -33,7 +33,10 @@ Our vision is to make people's lives easier by providing a way to understand the
 - Google Translator - To translate text written in the forum for the main language of the user
 
 ## Requirements
-........
+
+### Nonfunctional requirements
+
+1. The product should be developed with Flutter
 
 ## User Stories
 
