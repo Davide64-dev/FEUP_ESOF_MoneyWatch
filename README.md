@@ -43,47 +43,61 @@ Our vision is to make people's lives easier by providing a way to understand the
 ### Feature 1
 
 1. As a user, I want to add a new purchase to the app so I can review it later.
+
    **Acceptance test:** From the main page, I can press a button to take me to the purchase screen, where I can declare a purchase, adding an amount that I spent in a text box and clicking "submit".
 
 2. As a user, when I add a purchase, I want to add a category so I can see where I spent more money.
+
    **Acceptance test:** From the purchase screen, I can press a button to bring up a category menu, and press one of the category options: "food", "fashion"...
 
 3. As a user, I want to be able to add purchases at the frequency I choose so I don't have to add them every time I make them.
+
    **Acceptance test:** From the purchase menu, I can press a button to choose "multiple purchases", add a timeline of when the purchases were made and a total amount spent.
 
 4. As a user who has made a mistake, I want to be able to cancel (and edit) an issue I've made so that I can correct my mistake.
+
    **Acceptance test:** From the main menu, I can press a button to access the edit menu, where I can delete or edit purchases - there will be a text box with the price of the purchase which I can edit, writing the right amount, a menu with the categories, where you can choose the right one, the selected date and a text box to edit it.
 
 5. As a user, I want to be able to add a description to my expenses so I can remember what I spent the money on.
+
    **Acceptance test:** From the purchase screen, I can click a text box to write a customized description of the expense.
+ 
    **Acceptance test:** From the history menu, I can click each purchase to check its description.
 
 6. As a user, I want to be able to add a picture of the bill of the expense so that I can check all the information about the purchase.
+
    **Acceptance test:** From the purchase screen, I can press a button to add a photo.
 
 7. As a user, I'd like to add the price of a new purchase in many different currencies to the app so that the app does the coin conversion to my main currency so that I don't have to search for how much I spent in my currency.
+
    **Acceptance test:** From the purchase screen, I can press a button to open a currency menu, and click on the currency that I want - "Euro, US dollar, Sterling"
 
 ### Feature 2
 
 1. As a user, I want to check how much I spent in each category last month so that I can spend more efficiently.
+
    **Acceptance test:** From the main menu, I can press the history button to open the history menu, which shows a graph with all my spendings in each category in the current month.
 
 2. As a user, I like to check my spending by giving a start day and an end day so that I can see what times I spent more money.
+
    **Acceptance test:** From the history menu, I can edit a text box to write the start date and another text box to write the end date, both in the DD/MM//YYYY format.
 
 3. As a user, I want to be able to add new expense categories so that I can customize my stats to my own liking.
+
    **Acceptance test:** From the settings menu, I can press a button to choose the custom category section, where I can write in a text box to add a category.
 
 ### Feature 3
 
 1. As a user, I would like to be able to ask a question in a forum organized by categories that users can create, so that other people can answer me and we can exchange ideas.
+
    **Acceptance test:** From the main menu, I can press a button to bring up a forum, then press a button to make a post in a certain category.
 
 2. As a user, I would like to have a forum organized by category so that I can check the topics that interest me the most.
+
    **Acceptance test:** From the forum, I can press a button to choose the section (predefined category) that I want to browse.
 
 3. As a user, I want to be able to search the forum for the topics that interest me so that I can make my search more efficient.
+
    **Acceptance test:** From the forum, I can press a search bar to search for specific words in post titles.
 
 4. As a user, I'd like to be able to write my text in different languages so that I can contribute to the forum even if I don't speak English.
