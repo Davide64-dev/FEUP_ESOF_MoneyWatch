@@ -102,11 +102,19 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 4. As a user, I'd like to be able to write my text in different languages so that I can contribute to the forum even if I don't speak English.
 
+**Acceptance test:**Inside the forum you can change the language in the forum settings by pressing the options button and then choosing the language you want.
+
 5. As a user, I want to have a quick translator for other users' texts so that I can understand what the user is trying to say.
+
+**Acceptance test:**Inside any forum post there is a built-in option that you can press to automatically translate its content.
 
 6. As a user, I want to be able to delete and edit the text I add, so that I can remove text I no longer find useful.
 
-7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently
+**Acceptance test:**After the creation of a post, you are able to edit/remove it by pressing the edit button under its content. If you leave the post completely empty, a warning will appear telling you that the post is getting removed. If you press the "OK" button the post will be removed, otherwise you will be able to keep editing it.
+
+7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently.
+
+**Acceptance test:**
 
 ### Feature 4
 
