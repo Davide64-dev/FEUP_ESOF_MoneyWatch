@@ -114,7 +114,7 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently.
 
-   **Acceptance test:** Inside the forum, the user has the ability to press a button to sort the posts by date, title and author in alphabetical order.
+   **Acceptance test:** Inside the forum, the user has the ability to press a button to sort the posts by date, title and author in ascending or descending alphabetical order.
 
 ### Feature 4
 
