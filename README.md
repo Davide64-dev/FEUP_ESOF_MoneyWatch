@@ -114,7 +114,7 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently.
 
-   **Acceptance test:**
+   **Acceptance test:** Inside the forum, the user has the ability to press a button to sort the posts by date, title and author in alphabetical order.
 
 ### Feature 4
 
@@ -131,10 +131,6 @@ Our vision is to make people's lives easier by providing a way to understand the
 1. As a smoker, I'd like to have a tracker that shows me how much I've saved since quitting smoking so that I'm even more motivated.
 
    **Acceptance test:** The app will track your expenses (as explained in other features) so that you know when you are spending/saving more than you did before.
-
-2. As a user, I want to indicate how much money I've spent on a bad habit so that when I stop that habit, I can automatically see how much I've saved since then.
-
-   **Acceptance test:** ***VER NA AULA***
 
 ### Feature 6
 
@@ -154,7 +150,7 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 3. As a user of the app, I would like to receive a warning every time someone tries to log in to the app and the password is wrong so I feel safer.
 
-   **Acceptance test:** 
+   **Acceptance test:** The user receives a notification if someone is trying to acess their account.
 
 4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it.
 
