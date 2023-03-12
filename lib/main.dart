@@ -56,22 +56,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
         child: PieChart(
           dataMap: dataMap,
+          centerText: "Last Month",
           colorList: colorList,
           chartType: ChartType.ring,
+          ringStrokeWidth: 32,
           chartRadius: MediaQuery.of(context).size.width / 2,
+          animationDuration: Duration(seconds: 1),
+          chartLegendSpacing: 64,
           chartValuesOptions: ChartValuesOptions(
-
+            showChartValueBackground: true,
+            showChartValues: true,
+            showChartValuesInPercentage: true,
+            showChartValuesOutside: true,
           ),
           legendOptions: LegendOptions(
             showLegends: true,
-            legendShape: BoxShape.rectangle,
+            legendShape: BoxShape.circle,
             legendPosition: LegendPosition.bottom,
           ),
         ),
       ),
+
       floatingActionButton: SpeedDial(
         curve: Curves.easeInSine,
         spaceBetweenChildren: 15,
