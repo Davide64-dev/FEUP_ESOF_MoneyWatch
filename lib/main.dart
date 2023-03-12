@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -96,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Hello, World:',
             ),
             Text(
               '$_counter',
@@ -105,10 +108,33 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.attach_money),
+      floatingActionButton: SpeedDial(
+        child: Icon(Icons.attach_money),
+        curve: Curves.easeInSine,
+        spaceBetweenChildren: 15,
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.add),
+            backgroundColor: Colors.green,
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.forum),
+            backgroundColor: Colors.green,
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.percent),
+            backgroundColor: Colors.green,
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.psychology),
+            backgroundColor: Colors.green,
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.savings),
+            backgroundColor: Colors.green,
+          ),
+
+        ]
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
