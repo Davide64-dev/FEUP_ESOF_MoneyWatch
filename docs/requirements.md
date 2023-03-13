@@ -129,3 +129,14 @@
 
    ![classes](https://user-images.githubusercontent.com/114567030/224738758-c6a3dd1e-8438-40b0-ad9a-6198c5a7958b.png)
 
+## UI Mockups
+
+  ![New Wireframe 1](https://user-images.githubusercontent.com/114567030/224743640-e12daf0e-956d-42dc-b890-b8837bd37aae.png)
+  
+  
+  ![New Wireframe 2](https://user-images.githubusercontent.com/114567030/224743740-71f5ff52-50a0-459d-be6b-4ee96b4ae425.png)
+  
+  
+  ![kkkkkk](https://user-images.githubusercontent.com/114567030/224744975-2fd89ecc-a086-4a4c-a0e9-e7b674b5aeae.png)
+
+
