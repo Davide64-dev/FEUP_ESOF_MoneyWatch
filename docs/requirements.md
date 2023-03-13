@@ -4,7 +4,7 @@
 
 1. The product should be developed with Flutter
 
-## User Stories
+### User Stories
 
 ### Feature 1
 
@@ -121,3 +121,10 @@
 4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it. (Could have 20)
 
    **Acceptance test:** When you open the app for the first time you can press a button to skip all the register/login stuff. Without an account all your data will be lost if you unninstall the app.
+   
+   
+   
+   ###Domain Model
+   
+   <div align = "center><img src = "![classes](https://user-images.githubusercontent.com/114567030/224738758-c6a3dd1e-8438-40b0-ad9a-6198c5a7958b.png)"/>
+  </div>
