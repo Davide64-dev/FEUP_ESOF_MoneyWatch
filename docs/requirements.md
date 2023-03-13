@@ -125,6 +125,7 @@
    
    
 ## Domain Model
-   
-   <div align = "center><img src = "![classes](https://user-images.githubusercontent.com/114567030/224738758-c6a3dd1e-8438-40b0-ad9a-6198c5a7958b.png)"/>
-  </div>
+
+
+   ![classes](https://user-images.githubusercontent.com/114567030/224738758-c6a3dd1e-8438-40b0-ad9a-6198c5a7958b.png)
+
