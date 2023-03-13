@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:name/addExpense.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 void main() {
@@ -87,6 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
           SpeedDialChild(
             child: Icon(Icons.add),
             backgroundColor: Colors.green,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const addExpense()),
+              );
+            },
           ),
           SpeedDialChild(
             child: Icon(Icons.forum),
@@ -111,3 +118,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
