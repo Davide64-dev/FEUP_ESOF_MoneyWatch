@@ -156,4 +156,4 @@ Our vision is to make people's lives easier by providing a way to understand the
 
    **Acceptance test:** When you open the app for the first time you can press a button to skip all the register/login stuff. Without an account all your data will be lost if you unninstall the app.
 
-5. As a new user, I want to be able to register my account in the app so that I can use all functionalities
+5. As a new user, I want to be able to register my account in the app so that I can use all functionalities. (Must have 40)
