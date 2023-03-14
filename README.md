@@ -118,19 +118,31 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 1. As a user, I would like to be able to ask a question in a forum organized by categories that users can create, so that other people can answer me and we can exchange ideas. (Should have 100)
 
-   **Acceptance test:** From the main menu, I can press a button to bring up a forum, then press a button to make a post in a certain category.
+   **Acceptance test:**
+	Given that I am on the main menu,
+	When I select the forum,
+	Then I will see posts by other users.
 
 2. As a user, I would like to have a forum organized by category so that I can check the topics that interest me the most. (Must have 5)
 
-   **Acceptance test:** From the forum, I can press a button to choose the section (predefined category) that I want to browse.
+   **Acceptance test:**
+	Given that I am on the forum,
+	When I select a predefined category,
+	Then all the posts on the forum will be in that category.
 
 3. As a user, I want to be able to search the forum for the topics that interest me so that I can make my search more efficient. (Must have 20)
 
-   **Acceptance test:** From the forum, I can press a search bar to search for specific words in post titles.
+   **Acceptance test:**
+	Given that I select the search option,
+	When I write a text in the searchbox and confirm,
+	Then the posts that show up will have that text in their title. 
 
 4. As a user, I'd like to be able to write my text in different languages so that I can contribute to the forum even if I don't speak English. (Must have 1)
 
-   **Acceptance test:** Inside the forum you can change the language in the forum settings by pressing the options button and then choosing the language you want.
+   **Acceptance test:**
+	Given that the user is in the forum menu,
+	When they write a post,
+	Then an error will never be thrown, so that they can write in any language.
 
 5. As a user, I want to have a quick translator for other users' texts so that I can understand what the user is trying to say. (Should have 8)
 
