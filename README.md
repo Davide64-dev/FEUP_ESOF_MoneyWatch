@@ -103,12 +103,16 @@ Our vision is to make people's lives easier by providing a way to understand the
 2. As a user, I like to check my spending by giving a start day and an end day so that I can see what times I spent more money. (Could have 20)
 
    **Acceptance test:**
-   Given 
-   **Acceptance test:** From the history menu, I can edit a text box to write the start date and another text box to write the end date, both in the DD/MM//YYYY format.
+   Given that I am in the history menu
+   When I choose a start date and an end date
+   Then I will see the total amount spent across that time period and all of the purchases.
 
 3. As a user, I want to be able to add new expense categories so that I can customize my stats to my own liking. (Should have 5)
 
-   **Acceptance test:** From the settings menu, I can press a button to choose the custom category section, where I can write in a text box to add a category.
+   **Acceptance test:**
+   Given that I am on the settings menu
+   When I fill in a textbox and confirm
+   Then I will get the option to choose that custom category in every purchase
 
 ### Feature 3
 
