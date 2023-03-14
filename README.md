@@ -193,7 +193,7 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it. (Could have 20)
 
-   **Acceptance test:** When you open the app for the first time you can press a button to skip all the register/login stuff. Without an account all your data will be lost if you unninstall the app.
+   **Acceptance test:**
 	Given that the user doesn't want to register
 	When he opens the app
 	Then he chooses an option to continue without having to login/register and his information will be kept locally.
