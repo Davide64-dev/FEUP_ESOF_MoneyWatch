@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:name/addExpense.dart';
@@ -91,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const addExpense()),
+                MaterialPageRoute(builder: (context) =>  const addExpense(title: 'Add Expense',)),
               );
             },
           ),
