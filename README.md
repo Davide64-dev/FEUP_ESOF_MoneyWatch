@@ -147,20 +147,28 @@ Our vision is to make people's lives easier by providing a way to understand the
 5. As a user, I want to have a quick translator for other users' texts so that I can understand what the user is trying to say. (Should have 8)
 
    **Acceptance test:**
-	Given a post written in some language
-	When the user doesn't understand that language
+	Given a post written in some language,
+	When the user doesn't understand that language,
 	Then they can click on the button below the post to translate it.
 
 6. As a user, I want to be able to delete and edit the text I add, so that I can remove text I no longer find useful. (Must have 13)
 
    **Acceptance test:**
-	Given that the user wants to edit some post
-	When they made a mistake or want to delete it
+	Given that the user wants to edit some post,
+	When they made a mistake or want to delete it,
 	Then they can edit the post by pressing the edit button.
 
 7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently. (Must have 3)
 
-   **Acceptance test:** Inside the forum, the user has the ability to press a button to sort the posts by date, title and author in ascending or descending alphabetical order.
+   **Acceptance test:**
+	Given that the user is in the forum,
+	When they choose to sort by date,
+	Then the posts will be sorted such that the most recent show up first.
+	
+   **Acceptance test:**
+	Given that the user is in the forum,
+	When they choose to sort by title (ascending or descending),
+	Then the posts will be sorted alphabetically (ascending or descending).
 
 ### Feature 4
 
