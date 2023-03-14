@@ -44,42 +44,66 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 1. As a user, I want to add a new purchase to the app so I can review it later. (Must Have 5)
 
-   **Acceptance test:** From the main page, I can press a button to take me to the purchase screen, where I can declare a purchase, adding an amount that I spent in a text box and clicking "submit".
+   **Acceptance test:**
+   Given that I am on the purchase screen
+   When I submit a purchase
+   Then the purchase will be registered, and I can review it later.
 
 2. As a user, when I add a purchase, I want to add a category so I can see where I spent more money. (Must have 3)
 
-   **Acceptance test:** From the purchase screen, I can press a button to bring up a category menu, and press one of the category options: "food", "fashion"...
+   **Acceptance test:**
+   Given that I select a purchase category
+   When I submit the purchase
+   Then it will be registered on the database with a category.
 
 3. As a user, I want to be able to add purchases at the frequency I choose so I don't have to add them every time I make them. (Should have 8)
 
-   **Acceptance test:** From the purchase menu, I can press a button to choose "multiple purchases", add a timeline of when the purchases were made and a total amount spent.
+   **Acceptance test:**
+   Given that I select the option "multiple purchases"
+   When I choose a timeline for the purchases, a total amount spent and submit
+   Then the purchase will be registered with those attributes.
 
 4. As a user who has made a mistake, I want to be able to cancel (and edit) an issue I've made so that I can correct my mistake. (Must have 20)
 
-   **Acceptance test:** From the main menu, I can press a button to access the edit menu, where I can delete or edit purchases - there will be a text box with the price of the purchase which I can edit, writing the right amount, a menu with the categories, where you can choose the right one, the selected date and a text box to edit it.
+    **Acceptance test:**
+    Given that I select a previous purchase
+    When I edit it, correcting a mistake
+    Then the purchase will appear with the new information selected.
 
 5. As a user, I want to be able to add a description to my expenses so I can remember what I spent the money on. (Should have 3)
 
-   **Acceptance test:** From the purchase screen, I can click a text box to write a customized description of the expense.
- 
-   **Acceptance test:** From the history menu, I can click each purchase to check its description.
+   **Acceptance test:**
+   Given that I fill in a description and submit a purchase
+   When I select the purchase
+   Then I will see its description
 
 6. As a user, I want to be able to add a picture of the bill of the expense so that I can check all the information about the purchase. (Could have 3)
 
-   **Acceptance test:** From the purchase screen, I can press a button to add a photo.
+   **Acceptance test:**
+   Given that I submit a purchase with a picture
+   When I select the purchase
+   Then I will see the picture with all of the purchase's details
 
 7. As a user, I'd like to add the price of a new purchase in many different currencies to the app so that the app does the coin conversion to my main currency so that I don't have to search for how much I spent in my currency. (Should have 2)
 
-   **Acceptance test:** From the purchase screen, I can press a button to open a currency menu, and click on the currency that I want - "Euro, US dollar, Sterling"
+   **Acceptance test:**
+   Given that I choose a currency
+   When I click "confirm"
+   Then all of my spendings will be in the selected currency.
 
 ### Feature 2
 
 1. As a user, I want to check how much I spent in each category last month so that I can spend more efficiently. (Must have 20)
 
-   **Acceptance test:** From the main menu, I can press the history button to open the history menu, which shows a graph with all my spendings in each category in the current month.
+   **Acceptance test:**
+   Given that I am in the history menu
+   When I choose a category
+   Then I will see the amount of money spent in that category in the last month
 
 2. As a user, I like to check my spending by giving a start day and an end day so that I can see what times I spent more money. (Could have 20)
 
+   **Acceptance test:**
+   Given 
    **Acceptance test:** From the history menu, I can edit a text box to write the start date and another text box to write the end date, both in the DD/MM//YYYY format.
 
 3. As a user, I want to be able to add new expense categories so that I can customize my stats to my own liking. (Should have 5)
