@@ -154,28 +154,46 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 1. As a smoker, I'd like to have a tracker that shows me how much I've saved since quitting smoking so that I'm even more motivated. (Should have 5)
 
-   **Acceptance test:** The app will track your expenses (as explained in other features) so that you know when you are spending/saving more than you did before.
+   **Acceptance test:**
+	Given that the app stores all the purchases,
+	When I create a new one
+	Then the app can keep a record of the user expenses giving the user the ability to see if he is spending less than the usual.
 
 ### Feature 6
 
 1. As a user, I want to be able to add a budget in some category so that I can guarantee I don't spend more money than usual. (Could have 5)
 
-   **Acceptance test:** From the main menu, select the category menu and create a new one by pressing the "create" button. When the creation is finished you can establish a budget limit on that same category by editing it.
+   **Acceptance test:**
+	Given that the user wants to have a budget in some category
+	When the user is trying to spend less money than usual on that category
+	Then the user can press a button in the desired category and insert a budget limit.
 
 ### Feature 7
 
 1. As a new user of the app, I would like to be able to create a new account with my e-mail so that I can use the app. (Must have 40)
 
-   **Acceptance test:** When you open the app for the first time, to have an account you need to register. Click the register button, enter your e-mail and the password you wish to use. After that you have an account. 
+   **Acceptance test:** 
+	Given that the user chooses the option register
+	When he enters his email and password
+	Then his information will be stored and he can read the app.
 
 2. As a new user I would like to be able to log in with Google so I do not have to create a new account first. (Should have 13)
 
-   **Acceptance test:** When you open the app for the first time you can register via Google. Click the google button and you will be redirected to Google login screen. After the login is done you can use the app.
+   **Acceptance test:** 
+	Given that the user chooses the option "Sign in with Google" 
+	When he enters his email and password in a Google dedicated window
+	Then his information will be stored and he can read the app.
 
 3. As a user of the app, I would like to receive a warning every time someone tries to log in to the app and the password is wrong so I feel safer. (Should have 5)
 
-   **Acceptance test:** The user receives a notification if someone is trying to acess their account.
+   **Acceptance test:** 
+	Given that someone fill in the wrong password
+	When he fails 3 times
+	Then the user will receive a warning by email telling him that someone is trying to access his account.
 
 4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it. (Could have 20)
 
    **Acceptance test:** When you open the app for the first time you can press a button to skip all the register/login stuff. Without an account all your data will be lost if you unninstall the app.
+	Given that the user doesn't want to register
+	When he opens the app
+	Then he chooses an option to continue without having to login/register and his information will be kept locally.
