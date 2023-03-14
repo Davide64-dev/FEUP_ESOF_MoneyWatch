@@ -148,11 +148,17 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 1. As a user, I would like to receive a notice every time I spend more than usual so that I can take action against it. (Could have 8?)
 
-   **Acceptance test:** From the main menu, you can press a button where you can write a budget limit. Every time you spend more than the limit established you will get a warning.
+   **Acceptance test:**
+	Given that the user has a budget,
+	When the user spends more than that,
+	Then they will be notified.
 
 2. As a user, I'd like to have the ability to disable the built-in tips so I don't have to deal with them anymore. (Could have 2)
 
-   **Acceptance test:** The built-in tips can be avoided by disabling them in the options menu.
+   **Acceptance test:**
+	Given that the user disables the tips,
+	When they are browsing the app,
+	Then they won't get annoyed by them.
 
 ### Feature 5
 
