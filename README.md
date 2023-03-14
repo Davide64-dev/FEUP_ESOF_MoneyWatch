@@ -146,11 +146,17 @@ Our vision is to make people's lives easier by providing a way to understand the
 
 5. As a user, I want to have a quick translator for other users' texts so that I can understand what the user is trying to say. (Should have 8)
 
-   **Acceptance test:** Inside any forum post there is a built-in option that you can press to automatically translate its content.
+   **Acceptance test:**
+	Given a post written in some language
+	When the user doesn't understand that language
+	Then they can click on the button below the post to translate it.
 
 6. As a user, I want to be able to delete and edit the text I add, so that I can remove text I no longer find useful. (Must have 13)
 
-   **Acceptance test:** After the creation of a post, you are able to edit/remove it by pressing the edit button under its content. If you leave the post completely empty, a warning will appear telling you that the post is getting removed. If you press the "OK" button the post will be removed, otherwise you will be able to keep editing it.
+   **Acceptance test:**
+	Given that the user wants to edit some post
+	When they made a mistake or want to delete it
+	Then they can edit the post by pressing the edit button.
 
 7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently. (Must have 3)
 
