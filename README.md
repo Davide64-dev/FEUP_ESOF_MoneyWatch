@@ -30,3 +30,9 @@ Thank you!
 Davide Teixeira up202109860
 
 Eduardo Oliveira up202108843
+
+Gonçalo Matos up202108761
+
+Maria Costa up202108849
+
+Máximo Pereira up202108887
