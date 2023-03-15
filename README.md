@@ -1,235 +1,30 @@
-# MoneyWatch
+# MoneyWatch Development Report
 
+Welcome to the documentation pages of the MoneyWatch!
 
-## Product Vision
+You can find here details about the product (or mini-app or module), from a high-level vision to low-level implementation decisions, a kind of Software Development Report, organized by discipline (as of Rational Unified Process):
 
-MoneyWatch is an app that gives the user a tool to comprehend their spending and make better decisions to grow their savings making their life easier. Our app will be able to tell you where you spend your money and will give you tips on how to spend it and where to spend it. This way you will have much more control about your life savings and expenses.
-
-### Vision Statement
-
-Our vision is to make people's lives easier by providing a way to understand their expenses and make wiser choices to increase their savings.
-
-
-
-### Main Features
-   1. Allows the user to add their expenses to the app
-      - Every time the user makes a purchase, he should open the app and register the information. The app should store the information
-   2. Tracking the expenses made in a certain time and by category
-      - If the user wants to see how much he saved in a certain period of time, the app should provide organised statistics by time and category.
-   3. A forum where users can share their ideas with others.
-      - The users that have some doubt about anything about finance will have a forum that allows them to interchange their ideas and grow theirs savings together.
-   4. Built-in tips inside the app
-      - Users who have doubts about a financial topic can share their ideas in a forum and increase their savings together.
-   5. Addiction Tracking
-      - The app will have a feature that will allow the users to track their addictions and see the money they have saved since they started tracking.
-   6. Creation of budgets inside the app.
-      - The users should be able to add a budget os spending in some category
-   7. Diverse Register/Login ways
-      - Users can register in many different ways, such as Facebook, Google etc. 
-
-### Assumptions and dependencies
-
-- Google account (if the user wants to login with the Google)
-- Google Translator - To translate text written in the forum for the main language of the user
-
-## Requirements
-
-### Nonfunctional requirements
-
-1. The product should be developed with Flutter
-
-## User Stories
-
-### Feature 1
-
-1. As a user, I want to add a new purchase to the app so I can review it later. (Must Have 5)
-
-   **Acceptance test:**
-	Given that I am on the purchase screen,
-	When I submit a purchase,
-	Then the purchase will be registered, and I can review it later.
-
-2. As a user, when I add a purchase, I want to add a category so I can see where I spent more money. (Must have 3)
-
-   **Acceptance test:**
-	Given that I select a purchase category,
-	When I submit the purchase,
-	Then it will be registered on the database with a category.
-
-3. As a user, I want to be able to add purchases at the frequency I choose so I don't have to add them every time I make them. (Should have 8)
-
-   **Acceptance test:**
-	Given that I select the option "multiple purchases",
-	When I choose a timeline for the purchases, a total amount spent and submit,
-	Then the purchase will be registered with those attributes.
-
-4. As a user who has made a mistake, I want to be able to cancel (and edit) an issue I've made so that I can correct my mistake. (Must have 20)
-
-    **Acceptance test:**
-	Given that I select a previous purchase,
-	When I edit it, correcting a mistake,
-	Then the purchase will appear with the new information selected.
-
-5. As a user, I want to be able to add a description to my expenses so I can remember what I spent the money on. (Should have 3)
-
-   **Acceptance test:**
-	Given that I fill in a description and submit a purchase,
-	When I select the purchase,
-	Then I will see its description.
-
-6. As a user, I want to be able to add a picture of the bill of the expense so that I can check all the information about the purchase. (Could have 3)
-
-   **Acceptance test:**
-	Given that I submit a purchase with a picture,
-	When I select the purchase,
-	Then I will see the picture with all of the purchase's details.
-
-7. As a user, I'd like to add the price of a new purchase in many different currencies to the app so that the app does the coin conversion to my main currency so that I don't have to search for how much I spent in my currency. (Should have 2)
-
-   **Acceptance test:**
-	Given that I choose a currency,
-	When I click "confirm",
-	Then all of my spendings will be in the selected currency.
-
-### Feature 2
-
-1. As a user, I want to check how much I spent in each category last month so that I can spend more efficiently. (Must have 20)
-
-   **Acceptance test:**
-	Given that I am in the history menu,
-	When I choose a category,
-	Then I will see the amount of money spent in that category in the last month.
-
-2. As a user, I like to check my spending by giving a start day and an end day so that I can see what times I spent more money. (Could have 20)
-
-   **Acceptance test:**
-	Given that I am in the history menu,
-	When I choose a start date and an end date,
-	Then I will see the total amount spent across that time period and all of the purchases.
-
-3. As a user, I want to be able to add new expense categories so that I can customize my stats to my own liking. (Should have 5)
-
-   **Acceptance test:**
-	Given that I am on the settings menu,
-	When I fill in a textbox and confirm,
-	Then I will get the option to choose that custom category in every purchase.
-
-### Feature 3
-
-1. As a user, I would like to be able to ask a question in a forum organized by categories that users can create, so that other people can answer me and we can exchange ideas. (Should have 100)
-
-   **Acceptance test:**
-	Given that I am on the main menu,
-	When I select the forum,
-	Then I will see posts by other users.
-
-2. As a user, I would like to have a forum organized by category so that I can check the topics that interest me the most. (Must have 5)
-
-   **Acceptance test:**
-	Given that I am on the forum,
-	When I select a predefined category,
-	Then all the posts on the forum will be in that category.
-
-3. As a user, I want to be able to search the forum for the topics that interest me so that I can make my search more efficient. (Must have 20)
-
-   **Acceptance test:**
-	Given that I select the search option,
-	When I write a text in the searchbox and confirm,
-	Then the posts that show up will have that text in their title. 
-
-4. As a user, I'd like to be able to write my text in different languages so that I can contribute to the forum even if I don't speak English. (Must have 1)
-
-   **Acceptance test:**
-	Given that the user is in the forum menu,
-	When they write a post,
-	Then an error will never be thrown, so that they can write in any language.
-
-5. As a user, I want to have a quick translator for other users' texts so that I can understand what the user is trying to say. (Should have 8)
-
-   **Acceptance test:**
-	Given a post written in some language,
-	When the user doesn't understand that language,
-	Then they can click on the button below the post to translate it.
-
-6. As a user, I want to be able to delete and edit the text I add, so that I can remove text I no longer find useful. (Must have 13)
-
-   **Acceptance test:**
-	Given that the user wants to edit some post,
-	When they made a mistake or want to delete it,
-	Then they can edit the post by pressing the edit button.
-
-7. As a user, I would like to be able to sort all posts in the forum by a number of options, such as date, title, and others, so that I can search the site more efficiently. (Must have 3)
-
-   **Acceptance test:**
-	Given that the user is in the forum,
-	When they choose to sort by date,
-	Then the posts will be sorted such that the most recent show up first.
+- Business modeling
+   - [Product Vision](docs/ProductVision.md)
+   	- [Vision Statement](docs/ProductVision.md#Vision-Statement)
+	- [Main Features](docs/ProductVision.md#Main-Features)
+	- [Assumptions and dependencies](docs/ProductVision.md#Assumptions-and-dependencies)
 	
-   **Acceptance test:**
-	Given that the user is in the forum,
-	When they choose to sort by title (ascending or descending),
-	Then the posts will be sorted alphabetically (ascending or descending).
 
-### Feature 4
+- [Requirements](docs/requirements.md)
+   - [Nonfunctional Requirements](docs/requirements.md#Nonfunctional-requirements)
+   - [User Stories](docs/requirements.md#User-Stories)
+   - [Domain Model](docs/requirements.md#Domain-Model)
+   - [UI Mockups](docs/requirements.md#UI-Mockups)
 
-1. As a user, I would like to receive a notice every time I spend more than usual so that I can take action against it. (Could have 8?)
+- [Architecture and Design](docs/ArchitectureAndDesign.md)
+   - [Logical architecture](docs/ArchitectureAndDesign.md#Logical-architecture)
+   - [Physical architecture](docs/ArchitectureAndDesign.md#Physical-architecture)
+   - [Package diagram](docs/ArchitectureAndDesign.md#Package-diagram)
+   
+   
+Please contact us!
 
-   **Acceptance test:**
-	Given that the user has a budget,
-	When the user spends more than that,
-	Then they will be notified.
+Thank you!
 
-2. As a user, I'd like to have the ability to disable the built-in tips so I don't have to deal with them anymore. (Could have 2)
-
-   **Acceptance test:**
-	Given that the user disables the tips,
-	When they are browsing the app,
-	Then they won't get annoyed by them.
-
-### Feature 5
-
-1. As a smoker, I'd like to have a tracker that shows me how much I've saved since quitting smoking so that I'm even more motivated. (Should have 5)
-
-   **Acceptance test:**
-	Given that the app stores all the purchases,
-	When I create a new one,
-	Then the app can keep a record of the user expenses giving the user the ability to see if they are spending less than usual.
-
-### Feature 6
-
-1. As a user, I want to be able to add a budget in some category so that I can guarantee I don't spend more money than usual. (Could have 5)
-
-   **Acceptance test:**
-	Given that the user wants to have a budget in some category,
-	When the user is trying to spend less money than usual on that category,
-	Then the user can press a button in the desired category and insert a budget limit.
-
-### Feature 7
-
-1. As a new user of the app, I would like to be able to create a new account with my e-mail so that I can use the app. (Must have 40)
-
-   **Acceptance test:** 
-	Given that the user chooses the option register,
-	When they enter their email and password,
-	Then their information will be stored and they can read the app.
-
-2. As a new user I would like to be able to log in with Google so I do not have to create a new account first. (Should have 13)
-
-   **Acceptance test:** 
-	Given that the user chooses the option "Sign in with Google",
-	When they enter their email and password in a Google dedicated window,
-	Then their information will be stored and they can read the app.
-
-3. As a user of the app, I would like to receive a warning every time someone tries to log in to the app and the password is wrong so I feel safer. (Should have 5)
-
-   **Acceptance test:** 
-	Given that someone fill in the wrong password,
-	When they fail 3 times,
-	Then the user will receive a warning by email telling them that someone is trying to access their account.
-
-4. As a new user, I would like to test the app without having to register so I can test the app and see if I like it. (Could have 20)
-
-   **Acceptance test:**
-	Given that the user doesn't want to register,
-	When they open the app,
-	Then they choose an option to continue without having to login/register and their information will be kept locally.
+Davide Teixeira up202109860
