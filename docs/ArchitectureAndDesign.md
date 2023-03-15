@@ -2,7 +2,7 @@
 
 ### Logical architecture
 
-![Logical_Architecture](https://user-images.githubusercontent.com/114567030/225083635-e2deb0f1-c01e-4e6d-90c6-4854bdd3c419.jpg)"
+![Logical_Architecture](https://user-images.githubusercontent.com/114567030/225083635-e2deb0f1-c01e-4e6d-90c6-4854bdd3c419.jpg)
 
 
 ### Physical architecture
