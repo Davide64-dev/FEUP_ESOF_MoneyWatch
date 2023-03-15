@@ -14,7 +14,7 @@ class _addExpense extends State<addExpense> {
 
   @override
   Widget build(BuildContext context) {
-    bool _showInputBoxTable = false;
+    bool isSwitched = false;
     String dropdownvalue = '€';
     var items = [
       "€",
@@ -74,7 +74,7 @@ class _addExpense extends State<addExpense> {
             ),
 
           Align(
-              alignment: Alignment(0, -0.35),
+              alignment: Alignment(0, -0.45),
               child: DropdownButton<String>(
                 value: category,
                 underline: SizedBox(),
@@ -99,21 +99,36 @@ class _addExpense extends State<addExpense> {
           ),
 
           Align(
-            alignment: Alignment(0, -0.1),
-              child: RadioListTile(
+            alignment: Alignment(-1, -0.2),
+              child: SizedBox(
+                width: 250,
+              child: SwitchListTile(
                   title: Text("Recurring Expense"),
-                  value: "radio value",
-                  groupValue: "",
+                  value: isSwitched,
                   onChanged: (value) {
                     setState(() {
-
-                      _showInputBoxTable = true;
+                      isSwitched = value;
                     }
                     );
                   }),
               ),
+          ),
 
-
+          Align(
+            alignment: Alignment(0,0.6),
+            child: SizedBox(
+              width: 300,
+              child: TextField(
+                cursorHeight: 20,
+                maxLines: 2,
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter your Description',
+                ),
+              ),
+            ),
+          ),
 
           Align(
             //alignment: Alignment(50, 50),
@@ -128,7 +143,7 @@ class _addExpense extends State<addExpense> {
               label: Text("Submit"),
 
             )
-      ),
+        ),
         ],
 
       ),
