@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class addExpense extends StatefulWidget {
-  const addExpense({super.key, required this.title});
+class AddExpenseView extends StatefulWidget {
+  const AddExpenseView({super.key, required this.title});
   final String title;
 
   @override
-  State<addExpense> createState() => _addExpense();
+  State<AddExpenseView> createState() => _AddExpenseView();
 }
 
 
-class _addExpense extends State<addExpense> {
+class _AddExpenseView extends State<AddExpenseView> {
 
 
   @override
