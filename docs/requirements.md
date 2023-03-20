@@ -58,6 +58,8 @@
 	When I click "confirm",<br>
 	Then all of my spendings will be in the selected currency.<br>
 
+8. As a user, I want to have an intuitive User Interface where I can see all of my spends so that I can remember my past purchases
+
 ### Feature 2
 
 1. As a user, I want to check how much I spent in each category last month so that I can spend more efficiently. (Must have 20)
