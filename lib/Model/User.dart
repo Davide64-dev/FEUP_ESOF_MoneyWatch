@@ -1,5 +1,6 @@
 import 'Habit.dart';
 import 'Post.dart';
+import 'Purchase.dart';
 
 class User{
   String id;
@@ -7,6 +8,26 @@ class User{
   List<Habit> habits;
   List<Post> posts;
   List<String> customCategories;
+  List<Purchase> purchases;
 
-  User(this.id, this.username, this.habits, this.posts, this.customCategories);
+  User({required this.id, required this.username,required this.habits, required
+    this.posts, required this.customCategories, required this.purchases});
+
+  void addPurchase(int amount, String description, String category, nr_days){
+    Purchase purchase = Purchase(amount, description, category, nr_days);
+    purchases.add(purchase);
+  }
+
+
+  Map<String, double> getSumPurchases(){
+    Map<String, double> ret = {};
+    for (Purchase purchase in purchases){
+      ret[purchase.category] = purchase.amount.toDouble();
+    }
+    if (ret.isEmpty){
+      ret["No Purchases"] = 1;
+      return ret;
+    }
+    return ret;
+  }
 }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:name/Model/Purchase.dart';
 import 'package:name/View/AddExpenseView.dart';
 import 'package:pie_chart/pie_chart.dart';
+import '../Model/User.dart';
 
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+  User user;
+  HomePage({super.key, required this.title, required this.user});
   final String title;
 
   @override
@@ -13,13 +16,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  /*
+    Map<String, Purchase> temp = {
+      "Food": Purchase(20, "Enigma", 0),
+      "Leisure": Purchase(10, "kcne", 0),
+      "Transport": Purchase(10, "nddc", 0),
+      "Education": Purchase(35, "dcw", 0),
+    };
+   */
 
+  /*
   Map<String, double> dataMap = {
     "Food": 20,
     "Leisure": 30,
     "Transport": 15,
     "Education": 35,
-  };
+  };*/
+  Map<String, double> dataMap = {};
+  //dataMap = widget.user.getSumPurchases();
 
   List<Color> colorList = [
     const Color(0xffd95af3),
@@ -29,6 +43,7 @@ class _HomePageState extends State<HomePage> {
     const Color(0xfffe9539),
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: PieChart(
-          dataMap: dataMap,
+          dataMap: widget.user.getSumPurchases(),
           centerText: "Last Month",
           colorList: colorList,
           chartType: ChartType.ring,
