@@ -4,10 +4,9 @@ import 'View/HomePageView.dart';
 
 void main() {
 
-  User temp = new User("200", "232", [], []);
+  User temp = new User("200", "232", [], [], []);
   print(temp.username);
   print(temp.id);
-
   runApp(const MyApp());
 }
 
