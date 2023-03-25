@@ -3,10 +3,6 @@ import 'Model/User.dart';
 import 'View/HomePageView.dart';
 
 void main() {
-
-  //User temp = new User("200", "232", [], [], []);
-  //print(temp.username);
-  //print(temp.id);
   runApp(const MyApp());
 }
 
@@ -22,6 +18,7 @@ class MyApp extends StatelessWidget {
     , customCategories: [], purchases: []);
     user.addPurchase(100, "i wanted", "food", 0);
     user.addPurchase(25, "for jhdv", "leisure", 2);
+    user.addPurchase(213, "vds", "leisure", 0);
     return MaterialApp(
       title: 'MoneyWatch',
       theme: ThemeData(

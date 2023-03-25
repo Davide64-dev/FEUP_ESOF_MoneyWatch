@@ -136,6 +136,7 @@ class _AddExpenseView extends State<AddExpenseView> {
 
             child: ElevatedButton.icon(
               onPressed: () {
+
                 Navigator.pop(context);
                 // Code
               },

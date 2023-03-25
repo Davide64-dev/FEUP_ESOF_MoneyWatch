@@ -18,6 +18,14 @@ class User{
     purchases.add(purchase);
   }
 
+  void addCustomCategory(String category){
+    customCategories.add(category);
+  }
+
+  List<String> getCustomCategories(){
+    return customCategories;
+  }
+
 
   Map<String, double> getSumPurchases(){
     Map<String, double> ret = {};
