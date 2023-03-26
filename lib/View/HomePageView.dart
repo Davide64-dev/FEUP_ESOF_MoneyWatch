@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:name/View/AddExpenseView.dart';
+import 'package:name/View/StatisticsPageView.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../Model/User.dart';
 
@@ -77,6 +78,13 @@ class _HomePageState extends State<HomePage> {
             SpeedDialChild(
               child: Icon(Icons.percent),
               backgroundColor: Colors.green,
+              onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const
+                StatisticsPageView(title: 'Statistics',)),
+                );
+              },
             ),
             SpeedDialChild(
               child: Icon(Icons.psychology),
