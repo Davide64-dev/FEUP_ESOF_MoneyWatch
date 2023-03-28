@@ -17,26 +17,33 @@ class StatisticsPageView extends StatelessWidget {
   bool isSwitched = false;
 
   final List<BarModel> data = [
-    BarModel(month: "Mar", amount: 102.5,
+    BarModel(month: "Jan", amount: 102.5,
         barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
     BarModel(month: "Feb", amount: 105.2,
         barColor: charts.ColorUtil.fromDartColor(Colors.green)),
+    BarModel(month: "Mar", amount: 130,
+        barColor: charts.ColorUtil.fromDartColor(Colors.amber)),
   ];
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Statistics"),
       ),
-      body: Center(
-        child: CategoryChart(
-            data: data
+      body: Stack(
+        children: [
+          Align(
+              alignment: Alignment(0, -0.9),
+            child: CategoryChart(
+              data: data
+            )
+          )]
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -60,7 +67,7 @@ class CategoryChart extends StatelessWidget {
 
 
     return Container(
-      height: 400,
+      height: 340,
       padding: EdgeInsets.all(20),
       child: Card(
         child: Padding(
