@@ -6,22 +6,22 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/foundation.dart';
 
 class BarModel {
-  final String month;
+  final String category;
   final double amount;
   final charts.Color barColor;
 
-  BarModel({required this.month, required this.amount, required this.barColor});
+  BarModel({required this.category, required this.amount, required this.barColor});
 }
 
 class StatisticsPageView extends StatelessWidget {
 
-  bool isSwitched = false;
-
   final List<BarModel> data = [
-    BarModel(month: "Mar", amount: 102.5,
+    BarModel(category: "Leisure", amount: 102.5,
         barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
-    BarModel(month: "Feb", amount: 105.2,
+    BarModel(category: "Food", amount: 105.2,
         barColor: charts.ColorUtil.fromDartColor(Colors.green)),
+    BarModel(category: "Transportation", amount: 30.0,
+        barColor: charts.ColorUtil.fromDartColor(Colors.yellow)),
   ];
 
 
@@ -29,7 +29,7 @@ class StatisticsPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.green,
         title: Text("Statistics"),
       ),
       body: Center(
@@ -53,7 +53,7 @@ class CategoryChart extends StatelessWidget {
       charts.Series(
         id: "Stats",
         data: data,
-        domainFn: (BarModel model, _) => model.month,
+        domainFn: (BarModel model, _) => model.category,
         measureFn: (BarModel model, _) => model.amount,
         colorFn: (BarModel model, _) => model.barColor,
       )
@@ -69,7 +69,7 @@ class CategoryChart extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                "Spending by month",
+                "Spending by category",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               Expanded(
