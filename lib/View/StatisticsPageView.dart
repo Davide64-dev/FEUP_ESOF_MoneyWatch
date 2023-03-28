@@ -15,21 +15,12 @@ class BarModel {
 class StatisticsPageView extends StatelessWidget {
 
   final List<BarModel> data = [
-<<<<<<< HEAD
     BarModel(category: "Leisure", amount: 102.5,
-=======
-    BarModel(month: "Jan", amount: 102.5,
->>>>>>> main
         barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
     BarModel(category: "Food", amount: 105.2,
         barColor: charts.ColorUtil.fromDartColor(Colors.green)),
-<<<<<<< HEAD
     BarModel(category: "Transportation", amount: 30.0,
         barColor: charts.ColorUtil.fromDartColor(Colors.yellow)),
-=======
-    BarModel(month: "Mar", amount: 130,
-        barColor: charts.ColorUtil.fromDartColor(Colors.amber)),
->>>>>>> main
   ];
 
 
