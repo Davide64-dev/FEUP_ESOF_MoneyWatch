@@ -18,7 +18,7 @@ class User{
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
-      username: data["Name"],
+      username: data["name"],
       habits: [],
       posts: [],
       customCategories: [],
@@ -28,7 +28,7 @@ class User{
 
 
 
-  void addPurchase(int amount, String description, String category, nr_days){
+  void addPurchase(double amount, String description, String category, nr_days){
     Purchase purchase = Purchase(amount, description, category, nr_days);
     purchases.add(purchase);
   }

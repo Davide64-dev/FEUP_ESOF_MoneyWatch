@@ -10,32 +10,13 @@ void main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitUp]);
 
-  //WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-
-// Check if Firestore is initialized
-  if (FirebaseFirestore.instance.settings == null) {
-    print('Firestore is not yet initialized.');
-  } else {
-    print('Firestore is already initialized.');
-  }
-
   DocumentReference docRef = FirebaseFirestore.instance.collection('Users').doc('zo42QzctyWYhHS9kgDVH');
-
-  // Get the document data
   DocumentSnapshot snapshot = await docRef.get();
-  if (snapshot.exists) {
-    // Print the document data
-    print(snapshot.data());
-    User user = await docRef.get().then((snapshot) => User.fromFirestore(snapshot));
-    runApp(MyApp(user: user));
-    print(user.username);
 
-  } else {
-    print('Document does not exist');
-  }
-
+  User user = await docRef.get().then((snapshot) => User.fromFirestore(snapshot));
+  runApp(MyApp(user: user));
+  print(user.username);
 }
 
 
