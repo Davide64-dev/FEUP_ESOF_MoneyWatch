@@ -28,6 +28,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^4.4.5 # TODO feito agora
+  firebase_core :
   flutter:
     sdk: flutter
   pie_chart: ^5.1.0

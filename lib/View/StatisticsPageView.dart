@@ -1,5 +1,4 @@
 import 'dart:core';
-
 import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -16,28 +15,42 @@ class BarModel {
 class StatisticsPageView extends StatelessWidget {
 
   final List<BarModel> data = [
+<<<<<<< HEAD
     BarModel(category: "Leisure", amount: 102.5,
+=======
+    BarModel(month: "Jan", amount: 102.5,
+>>>>>>> main
         barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
     BarModel(category: "Food", amount: 105.2,
         barColor: charts.ColorUtil.fromDartColor(Colors.green)),
+<<<<<<< HEAD
     BarModel(category: "Transportation", amount: 30.0,
         barColor: charts.ColorUtil.fromDartColor(Colors.yellow)),
+=======
+    BarModel(month: "Mar", amount: 130,
+        barColor: charts.ColorUtil.fromDartColor(Colors.amber)),
+>>>>>>> main
   ];
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Statistics"),
       ),
-      body: Center(
-        child: CategoryChart(
-            data: data
+      body: Stack(
+        children: [
+          Align(
+              alignment: Alignment(0, -0.9),
+            child: CategoryChart(
+              data: data
+            )
+          )]
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -61,7 +74,7 @@ class CategoryChart extends StatelessWidget {
 
 
     return Container(
-      height: 400,
+      height: 340,
       padding: EdgeInsets.all(20),
       child: Card(
         child: Padding(
