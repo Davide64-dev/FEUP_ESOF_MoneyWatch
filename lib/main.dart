@@ -26,9 +26,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    user.addPurchase(100, "i wanted", "food", 0);
-    user.addPurchase(25, "for jhdv", "leisure", 2);
-    user.addPurchase(213, "vds", "leisure", 0);
+    user.addPurchase(100, "i wanted", "Food", 0);
+    user.addPurchase(162, "for jhdv", "Leisure", 0);
+    user.addPurchase(213, "vds", "Transport", 0);
+    user.addPurchase(232, '2erfd', 'Education', 0);
     return MaterialApp(
       title: 'MoneyWatch',
       theme: ThemeData(
