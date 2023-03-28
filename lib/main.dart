@@ -21,29 +21,30 @@ void main() async {
     print('Firestore is already initialized.');
   }
 
-  DocumentReference docRef = FirebaseFirestore.instance.collection('Users').doc('argQUZxJx7xHNtPKfl4N');
+  DocumentReference docRef = FirebaseFirestore.instance.collection('Users').doc('zo42QzctyWYhHS9kgDVH');
 
   // Get the document data
   DocumentSnapshot snapshot = await docRef.get();
   if (snapshot.exists) {
     // Print the document data
     print(snapshot.data());
+    User user = await docRef.get().then((snapshot) => User.fromFirestore(snapshot));
+    runApp(MyApp(user: user));
+    print(user.username);
+
   } else {
     print('Document does not exist');
   }
-
-  runApp(MyApp());
 
 }
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  User user;
+  MyApp({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
-    User user = User(id: "oi", username: "Alan Turing", habits: [], posts: []
-    , customCategories: [], purchases: []);
     user.addPurchase(100, "i wanted", "food", 0);
     user.addPurchase(25, "for jhdv", "leisure", 2);
     user.addPurchase(213, "vds", "leisure", 0);
