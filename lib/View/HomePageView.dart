@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     const Color(0xff3398f6),
     const Color(0xfffa4a42),
     const Color(0xfffe9539),
+    const Color(0xffa81278)
   ];
 
 
@@ -66,8 +67,8 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  const
-                  AddExpenseView(title: 'Add Expense',)),
+                  MaterialPageRoute(builder: (context) =>
+                  AddExpenseView(title: 'Add Expense', user: widget.user)),
                 );
               },
             ),
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => StatisticsPageView(),)
+                MaterialPageRoute(builder: (context) => StatisticsPageView())
                 );
               },
             ),
