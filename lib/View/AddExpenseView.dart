@@ -23,7 +23,6 @@ class _AddExpenseView extends State<AddExpenseView> {
 
 
     var amountInput = "";
-    String categoryInput = category;
     String descriptionInput = "";
     int nr_daysInput = 0;
     String dropdownvalue = '€';
@@ -91,9 +90,9 @@ class _AddExpenseView extends State<AddExpenseView> {
 
                 icon: const Icon(Icons.keyboard_arrow_down),
 
-                onChanged: (newValue) async {
+                onChanged: (String? newValue) async{
                   setState(() {
-                    dropdownvalue = newValue!;
+                    category = newValue!;
                   });
                 },
 
@@ -150,12 +149,12 @@ class _AddExpenseView extends State<AddExpenseView> {
 
               child: ElevatedButton.icon(
                 onPressed: () {
-                  double amount = double.parse(amountInput);
-                  if (amount == 0) return;
+                  double amount = double.parse(amountInput).toDouble();
+                  //if (amount == 0) return;
 
 
                   widget.user.addPurchase(amount, descriptionInput
-                      , categoryInput, nr_daysInput as int);
+                      , category, nr_daysInput as int);
                   Navigator.pop(context);
                   // Code
                   _showAdvice();
