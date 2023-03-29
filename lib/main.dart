@@ -22,10 +22,6 @@ void main() async {
 
   User user = await docRef.get().then((snapshot) => User.fromFirestore(snapshot));
   runApp(MyApp(user: user));
-  print(user.username);
-  snapshot1.docs.forEach((doc) {
-    print(doc.data());
-  });
   user.addExpenses(snapshot1);
 }
 
