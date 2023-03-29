@@ -33,7 +33,6 @@ class User{
       String category = data["category"];
       String description = data["description"];
       int nr_days = data["nr_days"];
-      print(amount);print(description);print(category);print(nr_days);
       this.addPurchase(amount, description, category, nr_days);
     });
   }

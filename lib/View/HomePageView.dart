@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     const Color(0xff3398f6),
     const Color(0xfffa4a42),
     const Color(0xfffe9539),
+    const Color(0xffa81278)
   ];
 
 
