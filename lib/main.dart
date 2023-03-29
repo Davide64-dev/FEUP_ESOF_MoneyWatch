@@ -11,7 +11,8 @@ void main() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitUp]);
 
   await Firebase.initializeApp();
-  DocumentReference docRef = FirebaseFirestore.instance.collection('Users').doc('zo42QzctyWYhHS9kgDVH');
+  DocumentReference docRef = FirebaseFirestore.instance.collection('Users').doc
+    ('zo42QzctyWYhHS9kgDVH');
   DocumentSnapshot snapshot = await docRef.get();
 
   User user = await docRef.get().then((snapshot) => User.fromFirestore(snapshot));
