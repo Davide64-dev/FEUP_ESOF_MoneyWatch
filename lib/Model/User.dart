@@ -26,6 +26,18 @@ class User{
     );
   }
 
+  void addExpenses(QuerySnapshot value){
+    value.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      double amount = data["amount"].toDouble();
+      String category = data["category"];
+      String description = data["description"];
+      int nr_days = data["nr_days"];
+      print(amount);print(description);print(category);print(nr_days);
+      this.addPurchase(amount, description, category, nr_days);
+    });
+  }
+
 
 
   void addPurchase(double amount, String description, String category, nr_days){
