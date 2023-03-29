@@ -20,7 +20,9 @@ class StatisticsPageView extends StatelessWidget {
     BarModel(category: "Food", amount: 105.2,
         barColor: charts.ColorUtil.fromDartColor(Colors.green)),
     BarModel(category: "Transportation", amount: 30.0,
-        barColor: charts.ColorUtil.fromDartColor(Colors.yellow)),
+        barColor: charts.ColorUtil.fromDartColor(Colors.purpleAccent)),
+    BarModel(category: "Education", amount: 40.0,
+        barColor: charts.ColorUtil.fromDartColor(Colors.red)),
   ];
 
 
