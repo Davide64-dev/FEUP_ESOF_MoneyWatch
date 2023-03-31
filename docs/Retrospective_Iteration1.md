@@ -7,3 +7,5 @@
 ### What we did right:
 - We were persistent, even though we had a few complications (mainly in the database implementation) we didn´t give up
 
+
+![Iteration1](https://user-images.githubusercontent.com/92994902/229143388-b3f8863f-82bf-4b70-b686-7423878efc89.png)
