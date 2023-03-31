@@ -56,7 +56,12 @@ class User{
   Map<String, double> getSumPurchases(){
     Map<String, double> ret = {};
     for (Purchase purchase in purchases){
-      ret[purchase.category] = purchase.amount.toDouble();
+      if(ret[purchase.category] == null) {
+        ret[purchase.category] = purchase.amount.toDouble();
+      }
+      else{
+        ret[purchase.category] = (ret[purchase.category]! + purchase.amount.toDouble())!;
+      }
     }
     if (ret.isEmpty){
       ret["No Purchases"] = 1;

@@ -15,6 +15,20 @@ class AddExpenseView extends StatefulWidget {
 
 class _AddExpenseView extends State<AddExpenseView> {
 
+  bool isNull(var x){
+    if (x == "" || x == 0) return true;
+    return false;
+  }
+
+  bool isValid(var x){
+
+    if (x == "") return false;
+    if (x.runtimeType == String) return false;
+
+    return true;
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -149,15 +163,26 @@ class _AddExpenseView extends State<AddExpenseView> {
 
               child: ElevatedButton.icon(
                 onPressed: () {
-                  double amount = double.parse(amountInput).toDouble();
-                  //if (amount == 0) return;
+                  var amount;
+                  if (isNull(amountInput) || amountInput == '0') {
+                    print("Insert not null number");
+                    return;
+                  }
 
+                  amount = double.parse(amountInput).toDouble();
+                  if (isValid(amount)) {
 
-                  widget.user.addPurchase(amount, descriptionInput
-                      , category, nr_daysInput as int);
-                  Navigator.pop(context);
-                  // Code
-                  _showAdvice();
+                    amount = double.parse(amount.toStringAsFixed(2));
+                    print(amount);
+                    widget.user.addPurchase(amount, descriptionInput
+                        , category, nr_daysInput as int);
+                    for (var e in widget.user.purchases){
+                      print(e.amount);
+                      print(e.category);}
+                    Navigator.pop(context);
+                    // Code
+                    _showAdvice();
+                  }
                 },
                 icon: Icon(Icons.save),
                 label: Text("Submit"),
