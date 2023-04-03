@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'Habit.dart';
 import 'Post.dart';
 import 'Purchase.dart';
@@ -18,7 +17,7 @@ class User{
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
-      username: data["name"],
+      username: data["username"],
       habits: [],
       posts: [],
       customCategories: [],
@@ -33,14 +32,28 @@ class User{
       String category = data["category"];
       String description = data["description"];
       int nr_days = data["nr_days"];
-      this.addPurchase(amount, description, category, nr_days);
+      DateTime datetime = DateTime.parse(data["datetime"]);
+      this.addPurchase(amount, description, category, nr_days, datetime);
     });
   }
 
 
 
-  void addPurchase(double amount, String description, String category, nr_days){
-    Purchase purchase = Purchase(amount, description, category, nr_days);
+  void addPurchase(double amount, String description, String category, nr_days, DateTime datetime){
+    Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
+    purchases.add(purchase);
+  }
+
+  void addPurchasetoDatabase(double amount, String description, String category, nr_days, DateTime datetime){
+    Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
+    FirebaseFirestore.instance.collection('Purchase').add({
+      'amount': amount,
+      'category': category,
+      'datetime': datetime.toString(),
+      'nr_days': nr_days,
+      'description': description,
+      'user': this.username,
+    });
     purchases.add(purchase);
   }
 
@@ -56,7 +69,12 @@ class User{
   Map<String, double> getSumPurchases(){
     Map<String, double> ret = {};
     for (Purchase purchase in purchases){
-      ret[purchase.category] = purchase.amount.toDouble();
+      if(ret[purchase.category] == null) {
+        ret[purchase.category] = purchase.amount.toDouble();
+      }
+      else{
+        ret[purchase.category] = (ret[purchase.category]! + purchase.amount.toDouble())!;
+      }
     }
     if (ret.isEmpty){
       ret["No Purchases"] = 1;

@@ -1,4 +1,3 @@
-
 class Budget{
   String name;
   String description;

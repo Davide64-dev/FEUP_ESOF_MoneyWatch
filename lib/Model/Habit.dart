@@ -1,4 +1,3 @@
-
 class Habit{
   String name;
   String description;

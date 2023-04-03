@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../Model/User.dart';
 
 class AddExpenseView extends StatefulWidget {
@@ -14,6 +13,23 @@ class AddExpenseView extends StatefulWidget {
 
 
 class _AddExpenseView extends State<AddExpenseView> {
+  bool isValid(var x){
+    int count = 0;
+    int countZeros = 0;
+    for (int i = 0; i < x.length;i++){
+      if (x[i] == ',') return false;
+      if(x[i] == '.') count++;
+      if (count == 2) return false;
+      if(x[i] == '0') countZeros++;
+    }
+
+    if(countZeros == x.length) return false;
+    if (x == "" || x == '.') return false;
+    if (x == 0) return false;
+
+    return true;
+  }
+
 
 
   @override
@@ -144,20 +160,24 @@ class _AddExpenseView extends State<AddExpenseView> {
           ),
 
           Align(
-            //alignment: Alignment(50, 50),
               alignment: Alignment(0, 0.9),
 
               child: ElevatedButton.icon(
                 onPressed: () {
-                  double amount = double.parse(amountInput).toDouble();
-                  //if (amount == 0) return;
+                  var amount;
 
+                  if (isValid(amountInput)) {
+                    amount = double.parse(amountInput).toDouble();
+                    amount = double.parse(amount.toStringAsFixed(2));
+                    widget.user.addPurchasetoDatabase(amount, descriptionInput
+                        , category, nr_daysInput, DateTime.now());
+                    Navigator.pop(context);
 
-                  widget.user.addPurchase(amount, descriptionInput
-                      , category, nr_daysInput as int);
-                  Navigator.pop(context);
-                  // Code
-                  _showAdvice();
+                    _showSuccessAdvice();
+                  }
+                  else{
+                    _showErrorAdvice();
+                  }
                 },
                 icon: Icon(Icons.save),
                 label: Text("Submit"),
@@ -171,11 +191,22 @@ class _AddExpenseView extends State<AddExpenseView> {
     );
   }
 
-  void _showAdvice() {
+  void _showSuccessAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Successfully Added Expense'),
+        content: Text('Successfully Added Expense!'),
         duration: Duration(seconds: 3),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
+  void _showErrorAdvice() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Something Went Wrong!'),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.red,
       ),
     );
   }

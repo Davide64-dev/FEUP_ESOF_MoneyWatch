@@ -1,5 +1,3 @@
-
-
 import 'Comment.dart';
 
 class Post{
