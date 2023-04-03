@@ -33,14 +33,15 @@ class User{
       String category = data["category"];
       String description = data["description"];
       int nr_days = data["nr_days"];
-      this.addPurchase(amount, description, category, nr_days);
+      DateTime datetime = DateTime.parse(data["datetime"]);
+      this.addPurchase(amount, description, category, nr_days, datetime);
     });
   }
 
 
 
-  void addPurchase(double amount, String description, String category, nr_days){
-    Purchase purchase = Purchase(amount, description, category, nr_days);
+  void addPurchase(double amount, String description, String category, nr_days, DateTime datetime){
+    Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
     purchases.add(purchase);
   }
 

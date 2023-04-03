@@ -171,7 +171,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                     amount = double.parse(amountInput).toDouble();
                     amount = double.parse(amount.toStringAsFixed(2));
                     widget.user.addPurchase(amount, descriptionInput
-                        , category, nr_daysInput as int);
+                        , category, nr_daysInput, DateTime.parse('1969-07-20 20:18:04Z'));
                     Navigator.pop(context);
 
                     _showSuccessAdvice();
