@@ -18,7 +18,7 @@ class User{
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
-      username: data["name"],
+      username: data["username"],
       habits: [],
       posts: [],
       customCategories: [],
@@ -42,6 +42,19 @@ class User{
 
   void addPurchase(double amount, String description, String category, nr_days, DateTime datetime){
     Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
+    purchases.add(purchase);
+  }
+
+  void addPurchasetoDatabase(double amount, String description, String category, nr_days, DateTime datetime){
+    Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
+    FirebaseFirestore.instance.collection('Purchase').add({
+      'amount': amount,
+      'category': category,
+      'datetime': datetime.toString(),
+      'nr_days': nr_days,
+      'description': description,
+      'user': this.username,
+    });
     purchases.add(purchase);
   }
 
