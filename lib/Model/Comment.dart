@@ -1,5 +1,3 @@
-
-
 class Comment{
   String content;
   String user;

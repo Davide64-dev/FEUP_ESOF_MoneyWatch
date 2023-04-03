@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../Model/User.dart';
 
 class AddExpenseView extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'Habit.dart';
 import 'Post.dart';
 import 'Purchase.dart';

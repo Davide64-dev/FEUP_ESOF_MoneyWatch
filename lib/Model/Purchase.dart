@@ -1,4 +1,3 @@
-
 class Purchase{
   double amount;
   String description;
