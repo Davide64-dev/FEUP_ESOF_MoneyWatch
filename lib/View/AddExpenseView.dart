@@ -111,7 +111,6 @@ class _AddExpenseView extends State<AddExpenseView> {
                   widget.category = newValue!;
                   setState(() {
                     widget.category = newValue!;
-                    print(widget.category);
                   });
                 },
 
