@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => StatisticsPageView())
+                MaterialPageRoute(builder: (context) => StatisticsPageView(title: "Statistics", user: widget.user))
                 );
               },
             ),

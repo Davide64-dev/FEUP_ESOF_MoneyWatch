@@ -3,6 +3,9 @@ import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
+
+import '../Model/User.dart';
 
 class BarModel {
   final String category;
@@ -12,7 +15,16 @@ class BarModel {
   BarModel({required this.category, required this.amount, required this.barColor});
 }
 
-class StatisticsPageView extends StatelessWidget {
+class StatisticsPageView extends StatefulWidget {
+  User user;
+  StatisticsPageView({super.key, required this.title, required this.user});
+  final String title;
+
+  @override
+  State<StatisticsPageView> createState() => _StatisticsPageView();
+}
+
+class _StatisticsPageView extends State<StatisticsPageView> {
 
   final List<BarModel> data = [
     BarModel(category: "Leisure", amount: 102.5,
@@ -24,7 +36,6 @@ class StatisticsPageView extends StatelessWidget {
     BarModel(category: "Education", amount: 40.0,
         barColor: charts.ColorUtil.fromDartColor(Colors.red)),
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +52,74 @@ class StatisticsPageView extends StatelessWidget {
             child: CategoryChart(
               data: data
             )
-          )]
+          ),
+          Align(
+              alignment: Alignment(0, 0.25),
+              child: SizedBox(
+                width: 250,
+              child: InkWell(
+                onTap: () {
+                  //_selectDate(context);
+                },
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: "From",
+                    border: OutlineInputBorder(),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        DateFormat('MM/dd/yyyy').format(DateTime.now()),
+                        //style: TextStyle(fontSize: 16.0),
+                      ),
+                      Icon(Icons.calendar_today),
+                    ],
+                  ),
+                ),
+              ),
+              ),
+          ),
+
+          Align(
+            alignment: Alignment(0, 0.60),
+            child: SizedBox(
+              width: 250,
+              child: InkWell(
+
+
+                onTap: () {
+                  //_selectDate(context);
+                },
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: "To",
+                    border: OutlineInputBorder(),
+
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        DateFormat('MM/dd/yyyy').format(DateTime.now()),
+                        //style: TextStyle(fontSize: 16.0),
+                      ),
+                      Icon(Icons.calendar_today),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+        ]
         ),
       );
   }
 }
+
 
 
 class CategoryChart extends StatelessWidget {
