@@ -8,6 +8,7 @@ class AddExpenseView extends StatefulWidget {
   User user;
   String category = 'Leisure';
   var amountInput = "";
+  String descriptionInput = "";
 
   @override
   State<AddExpenseView> createState() => _AddExpenseView();
@@ -36,14 +37,11 @@ class _AddExpenseView extends State<AddExpenseView> {
 
   @override
   Widget build(BuildContext context) {
-
-    //String category = 'Leisure';
     bool isSwitched = false;
 
-    //var amountInput = "";
-    String descriptionInput = "";
     int nr_daysInput = 0;
     String dropdownvalue = '€';
+
     var items = [
       "€",
     ];
@@ -54,6 +52,7 @@ class _AddExpenseView extends State<AddExpenseView> {
       "Transport",
       "Education",
     ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Expense'),
@@ -157,7 +156,7 @@ class _AddExpenseView extends State<AddExpenseView> {
 
                   ),
                   onChanged: (String val) async {
-                    descriptionInput = val;
+                    widget.descriptionInput = val;
                   }),
             ),
           ),
@@ -172,7 +171,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                   if (isValid(widget.amountInput)) {
                     amount = double.parse(widget.amountInput).toDouble();
                     amount = double.parse(amount.toStringAsFixed(2));
-                    widget.user.addPurchasetoDatabase(amount, descriptionInput
+                    widget.user.addPurchasetoDatabase(amount, widget.descriptionInput
                         , widget.category, nr_daysInput, DateTime.now());
                     Navigator.pop(context);
 
