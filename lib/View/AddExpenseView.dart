@@ -7,6 +7,7 @@ class AddExpenseView extends StatefulWidget {
   final String title;
   User user;
   String category = 'Leisure';
+  var amountInput = "";
 
   @override
   State<AddExpenseView> createState() => _AddExpenseView();
@@ -39,7 +40,7 @@ class _AddExpenseView extends State<AddExpenseView> {
     //String category = 'Leisure';
     bool isSwitched = false;
 
-    var amountInput = "";
+    //var amountInput = "";
     String descriptionInput = "";
     int nr_daysInput = 0;
     String dropdownvalue = '€';
@@ -93,7 +94,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                     decoration: new InputDecoration(),
                     keyboardType: TextInputType.number,
                     onChanged: (String val) async {
-                      amountInput = val;
+                      widget.amountInput = val;
                     }),
               )
           ),
@@ -168,8 +169,8 @@ class _AddExpenseView extends State<AddExpenseView> {
                 onPressed: () {
                   var amount;
 
-                  if (isValid(amountInput)) {
-                    amount = double.parse(amountInput).toDouble();
+                  if (isValid(widget.amountInput)) {
+                    amount = double.parse(widget.amountInput).toDouble();
                     amount = double.parse(amount.toStringAsFixed(2));
                     widget.user.addPurchasetoDatabase(amount, descriptionInput
                         , widget.category, nr_daysInput, DateTime.now());
