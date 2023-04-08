@@ -6,6 +6,7 @@ class AddExpenseView extends StatefulWidget {
   AddExpenseView({super.key, required this.title, required this.user});
   final String title;
   User user;
+  String category = 'Leisure';
 
   @override
   State<AddExpenseView> createState() => _AddExpenseView();
@@ -34,9 +35,9 @@ class _AddExpenseView extends State<AddExpenseView> {
 
   @override
   Widget build(BuildContext context) {
-    String category = 'Leisure';
-    bool isSwitched = false;
 
+    //String category = 'Leisure';
+    bool isSwitched = false;
 
     var amountInput = "";
     String descriptionInput = "";
@@ -101,14 +102,16 @@ class _AddExpenseView extends State<AddExpenseView> {
           Align(
               alignment: Alignment(0, -0.45),
               child: DropdownButton<String>(
-                value: category,
+                value: widget.category,
                 underline: SizedBox(),
 
                 icon: const Icon(Icons.keyboard_arrow_down),
 
-                onChanged: (String? newValue) async{
+                onChanged: (String? newValue){
+                  widget.category = newValue!;
                   setState(() {
-                    category = newValue!;
+                    widget.category = newValue!;
+                    print(widget.category);
                   });
                 },
 
@@ -170,7 +173,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                     amount = double.parse(amountInput).toDouble();
                     amount = double.parse(amount.toStringAsFixed(2));
                     widget.user.addPurchasetoDatabase(amount, descriptionInput
-                        , category, nr_daysInput, DateTime.now());
+                        , widget.category, nr_daysInput, DateTime.now());
                     Navigator.pop(context);
 
                     _showSuccessAdvice();
