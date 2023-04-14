@@ -4,6 +4,7 @@ import 'package:MoneyWatch/View/AddExpenseView.dart';
 import 'package:MoneyWatch/View/StatisticsPageView.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../Model/User.dart';
+import 'Forum.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -75,6 +76,12 @@ class _HomePageState extends State<HomePage> {
             SpeedDialChild(
               child: Icon(Icons.forum),
               backgroundColor: Colors.green,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Forum())
+                );
+              },
             ),
             SpeedDialChild(
               child: Icon(Icons.percent),
