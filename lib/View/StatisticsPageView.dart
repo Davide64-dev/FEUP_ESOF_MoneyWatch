@@ -46,77 +46,88 @@ class _StatisticsPageView extends State<StatisticsPageView> {
         title: Text("Statistics"),
       ),
       body: Stack(
-        children: [
-          Align(
-              alignment: Alignment(0, -0.9),
-            child: CategoryChart(
-              data: data
-            )
-          ),
-          Align(
+          children: [
+            Align(
+                alignment: Alignment(0, -0.9),
+                child: CategoryChart(
+                    data: data
+                )
+            ),
+            Align(
               alignment: Alignment(0, 0.25),
               child: SizedBox(
                 width: 250,
-              child: InkWell(
-                onTap: () {
-                  //_selectDate(context);
-                },
-                child: InputDecorator(
-                  decoration: InputDecoration(
-                    labelText: "From",
-                    border: OutlineInputBorder(),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(
-                        DateFormat('MM/dd/yyyy').format(DateTime.now()),
-                        //style: TextStyle(fontSize: 16.0),
-                      ),
-                      Icon(Icons.calendar_today),
-                    ],
-                  ),
-                ),
-              ),
-              ),
-          ),
-
-          Align(
-            alignment: Alignment(0, 0.60),
-            child: SizedBox(
-              width: 250,
-              child: InkWell(
-
-
-                onTap: () {
-                  //_selectDate(context);
-                },
-                child: InputDecorator(
-                  decoration: InputDecoration(
-                    labelText: "To",
-                    border: OutlineInputBorder(),
-
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(
-                        DateFormat('MM/dd/yyyy').format(DateTime.now()),
-                        //style: TextStyle(fontSize: 16.0),
-                      ),
-                      Icon(Icons.calendar_today),
-                    ],
+                child: InkWell(
+                  onTap: () {
+                    //_selectDate(context);
+                  },
+                  child: InputDecorator(
+                    decoration: InputDecoration(
+                      labelText: "From",
+                      border: OutlineInputBorder(),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          DateFormat('MM/dd/yyyy').format(DateTime.now()),
+                          //style: TextStyle(fontSize: 16.0),
+                        ),
+                        Icon(Icons.calendar_today),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
 
-        ]
-        ),
-      );
+            Align(
+              alignment: Alignment(0, 0.60),
+              child: SizedBox(
+                width: 250,
+                child: InkWell(
+
+
+                  onTap: () {
+                    //_selectDate(context);
+                  },
+                  child: InputDecorator(
+                    decoration: InputDecoration(
+                      labelText: "To",
+                      border: OutlineInputBorder(),
+
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          DateFormat('MM/dd/yyyy').format(DateTime.now()),
+                          //style: TextStyle(fontSize: 16.0),
+                        ),
+                        Icon(Icons.calendar_today),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+          ]
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => StatisticsPageView(title: "Statistics", user: widget.user))
+          );
+        },
+        child: Icon(Icons.receipt_long),
+        backgroundColor: Colors.green,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    );
   }
 }
 
