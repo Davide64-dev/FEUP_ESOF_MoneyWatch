@@ -19,8 +19,6 @@ class _ForumPageState extends State<ForumPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Adicione aqui a lista de tópicos e respostas do fórum
-          // Pode usar widgets como ListView, ListTile, etc.
         ],
       ),
       floatingActionButton: FloatingActionButton(
