@@ -1,9 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import '../View/StatisticsPageView.dart';
 import 'Habit.dart';
 import 'Post.dart';
 import 'Purchase.dart';
+import 'dart:core';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'dart:math';
+import 'dart:ui';
+
 
 class User{
+
   String id = "";
   String username = "";
   List<Habit> habits = [];
@@ -81,5 +89,21 @@ class User{
       return ret;
     }
     return ret;
+  }
+
+  List<BarModel> getBarModel(){
+    final random = Random();
+    List<BarModel> res = [];
+    Map<String, double> dic = getSumPurchases();
+    for (String key in dic.keys){
+      res.add(BarModel(category: key, amount: dic[key]!, barColor: charts.ColorUtil.fromDartColor(Color.fromRGBO(
+        random.nextInt(256),
+        random.nextInt(256),
+        random.nextInt(256),
+        1,
+      ))));
+    }
+
+    return res;
   }
 }

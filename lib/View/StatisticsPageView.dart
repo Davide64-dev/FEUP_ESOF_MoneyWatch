@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
-
 import '../Model/User.dart';
 
 class BarModel {
@@ -27,6 +26,7 @@ class StatisticsPageView extends StatefulWidget {
 }
 
 class _StatisticsPageView extends State<StatisticsPageView> {
+  /*
   final List<BarModel> data = [
     BarModel(category: "Leisure", amount: 102.5,
         barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
@@ -37,6 +37,9 @@ class _StatisticsPageView extends State<StatisticsPageView> {
     BarModel(category: "Education", amount: 40.0,
         barColor: charts.ColorUtil.fromDartColor(Colors.red)),
   ];
+
+   */
+  //final List<BarModel> data = widget
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +54,7 @@ class _StatisticsPageView extends State<StatisticsPageView> {
           Align(
               alignment: Alignment(0, -0.9),
             child: CategoryChart(
-              data: data
+              data: widget.user.getBarModel()
             )
           ),
           Align(
