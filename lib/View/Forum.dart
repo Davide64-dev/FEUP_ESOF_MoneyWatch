@@ -13,7 +13,9 @@ class _ForumPageState extends State<ForumPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text(widget.title),
       ),
       body: Column(
@@ -24,6 +26,7 @@ class _ForumPageState extends State<ForumPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Create New Post',
+        backgroundColor: Colors.green,
         child: Icon(Icons.add),
       ),
     );
