@@ -172,19 +172,62 @@ class TopicPage extends StatefulWidget {
 
 class _TopicPageState extends State<TopicPage> {
   List<Post> posts = [];
-
+  List<String> filteredPosts = [];
+  bool isSearching = false;
+  TextEditingController searchController = TextEditingController();
   @override
   void initState() {
     super.initState();
     posts = [      Post(title: 'Post 1', content: 'Arroz e picanha'),      Post(title: 'Post 2', content: 'Feijão preto'),      Post(title: 'Post 3', content: 'Batatas fritas'),    ];
+    for (var post in posts) {
+      filteredPosts.add(post.title);
+    }
   }
-
+  void filterPosts(String query) {
+    List<String> temp = [];
+    for (var post in posts) {
+      if (post.title.toLowerCase().contains(query.toLowerCase())) {
+        temp.add(post.title);
+      }
+    }
+    setState(() {
+      filteredPosts = temp;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text(widget.topic),
+        title: !isSearching
+            ? Text(widget.topic)
+            : TextField(
+          onChanged: (value) {
+            filterPosts(value);
+          },
+          controller: searchController,
+          decoration: InputDecoration(
+            hintText: "Search...",
+            icon: Icon(Icons.search),
+            border: InputBorder.none,
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              isSearching ? Icons.cancel : Icons.search,
+            ),
+            onPressed: () {
+              setState(() {
+                isSearching = !isSearching;
+                for (var post in posts) {
+                  filteredPosts.add(post.title);
+                }
+                searchController.clear();
+              });
+            },
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: posts.length,
@@ -254,4 +297,3 @@ class CreateTopicPage extends StatelessWidget {
     );
   }
 }
-
