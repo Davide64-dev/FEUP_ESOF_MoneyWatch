@@ -74,27 +74,32 @@ class User{
   }
 
 
-  Map<String, double> getSumPurchases(){
+  Map<String, double> getSumPurchases(DateTime startDate, DateTime endDate){
     Map<String, double> ret = {};
-    for (Purchase purchase in purchases){
-      if(ret[purchase.category] == null) {
-        ret[purchase.category] = purchase.amount.toDouble();
-      }
-      else{
-        ret[purchase.category] = (ret[purchase.category]! + purchase.amount.toDouble())!;
+    for (Purchase purchase in purchases) {
+      if (isLessThan(startDate, purchase.datetime) &&
+          isLessThan(endDate, purchase.datetime)) {
+        if (ret[purchase.category] == null) {
+          ret[purchase.category] = purchase.amount.toDouble();
+        }
+        else {
+          ret[purchase.category] =
+          (ret[purchase.category]! + purchase.amount.toDouble())!;
+        }
+
       }
     }
-    if (ret.isEmpty){
+    if (ret.isEmpty) {
       ret["No Purchases"] = 1;
       return ret;
     }
     return ret;
   }
 
-  List<BarModel> getBarModel(){
+  List<BarModel> getBarModel(DateTime startDate, DateTime endDate){
     final random = Random();
     List<BarModel> res = [];
-    Map<String, double> dic = getSumPurchases();
+    Map<String, double> dic = getSumPurchases(startDate, endDate);
     for (String key in dic.keys){
       res.add(BarModel(category: key, amount: dic[key]!, barColor: charts.ColorUtil.fromDartColor(Color.fromRGBO(
         random.nextInt(256),
@@ -106,4 +111,14 @@ class User{
 
     return res;
   }
+}
+
+bool isLessThan(DateTime date1, DateTime date2){
+  if (date1.year == date2.year){
+    if (date1.month == date2.month){
+      return date1.day <= date2.day;
+    }
+    return date1.month <= date2.month;
+  }
+  return date1.year <= date2.year;
 }

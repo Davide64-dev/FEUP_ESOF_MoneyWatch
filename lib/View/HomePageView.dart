@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: PieChart(
-          dataMap: widget.user.getSumPurchases(),
+          dataMap: widget.user.getSumPurchases(DateTime.now().subtract(const Duration(days: 30)),DateTime.now()),
           centerText: "Last Month",
           colorList: colorList,
           chartType: ChartType.ring,
