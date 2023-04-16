@@ -16,7 +16,7 @@ class BarModel {
 
 class StatisticsPageView extends StatefulWidget {
   User user;
-  DateTime startDate = DateTime.now();
+  DateTime startDate = DateTime.now().subtract(const Duration(days: 30));
   DateTime endDate = DateTime.now();
   StatisticsPageView({super.key, required this.title, required this.user});
   final String title;
