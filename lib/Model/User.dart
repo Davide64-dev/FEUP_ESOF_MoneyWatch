@@ -78,7 +78,7 @@ class User{
     Map<String, double> ret = {};
     for (Purchase purchase in purchases) {
       if (isLessThan(startDate, purchase.datetime) &&
-          isLessThan(endDate, purchase.datetime)) {
+          isLessThan(purchase.datetime, endDate)) {
         if (ret[purchase.category] == null) {
           ret[purchase.category] = purchase.amount.toDouble();
         }
