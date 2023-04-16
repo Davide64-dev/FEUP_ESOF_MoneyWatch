@@ -16,7 +16,7 @@ class BarModel {
 
 class StatisticsPageView extends StatefulWidget {
   User user;
-  DateTime startDate = DateTime.now();
+  DateTime startDate = DateTime.now().subtract(const Duration(days: 30));
   DateTime endDate = DateTime.now();
   StatisticsPageView({super.key, required this.title, required this.user});
   final String title;
@@ -26,20 +26,6 @@ class StatisticsPageView extends StatefulWidget {
 }
 
 class _StatisticsPageView extends State<StatisticsPageView> {
-  /*
-  final List<BarModel> data = [
-    BarModel(category: "Leisure", amount: 102.5,
-        barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
-    BarModel(category: "Food", amount: 105.2,
-        barColor: charts.ColorUtil.fromDartColor(Colors.green)),
-    BarModel(category: "Transportation", amount: 30.0,
-        barColor: charts.ColorUtil.fromDartColor(Colors.purpleAccent)),
-    BarModel(category: "Education", amount: 40.0,
-        barColor: charts.ColorUtil.fromDartColor(Colors.red)),
-  ];
-
-   */
-  //final List<BarModel> data = widget
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +40,7 @@ class _StatisticsPageView extends State<StatisticsPageView> {
           Align(
               alignment: Alignment(0, -0.9),
             child: CategoryChart(
-              data: widget.user.getBarModel()
+              data: widget.user.getBarModel(widget.startDate, widget.endDate)
             )
           ),
           Align(
