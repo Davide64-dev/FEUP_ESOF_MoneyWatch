@@ -103,20 +103,117 @@ class _ForumPageState extends State<ForumPage> {
     );
   }
 }
+class Post {
+  final String title;
+  final String content;
 
-class TopicPage extends StatelessWidget {
+  Post({required this.title, required this.content});
+}
+
+class CreatePostDialog extends StatelessWidget {
+  final String topic;
+
+  CreatePostDialog({required this.topic});
+
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController contentController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("Create New Post"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          TextField(
+            controller: titleController,
+            decoration: InputDecoration(
+              hintText: "Enter Post Title",
+            ),
+          ),
+          SizedBox(height: 8.0),
+          TextField(
+            controller: contentController,
+            decoration: InputDecoration(
+              hintText: "Enter Post Content",
+            ),
+            maxLines: null,
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Cancel"),
+        ),
+        TextButton(
+          onPressed: () {
+            String title = titleController.text;
+            String content = contentController.text;
+            Post post = Post(title: title, content: content);
+            Navigator.pop(context, post);
+          },
+          child: Text("Create"),
+        ),
+      ],
+    );
+  }
+}
+class TopicPage extends StatefulWidget {
   final String topic;
 
   TopicPage({required this.topic});
 
   @override
+  _TopicPageState createState() => _TopicPageState();
+}
+
+class _TopicPageState extends State<TopicPage> {
+  List<Post> posts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    posts = [      Post(title: 'Post 1', content: 'Arroz e picanha'),      Post(title: 'Post 2', content: 'Feijão preto'),      Post(title: 'Post 3', content: 'Batatas fritas'),    ];
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(topic),
+        backgroundColor: Colors.green,
+        title: Text(widget.topic),
       ),
-      body: Center(
-        child: Text("This is the $topic topic"),
+      body: ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            child: ListTile(
+              title: Text(posts[index].title),
+              subtitle: Text(posts[index].content),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          Post? newPost = await showDialog<Post>(
+            context: context,
+            builder: (BuildContext context) {
+              return CreatePostDialog(topic: widget.topic,);
+            },
+          );
+          if (newPost != null) {
+            setState(() {
+              posts.add(newPost);
+            });
+          }
+        },
+        tooltip: 'Create New Post',
+        backgroundColor: Colors.green,
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -128,7 +225,9 @@ class CreateTopicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text("Create New Topic"),
       ),
       body: Padding(
@@ -155,3 +254,4 @@ class CreateTopicPage extends StatelessWidget {
     );
   }
 }
+
