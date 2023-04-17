@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
 import '../Model/User.dart';
+import 'PurchaseList.dart';
 
 class BarModel {
   final String category;
@@ -120,7 +121,7 @@ class _StatisticsPageView extends State<StatisticsPageView> {
         onPressed: () {
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => StatisticsPageView(title: "Statistics", user: widget.user))
+              MaterialPageRoute(builder: (context) => PurchaseList(title: "Purchase History", user: widget.user))
           );
         },
         child: Icon(Icons.receipt_long),

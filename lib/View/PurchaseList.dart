@@ -9,34 +9,48 @@ import '../Model/Purchase.dart';
 import '../Model/User.dart';
 
 
-class PurchaseListView extends StatefulWidget {
+class PurchaseList extends StatefulWidget {
   User user;
-  addPurchase({
-    amount = 10,
-    description = "a minha linha de dois",
-    category = "Leisure",
-    nr_days = 1,
-    datetime = DateTime({
-      year = 2023,
-      month = 4,
-      day = 1,
-      hour = 0,
-      minute = 0,
-      second = 0,
-      millisecond = 0,
-      microsecond = 0
-    })
-  })
-
-  PurchaseListView({super.key, required this.title, required this.user});
+  PurchaseList({super.key, required this.title, required this.user});
   final String title;
 
   @override
-  State<PurchaseListView> createState() => _PurchaseListView();
+  State<PurchaseList> createState() => _PurchaseList();
 }
 
 
-class _PurchaseListView extends State<PurchaseListView>  {
+class _PurchaseList extends State<PurchaseList>  {
 
-  final List<Purchase> purchases =
+  final List<Purchase> purchases = [
+    Purchase(10, "a minha linha de dois", "Leisure", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023))
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: ListView.builder(
+        itemCount: purchases.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text(purchases[index].category),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Amount: ${purchases[index].amount.toString()}"),
+                Text("Description: ${purchases[index].description}"),
+              ],
+            ),
+            trailing: Text(purchases[index].datetime.toString()),
+          );
+
+        },
+      ),
+    );
+  }
+
+
 }
