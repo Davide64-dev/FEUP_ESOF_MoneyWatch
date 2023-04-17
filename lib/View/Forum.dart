@@ -171,23 +171,20 @@ class TopicPage extends StatefulWidget {
 }
 
 class _TopicPageState extends State<TopicPage> {
-  List<Post> posts = [];
-  List<String> filteredPosts = [];
+  List<Post> posts = [Post(title: 'Post 1', content: 'Arroz e picanha'),      Post(title: 'Post 2', content: 'Feijão preto'),      Post(title: 'Post 3', content: 'Batatas fritas'),    ];
+  List<Post> filteredPosts = [];
   bool isSearching = false;
   TextEditingController searchController = TextEditingController();
   @override
   void initState() {
+    filteredPosts = posts;
     super.initState();
-    posts = [      Post(title: 'Post 1', content: 'Arroz e picanha'),      Post(title: 'Post 2', content: 'Feijão preto'),      Post(title: 'Post 3', content: 'Batatas fritas'),    ];
-    for (var post in posts) {
-      filteredPosts.add(post.title);
-    }
   }
   void filterPosts(String query) {
-    List<String> temp = [];
-    for (var post in posts) {
-      if (post.title.toLowerCase().contains(query.toLowerCase())) {
-        temp.add(post.title);
+    List<Post> temp = [];
+    for (var p in posts) {
+      if (p.title.toLowerCase().contains(query.toLowerCase()) || p.content.toLowerCase().contains(query.toLowerCase())) {
+        temp.add(p);
       }
     }
     setState(() {
@@ -220,9 +217,7 @@ class _TopicPageState extends State<TopicPage> {
             onPressed: () {
               setState(() {
                 isSearching = !isSearching;
-                for (var post in posts) {
-                  filteredPosts.add(post.title);
-                }
+                filteredPosts = posts;
                 searchController.clear();
               });
             },
@@ -230,12 +225,12 @@ class _TopicPageState extends State<TopicPage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: posts.length,
+        itemCount: filteredPosts.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             child: ListTile(
-              title: Text(posts[index].title),
-              subtitle: Text(posts[index].content),
+              title: Text(filteredPosts[index].title),
+              subtitle: Text(filteredPosts[index].content),
             ),
           );
         },
@@ -297,3 +292,4 @@ class CreateTopicPage extends StatelessWidget {
     );
   }
 }
+
