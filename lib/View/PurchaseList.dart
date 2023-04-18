@@ -22,27 +22,6 @@ class PurchaseList extends StatefulWidget {
 
 class _PurchaseList extends State<PurchaseList>  {
 
-  final List<Purchase> purchases = [
-    Purchase(10, "a minha linha de dois", "Leisure", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 0, DateTime(2023))
-
-
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +35,8 @@ class _PurchaseList extends State<PurchaseList>  {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EditExpenseView(title: "Edit Expense", purchase: purchases[index], user: widget.user,)),
+                  MaterialPageRoute(builder: (context) => EditExpenseView(title: "Edit Expense", purchase: widget.user.purchases[index], user: widget.user,)),
+
                 );
               },
               child: ListTile(

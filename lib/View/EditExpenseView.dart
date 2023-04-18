@@ -175,8 +175,8 @@ class _EditExpenseView extends State<EditExpenseView> {
                     if (isValid(widget.amountInput)) {
                       amount = double.parse(widget.amountInput).toDouble();
                       amount = double.parse(amount.toStringAsFixed(2));
-                      widget.user.addPurchasetoDatabase(amount, widget.descriptionInput
-                          , widget.category, nr_daysInput, DateTime.now());
+                      widget.purchase.setAttribures(amount, widget.descriptionInput
+                          , widget.category, nr_daysInput);
                       Navigator.pop(context);
 
                       _showSuccessAdvice();
@@ -211,7 +211,7 @@ class _EditExpenseView extends State<EditExpenseView> {
   void _showErrorAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        key: Key("Erro Sumbit"),
+        key: Key("Error Submit"),
         content: Text('Something Went Wrong!'),
         duration: Duration(seconds: 3),
         backgroundColor: Colors.red,

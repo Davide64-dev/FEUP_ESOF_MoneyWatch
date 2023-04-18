@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
     const Color(0xffa81278)
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
