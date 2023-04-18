@@ -65,6 +65,8 @@ class User{
       'user': this.username,
     });
     purchases.add(purchase);
+    purchases.sort();
+    purchases = purchases.reversed.toList();
   }
 
   void addCustomCategory(String category){
