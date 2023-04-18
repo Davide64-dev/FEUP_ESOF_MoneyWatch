@@ -27,5 +27,15 @@ class When_I_tap_Button extends When1WithWorld<String, FlutterWorld>{
   }
 }
 
+class expect_error_message extends Then{
+  @override
+  Future<void> executeStep() async {
+    final expect_error_message = find.byValueKey("Error Sumbit");
+  }
+
+  @override
+  RegExp get pattern => RegExp(r"I expect an error message");
+
+}
     
     

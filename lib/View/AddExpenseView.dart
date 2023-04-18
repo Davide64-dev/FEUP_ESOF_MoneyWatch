@@ -184,6 +184,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                 },
                 icon: Icon(Icons.save),
                 label: Text("Submit"),
+                key: Key("Submit")
 
 
               )
@@ -207,6 +208,7 @@ class _AddExpenseView extends State<AddExpenseView> {
   void _showErrorAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        key: Key("Erro Sumbit"),
         content: Text('Something Went Wrong!'),
         duration: Duration(seconds: 3),
         backgroundColor: Colors.red,

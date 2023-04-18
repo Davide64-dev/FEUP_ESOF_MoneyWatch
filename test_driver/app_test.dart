@@ -16,7 +16,8 @@ Future<void> main() async{
     ..hooks = []
     ..stepDefinitions = [
       Given_I_have_MainButton(),
-      When_I_tap_Button()
+      When_I_tap_Button(),
+      expect_error_message()
     ]
     ..customStepParameterDefinitions = [
     ]
