@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
+import 'package:flutter_test/flutter_test.dart' as teste;
 import 'package:gherkin/gherkin.dart';
 
 
@@ -27,10 +30,15 @@ class When_I_tap_Button extends When1WithWorld<String, FlutterWorld>{
   }
 }
 
-class expect_error_message extends Then{
+class expect_error_message extends ThenWithWorld<FlutterWorld>{
   @override
   Future<void> executeStep() async {
-    final expect_error_message = find.byValueKey("Error Sumbit");
+    /*
+    final locator = find.text('Something Went Wrong!');
+    var locatorExists = await FlutterDriverUtils.isPresent(locator as FlutterDriver?, world.driver as SerializableFinder);
+    expectMatch(true, locatorExists);
+
+     */
   }
 
   @override
