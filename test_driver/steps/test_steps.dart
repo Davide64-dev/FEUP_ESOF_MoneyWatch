@@ -37,5 +37,15 @@ class expect_error_message extends Then{
   RegExp get pattern => RegExp(r"I expect an error message");
 
 }
-    
+
+class FillField extends When2WithWorld<String, String, FlutterWorld> {
+  @override
+  Future<void> executeStep(String field1, String field2) async {
+    await FlutterDriverUtils.enterText(
+        world.driver, find.byValueKey(field1), field2);
+  }
+
+  @override
+  RegExp get pattern => RegExp(r'I fill {string} field with {string}');
+}
     

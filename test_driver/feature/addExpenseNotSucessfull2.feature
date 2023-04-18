@@ -7,7 +7,7 @@ Feature: Add Expense Page is opening
     Given I have "MainButton"
     When I tap "MainButton"
     And I tap "AddButton"
+    And I fill "Amount" field with "000"
     And I tap "Submit"
     Then I expect an error message
-
 

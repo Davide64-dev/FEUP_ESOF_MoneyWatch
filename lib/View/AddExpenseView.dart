@@ -91,6 +91,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                 width: 100,
                 //height: 10,
                 child: TextField(
+                    key: Key("Amount"),
                     decoration: new InputDecoration(),
                     keyboardType: TextInputType.number,
                     onChanged: (String val) async {
