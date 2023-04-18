@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
-
 import '../Model/User.dart';
 import 'PurchaseList.dart';
 
@@ -18,6 +17,8 @@ class BarModel {
 
 class StatisticsPageView extends StatefulWidget {
   User user;
+  DateTime startDate = DateTime.now().subtract(const Duration(days: 30));
+  DateTime endDate = DateTime.now();
   StatisticsPageView({super.key, required this.title, required this.user});
   final String title;
 
@@ -26,17 +27,6 @@ class StatisticsPageView extends StatefulWidget {
 }
 
 class _StatisticsPageView extends State<StatisticsPageView> {
-
-  final List<BarModel> data = [
-    BarModel(category: "Leisure", amount: 102.5,
-        barColor: charts.ColorUtil.fromDartColor(Colors.blue)),
-    BarModel(category: "Food", amount: 105.2,
-        barColor: charts.ColorUtil.fromDartColor(Colors.green)),
-    BarModel(category: "Transportation", amount: 30.0,
-        barColor: charts.ColorUtil.fromDartColor(Colors.purpleAccent)),
-    BarModel(category: "Education", amount: 40.0,
-        barColor: charts.ColorUtil.fromDartColor(Colors.red)),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +41,7 @@ class _StatisticsPageView extends State<StatisticsPageView> {
             Align(
                 alignment: Alignment(0, -0.9),
                 child: CategoryChart(
-                    data: data
+                    data: widget.user.getBarModel(widget.startDate, widget.endDate)
                 )
             ),
             Align(
@@ -60,23 +50,43 @@ class _StatisticsPageView extends State<StatisticsPageView> {
                 width: 250,
                 child: InkWell(
                   onTap: () {
-                    //_selectDate(context);
+
                   },
-                  child: InputDecorator(
-                    decoration: InputDecoration(
-                      labelText: "From",
-                      border: OutlineInputBorder(),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text(
-                          DateFormat('MM/dd/yyyy').format(DateTime.now()),
-                          //style: TextStyle(fontSize: 16.0),
-                        ),
-                        Icon(Icons.calendar_today),
-                      ],
+                  child: GestureDetector(
+                    onTap: () async{
+                      final DateTime? picked = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime(2100),
+                      );
+
+                      // If the user selected a date, update the selectedDate variable
+                      if (picked != null && picked != widget.startDate) {
+                        setState(() {
+                          widget.startDate = picked;
+                          print(picked);
+                        });
+                      }
+                    },
+
+                    child: InputDecorator(
+
+
+                      decoration: InputDecoration(
+                        labelText: "From",
+                        border: OutlineInputBorder(),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Text(
+                            DateFormat('MM/dd/yyyy').format(widget.startDate),
+                          ),
+                          Icon(Icons.calendar_today),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -88,27 +98,44 @@ class _StatisticsPageView extends State<StatisticsPageView> {
               child: SizedBox(
                 width: 250,
                 child: InkWell(
-
-
                   onTap: () {
-                    //_selectDate(context);
-                  },
-                  child: InputDecorator(
-                    decoration: InputDecoration(
-                      labelText: "To",
-                      border: OutlineInputBorder(),
 
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text(
-                          DateFormat('MM/dd/yyyy').format(DateTime.now()),
-                          //style: TextStyle(fontSize: 16.0),
-                        ),
-                        Icon(Icons.calendar_today),
-                      ],
+                  },
+                  child: GestureDetector(
+                    onTap: () async{
+                      final DateTime? picked = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime(2100),
+                      );
+
+                      // If the user selected a date, update the selectedDate variable
+                      if (picked != null && picked != widget.endDate) {
+                        setState(() {
+                          widget.endDate = picked;
+                          print(picked);
+                        });
+                      }
+                    },
+
+                    child: InputDecorator(
+
+
+                      decoration: InputDecoration(
+                        labelText: "From",
+                        border: OutlineInputBorder(),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Text(
+                            DateFormat('MM/dd/yyyy').format(widget.endDate),
+                          ),
+                          Icon(Icons.calendar_today),
+                        ],
+                      ),
                     ),
                   ),
                 ),

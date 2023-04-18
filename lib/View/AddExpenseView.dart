@@ -55,6 +55,7 @@ class _AddExpenseView extends State<AddExpenseView> {
 
     return Scaffold(
       appBar: AppBar(
+        key: Key('Add Expense'),
         title: const Text('Add Expense'),
       ),
       body: Stack(
@@ -90,6 +91,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                 width: 100,
                 //height: 10,
                 child: TextField(
+                    key: Key("Amount"),
                     decoration: new InputDecoration(),
                     keyboardType: TextInputType.number,
                     onChanged: (String val) async {
@@ -183,6 +185,7 @@ class _AddExpenseView extends State<AddExpenseView> {
                 },
                 icon: Icon(Icons.save),
                 label: Text("Submit"),
+                key: Key("Submit")
 
 
               )
@@ -206,6 +209,7 @@ class _AddExpenseView extends State<AddExpenseView> {
   void _showErrorAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        key: Key("Erro Sumbit"),
         content: Text('Something Went Wrong!'),
         duration: Duration(seconds: 3),
         backgroundColor: Colors.red,

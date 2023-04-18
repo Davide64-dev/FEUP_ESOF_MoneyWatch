@@ -1,9 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import '../View/StatisticsPageView.dart';
 import 'Habit.dart';
 import 'Post.dart';
 import 'Purchase.dart';
+import 'dart:core';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'dart:math';
+import 'dart:ui';
+
 
 class User{
+
   String id = "";
   String username = "";
   List<Habit> habits = [];
@@ -66,20 +74,51 @@ class User{
   }
 
 
-  Map<String, double> getSumPurchases(){
+  Map<String, double> getSumPurchases(DateTime startDate, DateTime endDate){
     Map<String, double> ret = {};
-    for (Purchase purchase in purchases){
-      if(ret[purchase.category] == null) {
-        ret[purchase.category] = purchase.amount.toDouble();
-      }
-      else{
-        ret[purchase.category] = (ret[purchase.category]! + purchase.amount.toDouble())!;
+    for (Purchase purchase in purchases) {
+      if (isLessThan(startDate, purchase.datetime) &&
+          isLessThan(purchase.datetime, endDate)) {
+        if (ret[purchase.category] == null) {
+          ret[purchase.category] = purchase.amount.toDouble();
+        }
+        else {
+          ret[purchase.category] =
+          (ret[purchase.category]! + purchase.amount.toDouble())!;
+        }
+
       }
     }
-    if (ret.isEmpty){
+    if (ret.isEmpty) {
       ret["No Purchases"] = 1;
       return ret;
     }
     return ret;
   }
+
+  List<BarModel> getBarModel(DateTime startDate, DateTime endDate){
+    final random = Random();
+    List<BarModel> res = [];
+    Map<String, double> dic = getSumPurchases(startDate, endDate);
+    for (String key in dic.keys){
+      res.add(BarModel(category: key, amount: dic[key]!, barColor: charts.ColorUtil.fromDartColor(Color.fromRGBO(
+        random.nextInt(256),
+        random.nextInt(256),
+        random.nextInt(256),
+        1,
+      ))));
+    }
+
+    return res;
+  }
+}
+
+bool isLessThan(DateTime date1, DateTime date2){
+  if (date1.year == date2.year){
+    if (date1.month == date2.month){
+      return date1.day <= date2.day;
+    }
+    return date1.month <= date2.month;
+  }
+  return date1.year <= date2.year;
 }

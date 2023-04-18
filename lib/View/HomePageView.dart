@@ -4,6 +4,7 @@ import 'package:MoneyWatch/View/AddExpenseView.dart';
 import 'package:MoneyWatch/View/StatisticsPageView.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../Model/User.dart';
+import 'Forum.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -31,11 +32,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        key: Key(widget.title),
         title: Text(widget.title),
       ),
       body: Container(
         child: PieChart(
-          dataMap: widget.user.getSumPurchases(),
+          dataMap: widget.user.getSumPurchases(DateTime.now().
+          subtract(const Duration(days: 30)),DateTime.now()),
           centerText: "Last Month",
           colorList: colorList,
           chartType: ChartType.ring,
@@ -58,10 +61,12 @@ class _HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: SpeedDial(
+          key: Key("MainButton"),
           curve: Curves.easeInSine,
           spaceBetweenChildren: 15,
           children: [
             SpeedDialChild(
+              key: Key("AddButton"),
               child: Icon(Icons.add),
               backgroundColor: Colors.green,
               onTap: () {
@@ -73,10 +78,18 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SpeedDialChild(
+              key: Key("Forum"),
               child: Icon(Icons.forum),
               backgroundColor: Colors.green,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ForumPage(title: 'Forum')),
+                );
+              },
             ),
             SpeedDialChild(
+              key: Key("Statistics"),
               child: Icon(Icons.percent),
               backgroundColor: Colors.green,
               onTap: () {
