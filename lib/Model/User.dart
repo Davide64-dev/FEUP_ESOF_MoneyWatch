@@ -50,6 +50,8 @@ class User{
   void addPurchase(double amount, String description, String category, nr_days, DateTime datetime){
     Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
     purchases.add(purchase);
+    purchases.sort();
+    purchases = purchases.reversed.toList();
   }
 
   void addPurchasetoDatabase(double amount, String description, String category, nr_days, DateTime datetime){

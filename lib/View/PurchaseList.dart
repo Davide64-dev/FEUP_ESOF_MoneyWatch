@@ -23,7 +23,23 @@ class _PurchaseList extends State<PurchaseList>  {
 
   final List<Purchase> purchases = [
     Purchase(10, "a minha linha de dois", "Leisure", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
     Purchase(11, "bleh", "Education", 1, DateTime(2023))
+
+
   ];
 
   @override
@@ -33,18 +49,18 @@ class _PurchaseList extends State<PurchaseList>  {
         title: Text(widget.title),
       ),
       body: ListView.builder(
-        itemCount: purchases.length,
+        itemCount: widget.user.purchases.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            title: Text(purchases[index].category),
+            title: Text(widget.user.purchases[index].category),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Amount: ${purchases[index].amount.toString()}"),
-                Text("Description: ${purchases[index].description}"),
+                Text("Amount: ${widget.user.purchases[index].amount.toString()}"),
+                Text("Description: ${widget.user.purchases[index].description}"),
               ],
             ),
-            trailing: Text(purchases[index].datetime.toString()),
+            trailing: Text(widget.user.purchases[index].datetime.toString()),
           );
 
         },
