@@ -1,67 +1,31 @@
-import 'package:glob/glob.dart';
-import 'package:flutter_driver/flutter_driver.dart' as test;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 
 
-class UserIsInDashboardStep extends Given {
+class Given_I_have_MainButton extends Given1<String> {
+
   @override
-  Future<void> executeStep() async {
-    print('executing UserIsInDashboardStep..');
-    // implement your code
+  RegExp get pattern => RegExp(r"I have {string}");
+
+  @override
+  Future<void> executeStep(String input1) async {
+    print("I have $input1 MainButton");
   }
+}
+
+class When_I_tap_Button extends When1WithWorld<String, FlutterWorld>{
 
   @override
-  RegExp get pattern => RegExp(r"I am on the homepage screen");
+  RegExp get pattern => RegExp(r"I tap {string}");
+
+  @override
+  Future<void> executeStep(String input1) async {
+    final loginfinder = find.byValueKey(input1);
+    await FlutterDriverUtils.tap(world.driver, loginfinder);
+  }
 }
 
-
-StepDefinitionGeneric WhenITapTheFloatingActionButtonStep() {
-  return when1<String, FlutterWorld>(
-    'I tap the floating action button',
-      (String input, context) async {
-        final locator = test.find.byType("FloatingActionButton");
-        await FlutterDriverUtils. tap (context.world.driver,
-            locator);
-        await FlutterDriverUtils.tap(context.world.driver, locator);
-      }
-  );
-}
-
-StepDefinitionGeneric AndTapThePlusButtonStep() {
-  return and<FlutterWorld>(
-    'I tap the plus button',
-        (context) async {
-      // Implement logic to tap the login button
-    },
-  );
-}
-
-/*
-StepDefinitionGeneric ThenIShouldSeeTheHomeScreenStep() {
-  return then<FlutterWorld>(
-    'I should see the home screen',
-        (context) async {
-      // Implement logic to assert that the home screen is displayed
-    },
-  );
-}
-
- */
-Future<void> main() {
-  final config = FlutterTestConfiguration()
-    ..features = [Glob(r"test_driver/features/test.feature")]
-
-
-    ..reporters = [
-      ProgressReporter(),
-      TestRunSummaryReporter(),
-      JsonReporter(path: './report.json')
-    ]
-    ..stepDefinitions = [
-      WhenITapTheFloatingActionButtonStep(),
-    ];
-
-  return GherkinRunner().execute(config);
-}
+    
+    

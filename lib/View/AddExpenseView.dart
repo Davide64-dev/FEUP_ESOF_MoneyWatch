@@ -55,6 +55,7 @@ class _AddExpenseView extends State<AddExpenseView> {
 
     return Scaffold(
       appBar: AppBar(
+        key: Key('Add Expense'),
         title: const Text('Add Expense'),
       ),
       body: Stack(

@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        key: Key(widget.title),
         title: Text(widget.title),
       ),
       body: Container(
@@ -60,10 +61,12 @@ class _HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: SpeedDial(
+          key: Key("MainButton"),
           curve: Curves.easeInSine,
           spaceBetweenChildren: 15,
           children: [
             SpeedDialChild(
+              key: Key("AddButton"),
               child: Icon(Icons.add),
               backgroundColor: Colors.green,
               onTap: () {
@@ -75,6 +78,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SpeedDialChild(
+              key: Key("Forum"),
               child: Icon(Icons.forum),
               backgroundColor: Colors.green,
               onTap: () {
@@ -85,6 +89,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SpeedDialChild(
+              key: Key("Statistics"),
               child: Icon(Icons.percent),
               backgroundColor: Colors.green,
               onTap: () {
