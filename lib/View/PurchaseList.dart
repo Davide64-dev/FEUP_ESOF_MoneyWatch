@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../Model/Purchase.dart';
 import '../Model/User.dart';
+import 'EditExpenseView.dart';
 
 
 class PurchaseList extends StatefulWidget {
@@ -22,22 +23,22 @@ class PurchaseList extends StatefulWidget {
 class _PurchaseList extends State<PurchaseList>  {
 
   final List<Purchase> purchases = [
-    Purchase(10, "a minha linha de dois", "Leisure", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023)),
-    Purchase(11, "bleh", "Education", 1, DateTime(2023))
+    Purchase(10, "a minha linha de dois", "Leisure", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023)),
+    Purchase(11, "bleh", "Education", 0, DateTime(2023))
 
 
   ];
@@ -51,16 +52,24 @@ class _PurchaseList extends State<PurchaseList>  {
       body: ListView.builder(
         itemCount: widget.user.purchases.length,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(widget.user.purchases[index].category),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Amount: ${widget.user.purchases[index].amount.toString()}"),
-                Text("Description: ${widget.user.purchases[index].description}"),
-              ],
-            ),
-            trailing: Text(widget.user.purchases[index].datetime.toString()),
+          return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EditExpenseView(title: "Edit Expense", purchase: purchases[index], user: widget.user,)),
+                );
+              },
+              child: ListTile(
+                title: Text(widget.user.purchases[index].category),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Amount: ${widget.user.purchases[index].amount.toString()}"),
+                    Text("Description: ${widget.user.purchases[index].description}"),
+                  ],
+                ),
+                trailing: Text(widget.user.purchases[index].datetime.toString()),
+              )
           );
 
         },
