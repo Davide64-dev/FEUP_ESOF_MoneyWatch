@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import '../Model/Purchase.dart';
 import '../Model/User.dart';
 
-class AddExpenseView extends StatefulWidget {
+class EditExpenseView extends StatefulWidget {
 
-  AddExpenseView({super.key, required this.title, required this.user});
+  EditExpenseView({super.key, required this.title, required this.user, required this.purchase});
   final String title;
   User user;
+  Purchase purchase;
   String category = 'Leisure';
   var amountInput = "";
   String descriptionInput = "";
 
   @override
-  State<AddExpenseView> createState() => _AddExpenseView();
+  State<EditExpenseView> createState() => _EditExpenseView();
 }
 
 
-class _AddExpenseView extends State<AddExpenseView> {
+class _EditExpenseView extends State<EditExpenseView> {
   bool isValid(var x){
     int count = 0;
     int countZeros = 0;
@@ -55,16 +57,16 @@ class _AddExpenseView extends State<AddExpenseView> {
 
     return Scaffold(
       appBar: AppBar(
-        key: Key('Add Expense'),
-        title: const Text('Add Expense'),
+        key: const Key('Edit Expense'),
+        title: const Text('Edit Expense'),
       ),
       body: Stack(
         children: [
           Align(
-              alignment: Alignment(-0.5, -0.7),
+              alignment: const Alignment(-0.5, -0.7),
               child: DropdownButton<String>(
                 value: dropdownvalue,
-                underline: SizedBox(),
+                underline: const SizedBox(),
 
                 icon: const Icon(Icons.keyboard_arrow_down),
 
@@ -86,13 +88,13 @@ class _AddExpenseView extends State<AddExpenseView> {
           ),
 
           Align(
-              alignment: Alignment(0.3, -0.7),
+              alignment: const Alignment(0.3, -0.7),
               child: SizedBox(
                 width: 100,
                 //height: 10,
                 child: TextField(
-                    key: Key("Amount"),
-                    decoration: new InputDecoration(),
+                    key: const Key("Amount"),
+                    decoration: const InputDecoration(),
                     keyboardType: TextInputType.number,
                     onChanged: (String val) async {
                       widget.amountInput = val;
@@ -102,10 +104,10 @@ class _AddExpenseView extends State<AddExpenseView> {
 
 
           Align(
-              alignment: Alignment(0, -0.45),
+              alignment: const Alignment(0, -0.45),
               child: DropdownButton<String>(
                 value: widget.category,
-                underline: SizedBox(),
+                underline: const SizedBox(),
 
                 icon: const Icon(Icons.keyboard_arrow_down),
 
@@ -128,11 +130,11 @@ class _AddExpenseView extends State<AddExpenseView> {
           ),
 
           Align(
-            alignment: Alignment(-1, -0.2),
+            alignment: const Alignment(-1, -0.2),
             child: SizedBox(
               width: 250,
               child: SwitchListTile(
-                  title: Text("Recurring Expense"),
+                  title: const Text("Recurring Expense"),
                   value: isSwitched,
                   onChanged: (value) {
                     setState(() {
@@ -144,14 +146,14 @@ class _AddExpenseView extends State<AddExpenseView> {
           ),
 
           Align(
-            alignment: Alignment(0, 0.6),
+            alignment: const Alignment(0, 0.6),
             child: SizedBox(
               width: 300,
               child: TextField(
 
                   cursorHeight: 20,
                   maxLines: 2,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Description',
                     border: OutlineInputBorder(),
                     hintText: 'Enter your Description',
@@ -164,28 +166,28 @@ class _AddExpenseView extends State<AddExpenseView> {
           ),
 
           Align(
-              alignment: Alignment(0, 0.9),
+              alignment: const Alignment(0, 0.9),
 
               child: ElevatedButton.icon(
-                onPressed: () {
-                  var amount;
+                  onPressed: () {
+                    var amount;
 
-                  if (isValid(widget.amountInput)) {
-                    amount = double.parse(widget.amountInput).toDouble();
-                    amount = double.parse(amount.toStringAsFixed(2));
-                    widget.user.addPurchasetoDatabase(amount, widget.descriptionInput
-                        , widget.category, nr_daysInput, DateTime.now());
-                    Navigator.pop(context);
+                    if (isValid(widget.amountInput)) {
+                      amount = double.parse(widget.amountInput).toDouble();
+                      amount = double.parse(amount.toStringAsFixed(2));
+                      widget.purchase.setAttribures(amount, widget.descriptionInput
+                          , widget.category, nr_daysInput);
+                      Navigator.pop(context);
 
-                    _showSuccessAdvice();
-                  }
-                  else{
-                    _showErrorAdvice();
-                  }
-                },
-                icon: Icon(Icons.save),
-                label: Text("Submit"),
-                key: Key("Submit")
+                      _showSuccessAdvice();
+                    }
+                    else{
+                      _showErrorAdvice();
+                    }
+                  },
+                  icon: const Icon(Icons.save),
+                  label: const Text("Submit"),
+                  key: const Key("Submit")
 
 
               )
@@ -198,8 +200,8 @@ class _AddExpenseView extends State<AddExpenseView> {
 
   void _showSuccessAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Successfully Added Expense!'),
+      const SnackBar(
+        content: Text('Successfully Edited Expense!'),
         duration: Duration(seconds: 3),
         backgroundColor: Colors.green,
       ),
@@ -208,8 +210,8 @@ class _AddExpenseView extends State<AddExpenseView> {
 
   void _showErrorAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        key: Key("Erro Sumbit"),
+      const SnackBar(
+        key: Key("Error Submit"),
         content: Text('Something Went Wrong!'),
         duration: Duration(seconds: 3),
         backgroundColor: Colors.red,
