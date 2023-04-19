@@ -20,7 +20,14 @@ class User{
   List<Purchase> purchases = [];
 
   User({required this.id, required this.username,required this.habits, required
-    this.posts, required this.customCategories, required this.purchases});
+    this.posts, required this.customCategories, required this.purchases}) {
+    if (id == '') {
+      throw ArgumentError('id cannot be empty');
+    }
+    if (username == '') {
+      throw ArgumentError('username cannot be empty');
+    }
+  }
 
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
