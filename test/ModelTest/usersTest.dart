@@ -32,14 +32,12 @@ void main() {
         "datetime": "2023-04-15T12:00:00.000Z",
       };
 
-      final mockSnapshot = MockQuerySnapshot();
-      final mockDocument = MockDocumentSnapshot();
+      QuerySnapshot snapshot = QuerySnapshot(
+          docs: [QueryDocumentSnapshot(data: data)]
+      );
 
-
-      when(mockSnapshot.docs).thenReturn([mockDocument]);
-      when(mockDocument.data()).thenReturn(data);
-
-      user.addExpenses(mockSnapshot);
+      // Call the addExpenses function and pass the simulated QuerySnapshot object
+      user.addExpenses(snapshot);
 
       expect(user.purchases.length, 1);
       expect(user.id, 'test_id');
