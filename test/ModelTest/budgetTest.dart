@@ -20,5 +20,16 @@ void main() {
       expect(budget.amount, equals(amount));
       expect(budget.category, equals(category));
     });
+    
+    test('amount cannot be negative', () {
+      // Arrange
+      const name = 'Test Name';
+      const description = 'Test Description';
+      const amount = -10;
+      const category = 'Test Category';
+
+      // Act and assert
+      expect(() => Budget(name, description, amount, category), throwsArgumentError);
+    });
   });
 }
