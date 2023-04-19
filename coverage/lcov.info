@@ -1,19 +1,12 @@
 SF:lib\Model\Purchase.dart
-DA:7,0
-DA:10,0
-DA:13,0
-DA:14,0
-DA:18,0
-DA:21,0
-DA:22,0
-DA:23,0
-DA:24,0
-DA:25,0
-LF:10
-LH:0
-end_of_record
-SF:lib\Model\User.dart
+DA:7,1
+DA:10,1
+DA:13,3
+DA:14,1
+DA:18,3
+DA:21,1
 DA:22,1
+<<<<<<< HEAD
 DA:25,0
 DA:26,0
 DA:27,0
@@ -279,4 +272,11 @@ DA:48,0
 DA:51,0
 LF:21
 LH:0
+=======
+DA:23,1
+DA:24,1
+DA:25,1
+LF:10
+LH:10
+>>>>>>> 6b358949e8b932319de869d30695294a0aef86c3
 end_of_record
