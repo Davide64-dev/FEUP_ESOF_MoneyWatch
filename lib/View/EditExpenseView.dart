@@ -175,7 +175,7 @@ class _EditExpenseView extends State<EditExpenseView> {
                     if (isValid(widget.amountInput)) {
                       amount = double.parse(widget.amountInput).toDouble();
                       amount = double.parse(amount.toStringAsFixed(2));
-                      widget.purchase.setAttribures(amount, widget.descriptionInput
+                      widget.purchase.setAttributes(amount, widget.descriptionInput
                           , widget.category, nr_daysInput);
                       Navigator.pop(context);
 
