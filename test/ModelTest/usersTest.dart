@@ -1,3 +1,5 @@
+import 'package:MoneyWatch/Model/Habit.dart';
+import 'package:MoneyWatch/Model/Post.dart';
 import 'package:MoneyWatch/Model/Purchase.dart';
 import 'package:MoneyWatch/Model/User.dart';
 import 'package:MoneyWatch/View/StatisticsPageView.dart';
@@ -16,7 +18,56 @@ class MockDocumentSnapshot extends Mock implements QueryDocumentSnapshot<Object?
 
 void main() {
   group('User', () {
-  /*
+
+        test('constructor sets properties correctly', () {
+          // Arrange
+          const id = '12345';
+          const username = 'TestUser';
+          final habits = <Habit>[];
+          final posts = <Post>[];
+          final customCategories = <String>[];
+          final purchases = <Purchase>[];
+
+          // Act
+          final user = User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases);
+
+          // Assert
+          expect(user.id, equals(id));
+          expect(user.username, equals(username));
+          expect(user.habits, equals(habits));
+          expect(user.posts, equals(posts));
+          expect(user.customCategories, equals(customCategories));
+          expect(user.purchases, equals(purchases));
+        });
+
+        test('id is not empty', () {
+          // Arrange
+          const id = '';
+          const username = 'TestUser';
+          final habits = <Habit>[];
+          final posts = <Post>[];
+          final customCategories = <String>[];
+          final purchases = <Purchase>[];
+
+          // Act and Assert
+          expect(() => User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases), throwsArgumentError);
+        });
+
+        test('username is not empty', () {
+          // Arrange
+          const id = '12345';
+          const username = '';
+          final habits = <Habit>[];
+          final posts = <Post>[];
+          final customCategories = <String>[];
+          final purchases = <Purchase>[];
+
+          // Act and Assert
+          expect(() => User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases), throwsArgumentError);
+        });
+
+
+/*
     test('addExpenses() should add a purchase to user', () {
       User user = User(
         id: 'test_id',
@@ -50,8 +101,8 @@ void main() {
       expect(user.purchases[0].datetime, DateTime(2023,4, 15));
 
     });
-  */
-
+*/
+    
     test('addPurchase() should add a purchase to the list', () {
       User user = User(
         id: 'test_id',

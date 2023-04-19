@@ -2,7 +2,7 @@ class Habit{
   String name;
   String description;
   DateTime startDate;
-  int amoutPerDay;
+  int amountPerDay;
 
-  Habit(this.name, this.description, this.startDate, this.amoutPerDay);
+  Habit(this.name, this.description, this.startDate, this.amountPerDay);
 }

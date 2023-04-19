@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SF:lib/Model/Purchase.dart
 DA:7,1
 DA:10,1
@@ -275,4 +276,10 @@ DA:48,0
 DA:51,0
 LF:21
 LH:0
+=======
+SF:lib\Model\Habit.dart
+DA:7,1
+LF:1
+LH:1
+>>>>>>> 1bfbfccc1871e2ac6e214225346ecb4c3aa68468
 end_of_record
