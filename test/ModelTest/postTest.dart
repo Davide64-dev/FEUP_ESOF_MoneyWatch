@@ -7,10 +7,10 @@ void main() {
   group ("Post", () {
     test('Post constructor sets properties correctly', () {
       // Arrange
-      final title = 'Test Title';
-      final content = 'Test Content';
+      const title = 'Test Title';
+      const content = 'Test Content';
       final comments = <Comment>[];
-      final category = 'Test Category';
+      const category = 'Test Category';
 
       // Act
       final post = Post(title, content, comments, category);
