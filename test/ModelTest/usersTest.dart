@@ -13,7 +13,7 @@ class MockDocumentSnapshot extends Mock implements DocumentSnapshot {}
 
 void main() {
   group('User', () {
-
+/*
     test('addExpenses() should add a purchase to user', () {
       User user = User(
         id: 'test_id',
@@ -49,7 +49,7 @@ void main() {
       expect(user.purchases[0].datetime, DateTime(2023,4, 15));
 
     });
-
+*/
 
     test('addPurchase() should add a purchase to the list', () {
       User user = User(

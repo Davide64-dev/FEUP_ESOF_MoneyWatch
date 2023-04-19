@@ -1,4 +1,4 @@
-import 'Comment.dart';
+import 'package:MoneyWatch/Model/Comment.dart';
 
 class Post{
   String title;
