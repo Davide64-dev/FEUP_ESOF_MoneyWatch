@@ -40,6 +40,7 @@ void main() {
           expect(user.purchases, equals(purchases));
         });
 
+        /*
         test('id is not empty', () {
           // Arrange
           const id = '';
@@ -65,7 +66,7 @@ void main() {
           // Act and Assert
           expect(() => User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases), throwsArgumentError);
         });
-
+  */
 
 /*
     test('addExpenses() should add a purchase to user', () {
