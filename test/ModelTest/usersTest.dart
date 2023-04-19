@@ -71,6 +71,34 @@ void main() {
     });
 
 
+    test('addCustomCategory adds category to list', () {
+      final user = User(
+        id: '1',
+        username: 'test_user',
+        habits: [],
+        posts: [],
+        customCategories: [],
+        purchases: [],
+      );
+      user.addCustomCategory('New Category');
+      expect(user.getCustomCategories(), contains('New Category'));
+    });
+
+
+    test('getCustomCategories returns list of categories', () {
+      final user = User(
+        id: '1',
+        username: 'test_user',
+        habits: [],
+        posts: [],
+        customCategories: ['Category 1', 'Category 2'],
+        purchases: [],
+      );
+      List<String> returnValue = user.getCustomCategories();
+      expect(returnValue, equals(['Category 1', 'Category 2']));
+    });
+
+
     test('getSumPurchases() should return a map of purchase sums', () {
       User user = User(
         id: 'test_id',

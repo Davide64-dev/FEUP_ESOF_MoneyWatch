@@ -18,7 +18,7 @@ class Purchase implements Comparable<Purchase>{
     return amount.compareTo(other.amount);
   }
 
-  void setAttribures(double amount, String description, String category, int nr_days){
+  void setAttributes(double amount, String description, String category, int nr_days){
     this.amount = amount;
     this.description = description;
     this.category = category;
