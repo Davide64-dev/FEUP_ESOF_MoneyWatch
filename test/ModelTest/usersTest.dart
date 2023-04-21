@@ -102,7 +102,7 @@ void main() {
 
     });
 */
-    
+
     test('addPurchase() should add a purchase to the list', () {
       User user = User(
         id: 'test_id',
