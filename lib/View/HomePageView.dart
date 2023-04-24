@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:MoneyWatch/View/AddExpenseView.dart';
@@ -105,6 +106,12 @@ class _HomePageState extends State<HomePage> {
             SpeedDialChild(
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
+            ),
+
+            SpeedDialChild(
+              child: Icon(Icons.logout),
+              backgroundColor: Colors.green,
+              onTap: () => auth.FirebaseAuth.instance.signOut(),
             ),
 
           ],
