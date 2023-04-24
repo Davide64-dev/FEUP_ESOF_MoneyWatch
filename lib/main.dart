@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,30 +6,17 @@ import 'Model/User.dart';
 import 'View/HomePageView.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() async {
+import 'View/LoginView.dart';
+
+Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitUp]);
-
   await Firebase.initializeApp();
-  DocumentReference docRef = FirebaseFirestore.instance.collection('Users').doc
-    ('zo42QzctyWYhHS9kgDVH');
-  DocumentSnapshot snapshot = await docRef.get();
 
-  CollectionReference users = FirebaseFirestore.instance.collection('Purchase');
-
-  QuerySnapshot snapshot1 = await users.where('user', isEqualTo: 'alan_turing').get();
-
-
-  User user = await docRef.get().then((snapshot) => User.fromFirestore(snapshot));
-  runApp(MyApp(user: user));
-  user.addExpenses(snapshot1);
+  runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  User user;
-  MyApp({super.key, required this.user});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +25,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: HomePage(title: 'MoneyWatch', user: user),
+      home: MainPage(),
     );
   }
 }
+
+
+class MainPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) => Scaffold(
+      body: StreamBuilder<auth.User?>(
+          stream: auth.FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot){
+            if(snapshot.hasData){
+              User user = User(id: '', username: '', habits: [], posts: [], customCategories: [], purchases: []);
+              return HomePage(title: 'MoneyWatch', user: user);
+            } else{
+              return LoginView(title: "Login");
+            }
+          }
+      )
+  );}
