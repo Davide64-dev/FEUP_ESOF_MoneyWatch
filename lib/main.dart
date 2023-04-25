@@ -9,6 +9,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'View/LoginView.dart';
 
 Future main() async{
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitUp]);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -36,10 +38,20 @@ class MainPage extends StatelessWidget{
   Widget build(BuildContext context) => Scaffold(
       body: StreamBuilder<auth.User?>(
           stream: auth.FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot){
+          builder: (context, snapshot) {
             if(snapshot.hasData){
-              User user = User(id: '', username: '', habits: [], posts: [], customCategories: [], purchases: []);
-              return HomePage(title: 'MoneyWatch', user: user);
+              final user = auth.FirebaseAuth.instance.currentUser;
+              User user1 = User(
+                id: user!.uid,
+                email: user!.email,
+                username: user.displayName ?? "",
+                habits: [],
+                posts: [],
+                customCategories: [],
+                purchases: [],
+              );
+              return HomePage(title: 'MoneyWatch', user: user1);
+
             } else{
               return LoginView(title: "Login");
             }

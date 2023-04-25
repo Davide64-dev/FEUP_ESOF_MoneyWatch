@@ -15,6 +15,8 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
+
+
 }
 
 class _HomePageState extends State<HomePage> {
@@ -112,6 +114,7 @@ class _HomePageState extends State<HomePage> {
               child: Icon(Icons.logout),
               backgroundColor: Colors.green,
               onTap: () => auth.FirebaseAuth.instance.signOut(),
+              //onTap: () => Navigator.pop(context),
             ),
 
           ],

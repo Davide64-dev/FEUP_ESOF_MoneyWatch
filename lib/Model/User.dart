@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../View/StatisticsPageView.dart';
 import 'Habit.dart';
@@ -18,12 +19,13 @@ class User{
   List<Post> posts = [];
   List<String> customCategories = [];
   List<Purchase> purchases = [];
+  String email = "";
 
   User({required this.id, required this.username,required this.habits, required
-    this.posts, required this.customCategories, required this.purchases}) {
+    this.posts, required this.customCategories, required this.purchases, required email}) {
     //if (id == '') {
       //throw ArgumentError('id cannot be empty');
-    //}
+    //
     //if (username == '') {
     //  throw ArgumentError('username cannot be empty');
     //}
@@ -32,6 +34,7 @@ class User{
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
+      email: "davidpcu@hotmail.com",
       username: data["username"],
       habits: [],
       posts: [],
@@ -40,7 +43,17 @@ class User{
     );
   }
 
-  void addExpenses(QuerySnapshot value){
+  void printExpenses(){
+    for (var c in purchases) print(c.amount);
+  }
+
+  void addExpenses() async{
+    CollectionReference users = FirebaseFirestore.instance.collection('Purchase');
+    QuerySnapshot snapshot1 = await users.where('user', isEqualTo: username).get();
+    this.addExpensesWithSnapshot(snapshot1);
+  }
+
+  void addExpensesWithSnapshot(QuerySnapshot value){
     value.docs.forEach((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       double amount = data["amount"].toDouble();

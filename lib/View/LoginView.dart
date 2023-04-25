@@ -44,18 +44,13 @@ class _LoginViewState extends State<LoginView> {
             ElevatedButton(
               onPressed: () async {
                 try {
-                  // Perform login here
-                  String email = _emailController.text;
-                  String password = _passwordController.text;
-                  await signIn(email, password);
-                  // Update the authentication status
-                  Provider.of<AuthStatus>(context, listen: false).setLoggedIn(true);
+                  final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text
+                  );
+
                 } catch (e) {
-                  // Handle any errors that occur during authentication
                   print(e);
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Failed to sign in. Please try again.'),
-                  ));
                 }
               },
               child: Text('Log In'),
@@ -81,6 +76,5 @@ class AuthStatus extends ChangeNotifier {
 
   void setLoggedIn(bool value) {
     _isLoggedIn = value;
-    notifyListeners();
   }
 }
