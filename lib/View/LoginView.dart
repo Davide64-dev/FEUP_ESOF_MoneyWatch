@@ -60,21 +60,4 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
-
-  Future<void> signIn(String email, String password) async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email.trim(),
-      password: password.trim(),
-    );
-  }
-}
-
-class AuthStatus extends ChangeNotifier {
-  bool _isLoggedIn = false;
-
-  bool get isLoggedIn => _isLoggedIn;
-
-  void setLoggedIn(bool value) {
-    _isLoggedIn = value;
-  }
 }
