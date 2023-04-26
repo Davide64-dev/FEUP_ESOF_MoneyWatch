@@ -21,27 +21,53 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 20.0),
-            TextField(
+      body: Stack(
+
+        children:[
+          Align(
+            alignment: Alignment(0, -0.7),
+              child: Image(
+                image: AssetImage('assets/login.png'),
+                width: 250, // set the width of the image to 200 pixels
+                height: 250, // set the height of the image to 200 pixels
+                fit: BoxFit.cover,
+              )
+          ),
+          Align(
+            alignment: Alignment(0, 0.1),
+            child: SizedBox(
+              width: 320,
+            child: TextField(
+
               controller: _emailController,
               decoration: InputDecoration(
                 hintText: 'Email',
+                border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                filled: true, //<-- SEE HERE
+                fillColor: Colors.greenAccent,
               ),
             ),
-            SizedBox(height: 20.0),
-            TextField(
+          ),
+          ),
+            Align(
+              alignment: Alignment(0, 0.5),
+            child: SizedBox(
+              width: 320,
+            child: TextField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
-                hintText: 'Password',
+                hintText: 'Email',
+                border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                filled: true, //<-- SEE HERE
+                fillColor: Colors.greenAccent,
               ),
             ),
-            SizedBox(height: 20.0),
-            ElevatedButton(
+            ),
+            ),
+            Align(
+              alignment: Alignment(0, 0.9),
+            child: ElevatedButton(
               onPressed: () async {
                 try {
                   final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -55,9 +81,9 @@ class _LoginViewState extends State<LoginView> {
               },
               child: Text('Log In'),
             ),
+            ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
