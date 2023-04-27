@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Model/User.dart';
 import 'View/HomePageView.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'View/LoginView.dart';
 
 Future main() async{
