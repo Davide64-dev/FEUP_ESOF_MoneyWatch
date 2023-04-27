@@ -65,6 +65,14 @@ class User{
     });
   }
 
+  static void addUsertoDatabase(String name, String email, String username){
+    FirebaseFirestore.instance.collection('Users').add({
+      'name': name,
+      'email':email,
+      'username': username,
+    });
+  }
+
 
 
   void addPurchase(double amount, String description, String category, nr_days, DateTime datetime){

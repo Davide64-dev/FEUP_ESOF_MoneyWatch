@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../Model/User.dart' as users;
 
 
 class RegisterView extends StatefulWidget {
@@ -14,6 +15,8 @@ class RegisterView extends StatefulWidget {
 class _RegisterView extends State<RegisterView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class _RegisterView extends State<RegisterView> {
               width: 320,
               child: TextField(
 
-                controller: _emailController,
+                controller: _nameController,
                 decoration: InputDecoration(
                   hintText: 'Name',
                   border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
@@ -59,7 +62,7 @@ class _RegisterView extends State<RegisterView> {
               width: 320,
               child: TextField(
 
-                controller: _emailController,
+                controller: _usernameController,
                 decoration: InputDecoration(
                   hintText: 'Username',
                   border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
@@ -74,8 +77,7 @@ class _RegisterView extends State<RegisterView> {
             child: SizedBox(
               width: 320,
               child: TextField(
-                controller: _passwordController,
-                obscureText: true,
+                controller: _emailController,
                 decoration: InputDecoration(
                   hintText: 'E-mail',
                   border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
@@ -106,11 +108,22 @@ class _RegisterView extends State<RegisterView> {
             child: ElevatedButton(
               onPressed: () async {
                 try {
-                  final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: _emailController.text,
-                      password: _passwordController.text
-                  );
+                      password: _passwordController.text,
 
+                  );
+                  String email = _emailController.text;
+                  String name = _nameController.text;
+                  String username = _usernameController.text;
+                  users.User.addUsertoDatabase(name, email, username);
+                  Navigator.pop(context);
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'weak-password') {
+                    print('The password provided is too weak.');
+                  } else if (e.code == 'email-already-in-use') {
+                    print('The account already exists for that email.');
+                  }
                 } catch (e) {
                   print(e);
                 }
