@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../Model/User.dart' as myUser;
 import 'RegisterView.dart';
 
 class LoginView extends StatefulWidget {
@@ -75,6 +76,8 @@ class _LoginViewState extends State<LoginView> {
                       email: _emailController.text,
                       password: _passwordController.text
                   );
+                  myUser.User user = myUser.User(customCategories: [], email: "", id: "",
+                  habits: [], posts: [], purchases: [], username: "");
 
                 } catch (e) {
                   print(e);

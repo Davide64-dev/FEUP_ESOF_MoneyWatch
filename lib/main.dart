@@ -59,6 +59,7 @@ class MainPage extends StatelessWidget{
                   purchases: [],
                 );
                 user1.addExpenses();
+                print("===============================" + user1.username);
                 return HomePage(title: 'MoneyWatch', user: user1);
               }
             } else{

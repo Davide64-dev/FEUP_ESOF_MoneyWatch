@@ -111,7 +111,6 @@ class _RegisterView extends State<RegisterView> {
                   UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: _emailController.text,
                       password: _passwordController.text,
-
                   );
                   String email = _emailController.text;
                   String name = _nameController.text;

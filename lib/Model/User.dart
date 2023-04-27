@@ -34,7 +34,7 @@ class User{
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
-      email: "davidpcu@hotmail.com",
+      email: data["email"],
       username: data["username"],
       habits: [],
       posts: [],
