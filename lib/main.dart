@@ -42,19 +42,25 @@ class MainPage extends StatelessWidget{
           stream: auth.FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if(snapshot.hasData){
-              final user = auth.FirebaseAuth.instance.currentUser;
-              User user1 = User(
-                id: user!.uid,
-                email: user.email,
-                username: user.displayName ?? "",
-                habits: [],
-                posts: [],
-                customCategories: [],
-                purchases: [],
-              );
-              user1.addExpenses();
-              return HomePage(title: 'MoneyWatch', user: user1);
-
+              auth.User? user = auth.FirebaseAuth.instance.currentUser;
+              if (!user!.emailVerified){
+                user?.sendEmailVerification();
+                print('Verification email sent to ${user.email}!');
+                return LoginView(title: "Login");
+              }
+              else {
+                User user1 = User(
+                  id: user!.uid,
+                  email: user.email,
+                  username: user.displayName ?? "",
+                  habits: [],
+                  posts: [],
+                  customCategories: [],
+                  purchases: [],
+                );
+                user1.addExpenses();
+                return HomePage(title: 'MoneyWatch', user: user1);
+              }
             } else{
               return LoginView(title: "Login");
             }
