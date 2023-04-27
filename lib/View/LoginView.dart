@@ -1,6 +1,9 @@
+import 'package:MoneyWatch/View/AddExpenseView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'RegisterView.dart';
 
 class LoginView extends StatefulWidget {
   final String title;
@@ -57,7 +60,8 @@ class _LoginViewState extends State<LoginView> {
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
-                hintText: 'Email',
+
+                hintText: 'Password',
                 border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
                 filled: true, //<-- SEE HERE
                 fillColor: Colors.greenAccent,
@@ -66,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
             ),
             ),
             Align(
-              alignment: Alignment(0, 0.9),
+              alignment: Alignment(0, 0.8),
             child: ElevatedButton(
               onPressed: () async {
                 try {
@@ -82,6 +86,22 @@ class _LoginViewState extends State<LoginView> {
               child: Text('Log In'),
             ),
             ),
+          Align(
+            alignment: Alignment(0, 0.9),
+            child: new InkWell(
+
+                child: new Text(
+                    'Don\'t have an account? Register here',
+                  style: TextStyle(color: Color.fromRGBO(0, 0, 90, 1))
+                ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>
+                      RegisterView(title: 'Register')),
+                )
+            ),
+
+          ),
           ],
         ),
       );
