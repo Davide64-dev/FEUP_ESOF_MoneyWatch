@@ -125,8 +125,10 @@ class _RegisterView extends State<RegisterView> {
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'weak-password') {
                     print('The password provided is too weak.');
+                    _showErrorAdvice("The password provided is too weak");
                   } else if (e.code == 'email-already-in-use') {
                     print('The account already exists for that email.');
+                    _showErrorAdvice("The account already exists for that email");
                   }
                 } catch (e) {
                   print(e);
@@ -139,4 +141,17 @@ class _RegisterView extends State<RegisterView> {
       ),
     );
   }
+
+  void _showErrorAdvice(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
+
+
+
 }
