@@ -31,6 +31,9 @@ class User{
     //}
   }
 
+  void setEmail(String email){
+    this.email = email;
+  }
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
@@ -64,6 +67,7 @@ class User{
       this.addPurchase(amount, description, category, nr_days, datetime);
     });
   }
+
 
   static void addUsertoDatabase(String name, String email, String username){
     FirebaseFirestore.instance.collection('Users').add({

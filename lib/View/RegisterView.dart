@@ -112,6 +112,11 @@ class _RegisterView extends State<RegisterView> {
                       email: _emailController.text,
                       password: _passwordController.text,
                   );
+                  User? user = userCredential.user;
+                  if (user != null) {
+                    await user.updateDisplayName(_usernameController.text);
+                    await user.updateEmail(_emailController.text);
+                  }
                   String email = _emailController.text;
                   String name = _nameController.text;
                   String username = _usernameController.text;

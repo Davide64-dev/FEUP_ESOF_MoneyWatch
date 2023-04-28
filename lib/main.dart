@@ -51,15 +51,16 @@ class MainPage extends StatelessWidget{
               else {
                 User user1 = User(
                   id: user!.uid,
-                  email: user.email,
+                  email: user!.email.toString() ?? "error 404",
                   username: user.displayName ?? "",
                   habits: [],
                   posts: [],
                   customCategories: [],
                   purchases: [],
                 );
+                user1.setEmail(user!.email.toString());
                 user1.addExpenses();
-                print("===============================" + user1.username);
+                print("===============================" + user1.email);
                 return HomePage(title: 'MoneyWatch', user: user1);
               }
             } else{
@@ -69,18 +70,4 @@ class MainPage extends StatelessWidget{
       ));
   }
 
-}
-
-void temp() async{
-  final user = auth.FirebaseAuth.instance.currentUser;
-  User user1 = User(
-    id: user!.uid,
-    email: user.email,
-    username: user.displayName ?? "",
-    habits: [],
-    posts: [],
-    customCategories: [],
-    purchases: [],
-  );
-  user1.addExpenses();
 }
