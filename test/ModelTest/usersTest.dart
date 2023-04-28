@@ -65,8 +65,8 @@ void main() {
 
           // Act and Assert
           expect(() => User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases), throwsArgumentError);
-        });
-  */
+        });*/
+
 
 /*
     test('addExpenses() should add a purchase to user', () {
