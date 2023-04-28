@@ -1,3 +1,4 @@
+import 'package:MoneyWatch/View/HabitTrackerView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:MoneyWatch/View/AddExpenseView.dart';
@@ -105,6 +106,12 @@ class _HomePageState extends State<HomePage> {
             SpeedDialChild(
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HabitTrackerView(title: "Habits", user: widget.user))
+                );
+              },
             ),
 
           ],
