@@ -52,7 +52,7 @@ class User{
 
   void addExpenses() async{
     CollectionReference users = FirebaseFirestore.instance.collection('Purchase');
-    QuerySnapshot snapshot1 = await users.where('user', isEqualTo: username).get();
+    QuerySnapshot snapshot1 = await users.where('user', isEqualTo: email).get();
     this.addExpensesWithSnapshot(snapshot1);
   }
 
@@ -94,7 +94,7 @@ class User{
       'datetime': datetime.toString(),
       'nr_days': nr_days,
       'description': description,
-      'user': this.username,
+      'user': this.email,
     });
     purchases.add(purchase);
     purchases.sort();
