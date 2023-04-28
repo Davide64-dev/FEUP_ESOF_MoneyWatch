@@ -76,11 +76,18 @@ class _LoginViewState extends State<LoginView> {
                       email: _emailController.text,
                       password: _passwordController.text
                   );
-                  myUser.User user = myUser.User(customCategories: [], email: "", id: "",
-                  habits: [], posts: [], purchases: [], username: "");
 
-                } catch (e) {
-                  print(e);
+                } on FirebaseAuthException catch (e) {
+                  if(e.code == "user-not-found"){
+                    _showErrorAdvice("The user was not found");
+                  }
+
+                  if (e.code == "wrong-password"){
+                    _showErrorAdvice("The password is incorrect");
+                  }
+                  if (e.code == "invalid-email"){
+                    _showErrorAdvice("The email address is not valid");
+                  }
                 }
               },
               child: Text('Log In'),
@@ -105,5 +112,15 @@ class _LoginViewState extends State<LoginView> {
           ],
         ),
       );
+  }
+
+  void _showErrorAdvice(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 1),
+        backgroundColor: Colors.red,
+      ),
+    );
   }
 }

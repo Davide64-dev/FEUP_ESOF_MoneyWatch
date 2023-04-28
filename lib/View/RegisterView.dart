@@ -130,6 +130,9 @@ class _RegisterView extends State<RegisterView> {
                     print('The account already exists for that email.');
                     _showErrorAdvice("The account already exists for that email");
                   }
+                  else if (e.code == 'invalid-email'){
+                    _showErrorAdvice("The email address is not valid");
+                  }
                 } catch (e) {
                   print(e);
                 }
@@ -146,7 +149,7 @@ class _RegisterView extends State<RegisterView> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        duration: Duration(seconds: 3),
+        duration: Duration(seconds: 1),
         backgroundColor: Colors.red,
       ),
     );
