@@ -25,16 +25,13 @@ class _RegisterView extends State<RegisterView> {
         title: Text(widget.title),
       ),
       body: Stack(
-
         children:[
-
-
           Align(
               alignment: Alignment(0, -0.8),
               child: Image(
                 image: AssetImage('assets/login.png'),
-                width: 200, // set the width of the image to 200 pixels
-                height: 200, // set the height of the image to 200 pixels
+                width: 200,
+                height: 200,
                 fit: BoxFit.cover,
               )
           ),
@@ -49,7 +46,7 @@ class _RegisterView extends State<RegisterView> {
                 decoration: InputDecoration(
                   hintText: 'Name',
                   border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                  filled: true, //<-- SEE HERE
+                  filled: true,
                   fillColor: Colors.greenAccent,
                 ),
               ),
@@ -154,7 +151,4 @@ class _RegisterView extends State<RegisterView> {
       ),
     );
   }
-
-
-
 }

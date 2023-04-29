@@ -82,10 +82,10 @@ class _LoginViewState extends State<LoginView> {
                     _showErrorAdvice("The user was not found");
                   }
 
-                  if (e.code == "wrong-password"){
+                  else if (e.code == "wrong-password"){
                     _showErrorAdvice("The password is incorrect");
                   }
-                  if (e.code == "invalid-email"){
+                  else if (e.code == "invalid-email"){
                     _showErrorAdvice("The email address is not valid");
                   }
                 }

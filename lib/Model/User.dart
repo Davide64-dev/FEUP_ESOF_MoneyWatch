@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../View/StatisticsPageView.dart';
 import 'Habit.dart';
@@ -46,14 +45,10 @@ class User{
     );
   }
 
-  void printExpenses(){
-    for (var c in purchases) print(c.amount);
-  }
-
   void addExpenses() async{
     CollectionReference users = FirebaseFirestore.instance.collection('Purchase');
     QuerySnapshot snapshot1 = await users.where('user', isEqualTo: email).get();
-    this.addExpensesWithSnapshot(snapshot1);
+    addExpensesWithSnapshot(snapshot1);
   }
 
   void addExpensesWithSnapshot(QuerySnapshot value){
@@ -64,7 +59,7 @@ class User{
       String description = data["description"];
       int nr_days = data["nr_days"];
       DateTime datetime = DateTime.parse(data["datetime"]);
-      this.addPurchase(amount, description, category, nr_days, datetime);
+      addPurchase(amount, description, category, nr_days, datetime);
     });
   }
 
@@ -94,7 +89,7 @@ class User{
       'datetime': datetime.toString(),
       'nr_days': nr_days,
       'description': description,
-      'user': this.email,
+      'user': email,
     });
     purchases.add(purchase);
     purchases.sort();

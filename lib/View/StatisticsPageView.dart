@@ -1,8 +1,6 @@
 import 'dart:core';
-import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import '../Model/User.dart';
 import 'PurchaseList.dart';
@@ -61,7 +59,6 @@ class _StatisticsPageView extends State<StatisticsPageView> {
                         lastDate: DateTime(2100),
                       );
 
-                      // If the user selected a date, update the selectedDate variable
                       if (picked != null && picked != widget.startDate) {
                         setState(() {
                           widget.startDate = picked;
@@ -110,7 +107,6 @@ class _StatisticsPageView extends State<StatisticsPageView> {
                         lastDate: DateTime(2100),
                       );
 
-                      // If the user selected a date, update the selectedDate variable
                       if (picked != null && picked != widget.endDate) {
                         setState(() {
                           widget.endDate = picked;
