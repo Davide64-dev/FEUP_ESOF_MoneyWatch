@@ -60,7 +60,6 @@ class MainPage extends StatelessWidget{
                 );
                 user1.setEmail(user!.email.toString());
                 user1.addExpenses();
-                print("===============================" + user1.email);
                 return HomePage(title: 'MoneyWatch', user: user1);
               }
             } else{
