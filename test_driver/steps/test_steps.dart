@@ -33,12 +33,6 @@ class When_I_tap_Button extends When1WithWorld<String, FlutterWorld>{
 class expect_error_message extends ThenWithWorld<FlutterWorld>{
   @override
   Future<void> executeStep() async {
-    /*
-    final locator = find.text('Something Went Wrong!');
-    var locatorExists = await FlutterDriverUtils.isPresent(locator as FlutterDriver?, world.driver as SerializableFinder);
-    expectMatch(true, locatorExists);
-
-     */
   }
 
   @override
@@ -56,4 +50,3 @@ class FillField extends When2WithWorld<String, String, FlutterWorld> {
   @override
   RegExp get pattern => RegExp(r'I fill {string} field with {string}');
 }
-    

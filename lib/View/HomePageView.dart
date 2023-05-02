@@ -131,6 +131,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SpeedDialChild(
+              key: Key("Logout"),
               child: Icon(Icons.logout),
               backgroundColor: Colors.green,
               onTap: () => auth.FirebaseAuth.instance.signOut(),
