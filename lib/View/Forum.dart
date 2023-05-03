@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../Model/User.dart';
+
 class ForumPage extends StatefulWidget {
   final String title;
+  User user;
 
-  ForumPage({required this.title});
+  ForumPage({required this.title, required this.user});
 
   @override
   _ForumPageState createState() => _ForumPageState();

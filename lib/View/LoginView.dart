@@ -39,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
             child: SizedBox(
               width: 320,
             child: TextField(
-
+              key: Key("Email"),
               controller: _emailController,
               decoration: InputDecoration(
                 hintText: 'Email',
@@ -55,6 +55,7 @@ class _LoginViewState extends State<LoginView> {
             child: SizedBox(
               width: 320,
             child: TextField(
+              key: Key("Password"),
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
@@ -70,17 +71,25 @@ class _LoginViewState extends State<LoginView> {
             Align(
               alignment: Alignment(0, 0.8),
             child: ElevatedButton(
+              key: Key("LoginButton"),
               onPressed: () async {
                 try {
                   final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                       email: _emailController.text,
                       password: _passwordController.text
                   );
-                  myUser.User user = myUser.User(customCategories: [], email: "", id: "",
-                  habits: [], posts: [], purchases: [], username: "");
 
-                } catch (e) {
-                  print(e);
+                } on FirebaseAuthException catch (e) {
+                  if(e.code == "user-not-found"){
+                    _showErrorAdvice("The user was not found");
+                  }
+
+                  else if (e.code == "wrong-password"){
+                    _showErrorAdvice("The password is incorrect");
+                  }
+                  else if (e.code == "invalid-email"){
+                    _showErrorAdvice("The email address is not valid");
+                  }
                 }
               },
               child: Text('Log In'),
@@ -105,5 +114,15 @@ class _LoginViewState extends State<LoginView> {
           ],
         ),
       );
+  }
+
+  void _showErrorAdvice(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 1),
+        backgroundColor: Colors.red,
+      ),
+    );
   }
 }
