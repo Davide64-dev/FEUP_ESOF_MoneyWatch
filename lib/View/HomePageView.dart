@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ForumPage(title: 'Forum')),
+                    MaterialPageRoute(builder: (context) => ForumPage(title: 'Forum', user: widget.user)),
                 );
               },
             ),
