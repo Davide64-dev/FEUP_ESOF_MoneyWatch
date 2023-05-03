@@ -39,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
             child: SizedBox(
               width: 320,
             child: TextField(
-
+              key: Key("Email"),
               controller: _emailController,
               decoration: InputDecoration(
                 hintText: 'Email',
@@ -55,6 +55,7 @@ class _LoginViewState extends State<LoginView> {
             child: SizedBox(
               width: 320,
             child: TextField(
+              key: Key("Password"),
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
@@ -70,6 +71,7 @@ class _LoginViewState extends State<LoginView> {
             Align(
               alignment: Alignment(0, 0.8),
             child: ElevatedButton(
+              key: Key("LoginButton"),
               onPressed: () async {
                 try {
                   final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(

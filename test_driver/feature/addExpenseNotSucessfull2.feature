@@ -4,8 +4,12 @@ Feature: Add Expense Page is opening
   So I can review it later.
 
   Scenario: Non Functional Add Expense Page
-    Given I have "MainButton"
-    When I tap "MainButton"
+    Given I have "Email"
+    When I fill "Email" field with "davidpcu@hotmail.com"
+    And I fill "Password" field with "123456"
+    And I tap "LoginButton"
+    And I have "MainButton"
+    And I tap "MainButton"
     And I tap "AddButton"
     And I fill "Amount" field with "000"
     And I tap "Submit"
