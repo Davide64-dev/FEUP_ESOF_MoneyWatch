@@ -18,20 +18,25 @@ class User{
   List<Post> posts = [];
   List<String> customCategories = [];
   List<Purchase> purchases = [];
+  String email = "";
 
   User({required this.id, required this.username,required this.habits, required
-    this.posts, required this.customCategories, required this.purchases}) {
+    this.posts, required this.customCategories, required this.purchases, required email}) {
     //if (id == '') {
       //throw ArgumentError('id cannot be empty');
-    //}
+    //
     //if (username == '') {
     //  throw ArgumentError('username cannot be empty');
     //}
   }
 
+  void setEmail(String email){
+    this.email = email;
+  }
   factory User.fromFirestore(DocumentSnapshot value){
     Map<String, dynamic> data = value.data() as Map<String, dynamic>;
     return User(
+      email: data["email"],
       username: data["username"],
       habits: [],
       posts: [],
@@ -40,7 +45,13 @@ class User{
     );
   }
 
-  void addExpenses(QuerySnapshot value){
+  void addExpenses() async{
+    CollectionReference users = FirebaseFirestore.instance.collection('Purchase');
+    QuerySnapshot snapshot1 = await users.where('user', isEqualTo: email).get();
+    addExpensesWithSnapshot(snapshot1);
+  }
+
+  void addExpensesWithSnapshot(QuerySnapshot value){
     value.docs.forEach((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       double amount = data["amount"].toDouble();
@@ -48,7 +59,16 @@ class User{
       String description = data["description"];
       int nr_days = data["nr_days"];
       DateTime datetime = DateTime.parse(data["datetime"]);
-      this.addPurchase(amount, description, category, nr_days, datetime);
+      addPurchase(amount, description, category, nr_days, datetime);
+    });
+  }
+
+
+  static void addUsertoDatabase(String name, String email, String username){
+    FirebaseFirestore.instance.collection('Users').add({
+      'name': name,
+      'email':email,
+      'username': username,
     });
   }
 
@@ -69,7 +89,7 @@ class User{
       'datetime': datetime.toString(),
       'nr_days': nr_days,
       'description': description,
-      'user': this.username,
+      'user': email,
     });
     purchases.add(purchase);
     purchases.sort();

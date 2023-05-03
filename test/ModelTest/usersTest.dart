@@ -29,7 +29,7 @@ void main() {
           final purchases = <Purchase>[];
 
           // Act
-          final user = User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases);
+          final user = User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases, email: " ");
 
           // Assert
           expect(user.id, equals(id));
@@ -48,7 +48,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -70,7 +70,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
       user.addCustomCategory('New Category');
       expect(user.getCustomCategories(), contains('New Category'));
@@ -84,7 +84,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: ['Category 1', 'Category 2'],
-        purchases: [],
+        purchases: [], email: " ",
       );
       List<String> returnValue = user.getCustomCategories();
       expect(returnValue, equals(['Category 1', 'Category 2']));
@@ -120,7 +120,7 @@ void main() {
             1,
             DateTime.now(),
           ),
-        ],
+        ], email: " ",
       );
 
       Map<String, double> sums =
@@ -160,7 +160,7 @@ void main() {
             1,
             DateTime.now(),
           ),
-        ],
+        ], email: " ",
       );
 
       List<BarModel> barModels =
@@ -179,7 +179,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -208,7 +208,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -237,7 +237,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -266,7 +266,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: "",
       );
 
       user.addPurchase(

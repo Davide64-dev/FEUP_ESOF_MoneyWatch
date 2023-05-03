@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:MoneyWatch/View/AddExpenseView.dart';
@@ -14,9 +16,27 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
+
 }
 
 class _HomePageState extends State<HomePage> {
+
+  late Timer _everySecond;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // sets first value
+    var _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+      });
+    });
+  }
 
   List<Color> colorList = [
     const Color(0xffd95af3),
@@ -34,8 +54,11 @@ class _HomePageState extends State<HomePage> {
         key: Key(widget.title),
         title: Text(widget.title),
       ),
+
+
       body: Container(
         child: PieChart(
+
           dataMap: widget.user.getSumPurchases(DateTime.now().
           subtract(const Duration(days: 30)),DateTime.now()),
           centerText: "Last Month",
@@ -105,6 +128,13 @@ class _HomePageState extends State<HomePage> {
             SpeedDialChild(
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
+            ),
+
+            SpeedDialChild(
+              child: Icon(Icons.logout),
+              backgroundColor: Colors.green,
+              onTap: () => auth.FirebaseAuth.instance.signOut(),
+              //onTap: () => Navigator.pop(context),
             ),
 
           ],

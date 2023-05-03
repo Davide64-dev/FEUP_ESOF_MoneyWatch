@@ -1,14 +1,7 @@
 import 'dart:core';
-import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
-
-import '../Model/Purchase.dart';
 import '../Model/User.dart';
 import 'EditExpenseView.dart';
-
 
 class PurchaseList extends StatefulWidget {
   User user;
@@ -18,7 +11,6 @@ class PurchaseList extends StatefulWidget {
   @override
   State<PurchaseList> createState() => _PurchaseList();
 }
-
 
 class _PurchaseList extends State<PurchaseList>  {
 
@@ -51,7 +43,6 @@ class _PurchaseList extends State<PurchaseList>  {
                 trailing: Text(widget.user.purchases[index].datetime.toString()),
               )
           );
-
         },
       ),
     );
