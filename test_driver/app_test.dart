@@ -6,8 +6,6 @@ import 'steps/test_steps.dart';
 
 Future<void> main() async{
   final config = FlutterTestConfiguration()
-
-    ..flutterBuildTimeout = Duration(milliseconds: 200000)
     ..features = [Glob(r"test_driver/feature/**.feature")]
     ..reporters = [
       ProgressReporter(),
