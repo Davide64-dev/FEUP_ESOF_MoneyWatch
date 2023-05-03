@@ -104,6 +104,7 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Colors.green,
             ),
             SpeedDialChild(
+              key: Key("Habits"),
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
               onTap: () {
