@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
@@ -33,12 +34,6 @@ class When_I_tap_Button extends When1WithWorld<String, FlutterWorld>{
 class expect_error_message extends ThenWithWorld<FlutterWorld>{
   @override
   Future<void> executeStep() async {
-    /*
-    final locator = find.text('Something Went Wrong!');
-    var locatorExists = await FlutterDriverUtils.isPresent(locator as FlutterDriver?, world.driver as SerializableFinder);
-    expectMatch(true, locatorExists);
-
-     */
   }
 
   @override
@@ -49,6 +44,7 @@ class expect_error_message extends ThenWithWorld<FlutterWorld>{
 class FillField extends When2WithWorld<String, String, FlutterWorld> {
   @override
   Future<void> executeStep(String field1, String field2) async {
+    await FlutterDriverUtils.enterText(world.driver, find.byValueKey(field1), "");
     await FlutterDriverUtils.enterText(
         world.driver, find.byValueKey(field1), field2);
   }
@@ -56,4 +52,3 @@ class FillField extends When2WithWorld<String, String, FlutterWorld> {
   @override
   RegExp get pattern => RegExp(r'I fill {string} field with {string}');
 }
-    

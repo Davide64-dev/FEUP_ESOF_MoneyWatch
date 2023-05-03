@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../Model/User.dart';
+
 class ForumPage extends StatefulWidget {
   final String title;
+  User user;
 
-  ForumPage({required this.title});
+  ForumPage({required this.title, required this.user});
 
   @override
   _ForumPageState createState() => _ForumPageState();
@@ -231,22 +234,89 @@ class _TopicPageState extends State<TopicPage> {
             child: ListTile(
               title: Text(filteredPosts[index].title),
               subtitle: Text(filteredPosts[index].content),
-              trailing: IconButton(
-                icon: Icon(Icons.edit),
-                onPressed: () async {
-                  Post? editedPost = await showDialog<Post>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return EditPostDialog(post: filteredPosts[index]);
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: () async {
+                      Post? editedPost = await showDialog<Post>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return EditPostDialog(post: filteredPosts[index]);
+                        },
+                      );
+                      if (editedPost != null) {
+                        if (editedPost.content.isEmpty || editedPost.title.isEmpty) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Delete Post"),
+                                content: Text("Are you sure you want to delete this post?"),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text("Cancel"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        filteredPosts.removeAt(index);
+                                        posts = filteredPosts;
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text("Delete"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          setState(() {
+                            posts[posts.indexOf(filteredPosts[index])] = editedPost;
+                            filteredPosts[filteredPosts.indexOf(filteredPosts[index])] = editedPost;
+                          });
+                        }
+                      }
                     },
-                  );
-                  if (editedPost != null) {
-                    setState(() {
-                      posts[posts.indexOf(filteredPosts[index])] = editedPost;
-                      filteredPosts[filteredPosts.indexOf(filteredPosts[index])] = editedPost;
-                    });
-                  }
-                },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Delete Post"),
+                            content: Text("Are you sure you want to delete this post?"),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text("Cancel"),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    filteredPosts.removeAt(index);
+                                    posts = filteredPosts;
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                child: Text("Delete"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           );
