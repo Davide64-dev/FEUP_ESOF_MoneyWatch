@@ -29,7 +29,7 @@ void main() {
           final purchases = <Purchase>[];
 
           // Act
-          final user = User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases);
+          final user = User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases, email: " ");
 
           // Assert
           expect(user.id, equals(id));
@@ -40,69 +40,6 @@ void main() {
           expect(user.purchases, equals(purchases));
         });
 
-        /*
-        test('id is not empty', () {
-          // Arrange
-          const id = '';
-          const username = 'TestUser';
-          final habits = <Habit>[];
-          final posts = <Post>[];
-          final customCategories = <String>[];
-          final purchases = <Purchase>[];
-
-          // Act and Assert
-          expect(() => User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases), throwsArgumentError);
-        });
-
-        test('username is not empty', () {
-          // Arrange
-          const id = '12345';
-          const username = '';
-          final habits = <Habit>[];
-          final posts = <Post>[];
-          final customCategories = <String>[];
-          final purchases = <Purchase>[];
-
-          // Act and Assert
-          expect(() => User(id: id, username: username, habits: habits, posts: posts, customCategories: customCategories, purchases: purchases), throwsArgumentError);
-        });
-  */
-
-/*
-    test('addExpenses() should add a purchase to user', () {
-      User user = User(
-        id: 'test_id',
-        username: 'test_username',
-        habits: [],
-        posts: [],
-        customCategories: [],
-        purchases: [],
-      );
-
-      Map<String, dynamic> data = {
-        "amount": 10.0,
-        "category": "test_category",
-        "description": "test_description",
-        "nr_days": 3,
-        "datetime": "2023-04-15T12:00:00.000Z",
-      };
-
-      final mockSnapshot = MockQuerySnapshot();
-      final mockDocument = MockDocumentSnapshot();
-
-      when(mockDocument.documentID).thenReturn('test_id');
-      when(mockDocument.data()).thenReturn(data);
-      when(mockSnapshot.documents).thenReturn([mockDocument]);
-
-      expect(user.purchases.length, 1);
-      expect(user.id, 'test_id');
-      expect(user.purchases[0].amount, 10.0);
-      expect(user.purchases[0].category, 'test_category');
-      expect(user.purchases[0].nr_days, 3);
-      expect(user.purchases[0].datetime, DateTime(2023,4, 15));
-
-    });
-*/
 
     test('addPurchase() should add a purchase to the list', () {
       User user = User(
@@ -111,7 +48,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -133,7 +70,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
       user.addCustomCategory('New Category');
       expect(user.getCustomCategories(), contains('New Category'));
@@ -147,7 +84,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: ['Category 1', 'Category 2'],
-        purchases: [],
+        purchases: [], email: " ",
       );
       List<String> returnValue = user.getCustomCategories();
       expect(returnValue, equals(['Category 1', 'Category 2']));
@@ -183,7 +120,7 @@ void main() {
             1,
             DateTime.now(),
           ),
-        ],
+        ], email: " ",
       );
 
       Map<String, double> sums =
@@ -223,7 +160,7 @@ void main() {
             1,
             DateTime.now(),
           ),
-        ],
+        ], email: " ",
       );
 
       List<BarModel> barModels =
@@ -242,7 +179,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -271,7 +208,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -300,7 +237,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: " ",
       );
 
       user.addPurchase(
@@ -329,7 +266,7 @@ void main() {
         habits: [],
         posts: [],
         customCategories: [],
-        purchases: [],
+        purchases: [], email: "",
       );
 
       user.addPurchase(

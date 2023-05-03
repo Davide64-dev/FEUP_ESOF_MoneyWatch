@@ -25,15 +25,12 @@ class _AddExpenseView extends State<AddExpenseView> {
       if (count == 2) return false;
       if(x[i] == '0') countZeros++;
     }
-
     if(countZeros == x.length) return false;
     if (x == "" || x == '.') return false;
     if (x == 0) return false;
 
     return true;
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -186,8 +183,6 @@ class _AddExpenseView extends State<AddExpenseView> {
                 icon: Icon(Icons.save),
                 label: Text("Submit"),
                 key: Key("Submit")
-
-
               )
           ),
         ],

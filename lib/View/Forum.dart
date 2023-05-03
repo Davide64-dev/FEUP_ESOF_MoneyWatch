@@ -171,7 +171,7 @@ class TopicPage extends StatefulWidget {
 }
 
 class _TopicPageState extends State<TopicPage> {
-  List<Post> posts = [Post(title: 'Post 1', content: 'Arroz e picanha'),      Post(title: 'Post 2', content: 'Feijão preto'),      Post(title: 'Post 3', content: 'Batatas fritas'),    ];
+  List<Post> posts = [Post(title: 'Post 1', content: 'Arroz e picanha'),      Post(title: 'Post 2', content: 'FeijÃ£o preto'),      Post(title: 'Post 3', content: 'Batatas fritas'),    ];
   List<Post> filteredPosts = [];
   bool isSearching = false;
   TextEditingController searchController = TextEditingController();
@@ -231,6 +231,23 @@ class _TopicPageState extends State<TopicPage> {
             child: ListTile(
               title: Text(filteredPosts[index].title),
               subtitle: Text(filteredPosts[index].content),
+              trailing: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () async {
+                  Post? editedPost = await showDialog<Post>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return EditPostDialog(post: filteredPosts[index]);
+                    },
+                  );
+                  if (editedPost != null) {
+                    setState(() {
+                      posts[posts.indexOf(filteredPosts[index])] = editedPost;
+                      filteredPosts[filteredPosts.indexOf(filteredPosts[index])] = editedPost;
+                    });
+                  }
+                },
+              ),
             ),
           );
         },
@@ -293,3 +310,73 @@ class CreateTopicPage extends StatelessWidget {
   }
 }
 
+class EditPostDialog extends StatefulWidget {
+  final Post post;
+
+  EditPostDialog({required this.post});
+
+  @override
+  _EditPostDialogState createState() => _EditPostDialogState();
+}
+
+class _EditPostDialogState extends State<EditPostDialog> {
+  late TextEditingController titleController;
+  late TextEditingController contentController;
+
+  @override
+  void initState() {
+    titleController = TextEditingController(text: widget.post.title);
+    contentController = TextEditingController(text: widget.post.content);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    contentController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("Edit Post"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          TextField(
+            controller: titleController,
+            decoration: InputDecoration(
+              hintText: "Enter Post Title",
+            ),
+          ),
+          SizedBox(height: 8.0),
+          TextField(
+            controller: contentController,
+            decoration: InputDecoration(
+              hintText: "Enter Post Content",
+            ),
+            maxLines: null,
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Cancel"),
+        ),
+        TextButton(
+          onPressed: () {
+            String title = titleController.text;
+            String content = contentController.text;
+            Post editedPost = Post(title: title, content: content);
+            Navigator.pop(context, editedPost);
+          },
+          child: Text("Save"),
+        ),
+      ],
+    );
+  }
+}
