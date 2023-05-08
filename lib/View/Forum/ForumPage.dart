@@ -106,19 +106,39 @@ class _ForumPageState extends State<ForumPage> {
       body: ListView.builder(
         itemCount: filteredTopics.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ListTile(
-              title: Text(filteredTopics[index]),
-              onTap: () {
-                var topicPage = TopicPage(topic: filteredTopics[index], user: widget.user);
-                topicPage.getPosts();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => topicPage,
+          return GestureDetector(
+            onTap: () {
+              var topicPage = TopicPage(topic: filteredTopics[index], user: widget.user);
+              topicPage.getPosts();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => topicPage,
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(24.0),
+              margin: EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Color(0xADD8E6FF),
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Align(
+                    child: Text(
+                        filteredTopics[index],
+                        style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        ),
+                    ),
                   ),
-                );
-              },
+                ]
+              ),
             ),
           );
         },
