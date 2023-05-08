@@ -172,14 +172,24 @@ class _EditExpenseView extends State<EditExpenseView> {
                   onPressed: () {
                     var amount;
 
-                    if (isValid(_amountController.text)) {
+                    if (_amountController.text == ""){
+                      widget.user.removePurchasetoDatabase(widget.purchase.code);
+                      Navigator.pop(context);
+                      _showSuccessAdvice('Successfully Removed Expense!');
+                    }
+
+                    else if (isValid(_amountController.text)) {
                       amount = double.parse(_amountController.text).toDouble();
                       amount = double.parse(amount.toStringAsFixed(2));
-                      widget.purchase.setAttributes(amount, _descriptionController.text
-                          , widget.purchase.category, nr_daysInput);
-                      Navigator.pop(context);
 
-                      _showSuccessAdvice();
+                      if (amount != 0) {
+                        widget.purchase.setAttributes(
+                            amount, _descriptionController.text
+                            , widget.purchase.category, nr_daysInput);
+                        Navigator.pop(context);
+
+                        _showSuccessAdvice('Successfully Edited Expense!');
+                      }
                     }
                     else{
                       _showErrorAdvice();
@@ -198,11 +208,11 @@ class _EditExpenseView extends State<EditExpenseView> {
     );
   }
 
-  void _showSuccessAdvice() {
+  void _showSuccessAdvice(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Successfully Edited Expense!'),
-        duration: Duration(seconds: 3),
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 1),
         backgroundColor: Colors.green,
       ),
     );

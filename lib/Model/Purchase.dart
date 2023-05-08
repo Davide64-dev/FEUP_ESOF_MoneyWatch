@@ -1,10 +1,11 @@
 class Purchase implements Comparable<Purchase>{
+  String code;
   double amount;
   String description;
   String category;
   int nr_days; // if nr_days = 0 -> it it a uniquePurchase;
   DateTime datetime;
-  Purchase(this.amount, this.description, this.category,
+  Purchase(this.code, this.amount, this.description, this.category,
       this.nr_days, this.datetime) {
     if (amount < 0) {
       throw ArgumentError('Amount cannot be negative');
@@ -36,5 +37,13 @@ class Purchase implements Comparable<Purchase>{
     this.description = description;
     this.category = category;
     this.nr_days = nr_days;
+  }
+
+  void setId(String newID){
+    code = newID;
+  }
+
+  String getId(){
+    return code;
   }
 }

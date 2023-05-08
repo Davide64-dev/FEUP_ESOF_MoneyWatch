@@ -54,12 +54,13 @@ class User{
   void addExpensesWithSnapshot(QuerySnapshot value){
     value.docs.forEach((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      String id = doc.id;
       double amount = data["amount"].toDouble();
       String category = data["category"];
       String description = data["description"];
       int nr_days = data["nr_days"];
       DateTime datetime = DateTime.parse(data["datetime"]);
-      addPurchase(amount, description, category, nr_days, datetime);
+      addPurchase(id, amount, description, category, nr_days, datetime);
     });
   }
 
@@ -74,15 +75,25 @@ class User{
 
 
 
-  void addPurchase(double amount, String description, String category, nr_days, DateTime datetime){
-    Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
+  void addPurchase(String id, double amount, String description, String category, nr_days, DateTime datetime){
+    Purchase purchase = Purchase(id, amount, description, category, nr_days, datetime);
     purchases.add(purchase);
     purchases.sort();
     purchases = purchases.reversed.toList();
   }
 
+  void removePurchasetoDatabase(String ID){
+    CollectionReference purchasesRef = FirebaseFirestore.instance.collection('Purchase');
+    purchasesRef.doc(ID).delete().then((value) {
+      print('Document with ID $ID has been deleted');
+      purchases.removeWhere((purchase) => purchase.getId() == ID);
+    }).catchError((error) {
+      print('Error deleting document with ID $ID: $error');
+    });
+  }
+
   void addPurchasetoDatabase(double amount, String description, String category, nr_days, DateTime datetime){
-    Purchase purchase = Purchase(amount, description, category, nr_days, datetime);
+    Purchase purchase = Purchase(" ",amount, description, category, nr_days, datetime);
     FirebaseFirestore.instance.collection('Purchase').add({
       'amount': amount,
       'category': category,
@@ -90,7 +101,14 @@ class User{
       'nr_days': nr_days,
       'description': description,
       'user': email,
-    });
+    }).then((newDocRef) {
+      String docId = newDocRef.id;
+      print('New document added with ID: $docId');
+      purchase.setId(docId);
+      purchases.add(purchase);
+      purchases.sort();
+      purchases = purchases.reversed.toList();
+    });;
     purchases.add(purchase);
     purchases.sort();
     purchases = purchases.reversed.toList();
@@ -103,6 +121,7 @@ class User{
   List<String> getCustomCategories(){
     return customCategories;
   }
+
 
 
   Map<String, double> getSumPurchases(DateTime startDate, DateTime endDate){
