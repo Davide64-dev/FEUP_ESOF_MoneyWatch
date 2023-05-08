@@ -5,5 +5,5 @@ class Post{
   String content;
   List<Comment> comments;
   String category;
-  Post(this.title, this.content, this.comments, this.category);
+  Post({required this.title,required this.content,required this.comments,required this.category});
 }
