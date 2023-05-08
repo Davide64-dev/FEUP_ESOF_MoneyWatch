@@ -109,9 +109,6 @@ class User{
       purchases.sort();
       purchases = purchases.reversed.toList();
     });;
-    purchases.add(purchase);
-    purchases.sort();
-    purchases = purchases.reversed.toList();
   }
 
   void addCustomCategory(String category){

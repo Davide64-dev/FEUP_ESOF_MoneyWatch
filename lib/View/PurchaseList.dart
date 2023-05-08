@@ -31,16 +31,54 @@ class _PurchaseList extends State<PurchaseList>  {
 
                 );
               },
-              child: ListTile(
-                title: Text(widget.user.purchases[index].category),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Amount: ${widget.user.purchases[index].amount.toString()}"),
-                    Text("Description: ${widget.user.purchases[index].description}"),
-                  ],
+              child: Container(
+                  padding: EdgeInsets.all(24.0),
+                margin: EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                color: Color(0xADD8E6FF),
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
                 ),
-                trailing: Text(widget.user.purchases[index].datetime.toString()),
+              ),
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment(-0.9, 0),
+                    child: Text(
+                      widget.user.purchases[index].category,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment(0, 0),
+                    child: Text(
+                      widget.user.purchases[index].datetime.year.toString() + "/" +
+                        widget.user.purchases[index].datetime.month.toString() + "/" +
+                          widget.user.purchases[index].datetime.day.toString(),
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
+                    ),
+
+                  ),
+                  Align(
+                    alignment: Alignment(0.9,0),
+                    child: Text(
+                      widget.user.purchases[index].amount.toString() + "€",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                ]
+              )
               )
           );
         },
