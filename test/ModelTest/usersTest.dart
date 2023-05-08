@@ -52,6 +52,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         10.0,
         'test_description',
         'test_category',
@@ -100,6 +101,7 @@ void main() {
         customCategories: [],
         purchases: [
           Purchase(
+            ",",
             10.0,
             'test_description',
             'test_category',
@@ -107,6 +109,7 @@ void main() {
             DateTime.now(),
           ),
           Purchase(
+            "",
             20.0,
             'test_description',
             'test_category_2',
@@ -114,6 +117,7 @@ void main() {
             DateTime.now(),
           ),
           Purchase(
+            "",
             30.0,
             'test_description',
             'test_category',
@@ -140,6 +144,7 @@ void main() {
         customCategories: [],
         purchases: [
           Purchase(
+            "",
             10.0,
             'test_description',
             'test_category',
@@ -147,6 +152,7 @@ void main() {
             DateTime.now(),
           ),
           Purchase(
+            "",
             20.0,
             'test_description',
             'test_category_2',
@@ -154,6 +160,7 @@ void main() {
             DateTime.now(),
           ),
           Purchase(
+            "",
             30.0,
             'test_description',
             'test_category',
@@ -183,6 +190,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         10.0,
         'test_description1',
         'test_category',
@@ -191,6 +199,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         20.0,
         'test_description2',
         'test_category',
@@ -212,6 +221,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         10.0,
         'test_description1',
         'test_category',
@@ -220,6 +230,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         20.0,
         'test_description2',
         'test_category',
@@ -241,6 +252,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         10.0,
         'test_description1',
         'test_category',
@@ -249,6 +261,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         20.0,
         'test_description2',
         'test_category',
@@ -270,6 +283,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         10.0,
         'test_description1',
         'test_category',
@@ -278,6 +292,7 @@ void main() {
       );
 
       user.addPurchase(
+        "",
         20.0,
         'test_description2',
         'test_category',

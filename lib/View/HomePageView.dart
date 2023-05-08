@@ -7,7 +7,7 @@ import 'package:MoneyWatch/View/AddExpenseView.dart';
 import 'package:MoneyWatch/View/StatisticsPageView.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../Model/User.dart';
-import 'Forum.dart';
+import 'Forum/Forum.dart';
 
 
 class HomePage extends StatefulWidget {
