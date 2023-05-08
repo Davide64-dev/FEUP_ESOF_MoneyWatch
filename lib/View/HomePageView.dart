@@ -105,9 +105,11 @@ class _HomePageState extends State<HomePage> {
               child: Icon(Icons.forum),
               backgroundColor: Colors.green,
               onTap: () {
+                ForumPage page = ForumPage(title: 'Forum', user: widget.user);
+                page.getTopics();
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ForumPage(title: 'Forum', user: widget.user)),
+                    MaterialPageRoute(builder: (context) => page),
                 );
               },
             ),

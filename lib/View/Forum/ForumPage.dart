@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import '../../Model/User.dart';
 import 'CreateTopicPage.dart';
 import 'TopicPage.dart';
@@ -7,24 +9,42 @@ import 'TopicPage.dart';
 class ForumPage extends StatefulWidget {
   final String title;
   User user;
+  List<String> topics = [];
 
   ForumPage({required this.title, required this.user});
 
   @override
   _ForumPageState createState() => _ForumPageState();
+
+  void getTopics() async{
+    CollectionReference topics = FirebaseFirestore.instance.collection('Topics');
+    QuerySnapshot snapshot1 = await topics.get();
+    getTopicsWithSnapshot(snapshot1);
+  }
+
+  void getTopicsWithSnapshot(QuerySnapshot value){
+    value.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      String topic = data["name"];
+      topics.add(topic);
+    });
+  }
 }
 
 class _ForumPageState extends State<ForumPage> {
-  List<String> topics = ['Topic 1', 'Topic 2', 'Topic 3'];
+
+
   TextEditingController searchController = TextEditingController();
 
   List<String> filteredTopics = [];
 
   bool isSearching = false;
 
+  late Timer _everySecond;
+
   void filterTopics(String query) {
     List<String> temp = [];
-    topics.forEach((topic) {
+    widget.topics.forEach((topic) {
       if (topic.toLowerCase().contains(query.toLowerCase())) {
         temp.add(topic);
       }
@@ -36,8 +56,17 @@ class _ForumPageState extends State<ForumPage> {
 
   @override
   void initState() {
-    filteredTopics = topics;
+    filteredTopics = widget.topics;
     super.initState();
+
+    var _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+      });
+    });
   }
 
   @override
@@ -67,7 +96,7 @@ class _ForumPageState extends State<ForumPage> {
             onPressed: () {
               setState(() {
                 isSearching = !isSearching;
-                filteredTopics = topics;
+                filteredTopics = widget.topics;
                 searchController.clear();
               });
             },
@@ -92,6 +121,7 @@ class _ForumPageState extends State<ForumPage> {
           );
         },
       ),
+      /*
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -105,6 +135,8 @@ class _ForumPageState extends State<ForumPage> {
         backgroundColor: Colors.green,
         child: Icon(Icons.add),
       ),
+
+       */
     );
   }
 }
