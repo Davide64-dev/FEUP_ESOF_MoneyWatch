@@ -64,7 +64,7 @@ class _EditPostDialogState extends State<EditPostDialog> {
           onPressed: () {
             String title = titleController.text;
             String content = contentController.text;
-            Post editedPost = Post(title: title, content: content, comments: [], category: '');
+            Post editedPost = Post(title: title, content: content, comments: [], category: '', ID: '', user: '');
             Navigator.pop(context, editedPost);
           },
           child: Text("Save"),

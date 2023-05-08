@@ -110,10 +110,12 @@ class _ForumPageState extends State<ForumPage> {
             child: ListTile(
               title: Text(filteredTopics[index]),
               onTap: () {
+                var topicPage = TopicPage(topic: filteredTopics[index], user: widget.user);
+                topicPage.getPosts();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TopicPage(topic: filteredTopics[index]),
+                    builder: (context) => topicPage,
                   ),
                 );
               },

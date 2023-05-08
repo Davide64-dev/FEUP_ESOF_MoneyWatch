@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../Model/Post.dart';
@@ -6,26 +9,59 @@ import 'CreatePostDialog.dart';
 import 'EditPostDialog.dart';
 class TopicPage extends StatefulWidget {
   final String topic;
+  User user;
+  List<Post> posts = [];
 
-  TopicPage({required this.topic});
+
+  TopicPage({required this.topic, required this.user});
 
   @override
   _TopicPageState createState() => _TopicPageState();
+
+  void getPosts() async{
+    CollectionReference posts = FirebaseFirestore.instance.collection('Posts');
+    QuerySnapshot snapshot1 = await posts.where('category', isEqualTo: topic).get();
+    getPostsWithSnapshot(snapshot1);
+  }
+
+  void getPostsWithSnapshot(QuerySnapshot value){
+    value.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      String id = doc.id;
+      String topic = data["category"];
+      String content = data["content"];
+      String title = data["title"];
+      String user = data["user"];
+      Post post = Post(ID: id, title: title, content: content, comments: [], category: topic, user: user);
+      posts.add(post);
+    });
+  }
 }
 
 class _TopicPageState extends State<TopicPage> {
-  List<Post> posts = [Post(title: 'Post 1', content: 'Arroz e picanha', comments: [], category: ''),      Post(title: 'Post 2', content: 'FeijÃ£o preto', comments: [], category: ''),      Post(title: 'Post 3', content: 'Batatas fritas', comments: [], category: ''),    ];
   List<Post> filteredPosts = [];
   bool isSearching = false;
   TextEditingController searchController = TextEditingController();
+  late Timer _everySecond;
+
+
   @override
   void initState() {
-    filteredPosts = posts;
+    filteredPosts = widget.posts;
     super.initState();
+
+    var _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+      });
+    });
   }
   void filterPosts(String query) {
     List<Post> temp = [];
-    for (var p in posts) {
+    for (var p in widget.posts) {
       if (p.title.toLowerCase().contains(query.toLowerCase()) || p.content.toLowerCase().contains(query.toLowerCase())) {
         temp.add(p);
       }
@@ -60,7 +96,7 @@ class _TopicPageState extends State<TopicPage> {
             onPressed: () {
               setState(() {
                 isSearching = !isSearching;
-                filteredPosts = posts;
+                filteredPosts = widget.posts;
                 searchController.clear();
               });
             },
@@ -105,7 +141,7 @@ class _TopicPageState extends State<TopicPage> {
                                     onPressed: () {
                                       setState(() {
                                         filteredPosts.removeAt(index);
-                                        posts = filteredPosts;
+                                        widget.posts = filteredPosts;
                                       });
                                       Navigator.pop(context);
                                     },
@@ -117,7 +153,7 @@ class _TopicPageState extends State<TopicPage> {
                           );
                         } else {
                           setState(() {
-                            posts[posts.indexOf(filteredPosts[index])] = editedPost;
+                            widget.posts[widget.posts.indexOf(filteredPosts[index])] = editedPost;
                             filteredPosts[filteredPosts.indexOf(filteredPosts[index])] = editedPost;
                           });
                         }
@@ -144,7 +180,7 @@ class _TopicPageState extends State<TopicPage> {
                                 onPressed: () {
                                   setState(() {
                                     filteredPosts.removeAt(index);
-                                    posts = filteredPosts;
+                                    widget.posts = filteredPosts;
                                   });
                                   Navigator.pop(context);
                                 },
@@ -172,7 +208,7 @@ class _TopicPageState extends State<TopicPage> {
           );
           if (newPost != null) {
             setState(() {
-              posts.add(newPost);
+              widget.posts.add(newPost);
             });
           }
         },

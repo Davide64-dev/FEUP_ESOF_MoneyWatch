@@ -45,7 +45,7 @@ class CreatePostDialog extends StatelessWidget {
           onPressed: () {
             String title = titleController.text;
             String content = contentController.text;
-            Post post = Post(title: '', content: '', comments: [], category: '');
+            Post post = Post(title: '', content: '', comments: [], category: '', ID: '', user: '');
             Navigator.pop(context, post);
           },
           child: Text("Create"),
