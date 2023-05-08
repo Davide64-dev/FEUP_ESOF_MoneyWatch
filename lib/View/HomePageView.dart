@@ -123,12 +123,8 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.psychology),
-              backgroundColor: Colors.green,
-            ),
-            SpeedDialChild(
               key: Key("Habits"),
-              child: Icon(Icons.savings),
+              child: Icon(Icons.psychology),
               backgroundColor: Colors.green,
               onTap: () {
                 Navigator.push(
@@ -136,6 +132,11 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => HabitTrackerView(title: "Habits", user: widget.user))
                 );
               },
+            ),
+            SpeedDialChild(
+              key: Key("Psychology"),
+              child: Icon(Icons.savings),
+              backgroundColor: Colors.green,
             ),
 
             SpeedDialChild(

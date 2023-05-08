@@ -20,7 +20,7 @@ class _HabitTracker extends State<HabitTrackerView> {
 
   List<Habit> habits = [Habit('Smoking', 'Quit smoking', DateTime(2023, 05, 03), 4),
                         Habit('Coffee', 'Drink less coffee', DateTime(2023, 04, 15), 3),
-                        Habit('Restaurant', 'Reduce the number of times I eat out', DateTime(2023, 03, 20), 3)];
+                        Habit('Restaurant', 'Reduce the number of times I eat out', DateTime(2023, 03, 20), 3),];
 
   @override
   void initState() {
@@ -51,20 +51,43 @@ class _HabitTracker extends State<HabitTrackerView> {
               ),
             );
           },
-          child: ListTile(
-            title: Text(widget.user.habits[index].name),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Amount per day: ${widget.user.habits[index].amountPerDay
-                    .toString()}"),
-                Text("Description: ${widget.user.habits[index].description}"),
-              ],
+          child: Container(
+            margin: EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.greenAccent,
+              border: Border.all(
+                color: Colors.grey,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(10),
             ),
-            trailing: Text("Start date: ${widget.user.habits[index].startDate
-                .toString()}"),
+        child: Container(
+          margin: EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.white,
+          border: Border.all(
+            color: Colors.grey,
+            width: 1,
           ),
-        );
+          borderRadius: BorderRadius.circular(10),
+          ),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment(0, 0),
+              child: Text(
+                widget.user.habits[index].name,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+            ],
+        ),
+        ),
+        ));
       }
     ),
       floatingActionButton: SpeedDial(
