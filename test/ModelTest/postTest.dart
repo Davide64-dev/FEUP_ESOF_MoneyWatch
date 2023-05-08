@@ -13,7 +13,7 @@ void main() {
       const category = 'Test Category';
 
       // Act
-      final post = Post(title, content, comments, category);
+      final post = Post(title: '', content: '', comments: [], category: '');
 
       // Assert
       expect(post.title, equals(title));
