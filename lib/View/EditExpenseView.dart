@@ -8,9 +8,6 @@ class EditExpenseView extends StatefulWidget {
   final String title;
   User user;
   Purchase purchase;
-  String category = 'Leisure';
-  var amountInput = "";
-  String descriptionInput = "";
 
   @override
   State<EditExpenseView> createState() => _EditExpenseView();
@@ -54,6 +51,8 @@ class _EditExpenseView extends State<EditExpenseView> {
       "Transport",
       "Education",
     ];
+    var _amountController = TextEditingController(text: widget.purchase.amount.toString());
+    var _descriptionController = TextEditingController(text: widget.purchase.description);
 
     return Scaffold(
       appBar: AppBar(
@@ -94,10 +93,11 @@ class _EditExpenseView extends State<EditExpenseView> {
                 //height: 10,
                 child: TextField(
                     key: const Key("Amount"),
+                    controller: _amountController,
                     decoration: const InputDecoration(),
                     keyboardType: TextInputType.number,
                     onChanged: (String val) async {
-                      widget.amountInput = val;
+                      _amountController.text = val;
                     }),
               )
           ),
@@ -106,15 +106,15 @@ class _EditExpenseView extends State<EditExpenseView> {
           Align(
               alignment: const Alignment(0, -0.45),
               child: DropdownButton<String>(
-                value: widget.category,
+                value: widget.purchase.category,
                 underline: const SizedBox(),
 
                 icon: const Icon(Icons.keyboard_arrow_down),
 
                 onChanged: (String? newValue){
-                  widget.category = newValue!;
+                  widget.purchase.category = newValue!;
                   setState(() {
-                    widget.category = newValue!;
+                    widget.purchase.category = newValue!;
                   });
                 },
 
@@ -150,7 +150,7 @@ class _EditExpenseView extends State<EditExpenseView> {
             child: SizedBox(
               width: 300,
               child: TextField(
-
+                  controller: _descriptionController,
                   cursorHeight: 20,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -160,7 +160,7 @@ class _EditExpenseView extends State<EditExpenseView> {
 
                   ),
                   onChanged: (String val) async {
-                    widget.descriptionInput = val;
+                    _descriptionController.text = val;
                   }),
             ),
           ),
@@ -172,11 +172,11 @@ class _EditExpenseView extends State<EditExpenseView> {
                   onPressed: () {
                     var amount;
 
-                    if (isValid(widget.amountInput)) {
-                      amount = double.parse(widget.amountInput).toDouble();
+                    if (isValid(_amountController.text)) {
+                      amount = double.parse(_amountController.text).toDouble();
                       amount = double.parse(amount.toStringAsFixed(2));
-                      widget.purchase.setAttributes(amount, widget.descriptionInput
-                          , widget.category, nr_daysInput);
+                      widget.purchase.setAttributes(amount, _descriptionController.text
+                          , widget.purchase.category, nr_daysInput);
                       Navigator.pop(context);
 
                       _showSuccessAdvice();
