@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import '../Model/User.dart';
@@ -13,6 +14,26 @@ class PurchaseList extends StatefulWidget {
 }
 
 class _PurchaseList extends State<PurchaseList>  {
+
+  late Timer _everySecond;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // sets first value
+    var _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+      });
+    });
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
