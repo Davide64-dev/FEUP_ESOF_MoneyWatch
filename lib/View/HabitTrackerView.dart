@@ -18,9 +18,9 @@ class HabitTrackerView extends StatefulWidget {
 
 class _HabitTracker extends State<HabitTrackerView> {
 
-  List<Habit> habits = [Habit('Smoking', 'Quit smoking', DateTime(2023, 05, 03), 4),
-                        Habit('Coffee', 'Drink less coffee', DateTime(2023, 04, 15), 3),
-                        Habit('Restaurant', 'Reduce the number of times I eat out', DateTime(2023, 03, 20), 3),];
+  List<Habit> habits = [Habit('Smoking', 'Quit smoking', DateTime(2023, 05, 03), 4.0),
+                        Habit('Coffee', 'Drink less coffee', DateTime(2023, 04, 15), 3.0),
+                        Habit('Restaurant', 'Reduce the number of times I eat out', DateTime(2023, 03, 20), 3.0),];
 
   @override
   void initState() {
