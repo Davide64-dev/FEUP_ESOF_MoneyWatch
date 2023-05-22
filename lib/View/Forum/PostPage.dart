@@ -4,13 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../Model/Comment.dart';
 import '../../Model/Post.dart';
 import '../../Model/User.dart';
 
 class PostPage extends StatefulWidget {
   final String title;
   User user;
-  List<String> comments = [];
+  List<Comment> comments = [];
   Post post;
 
   PostPage({required this.title, required this.user, required this.post});
@@ -18,17 +19,21 @@ class PostPage extends StatefulWidget {
   @override
   _PostPageState createState() => _PostPageState();
 
-  void getTopics() async{
-    CollectionReference topics = FirebaseFirestore.instance.collection('Comments');
-    QuerySnapshot snapshot1 = await topics.get();
-    getTopicsWithSnapshot(snapshot1);
+  void getPosts() async{
+    CollectionReference comments1 = FirebaseFirestore.instance.collection('Comments');
+    QuerySnapshot snapshot1 = await comments1.where('post', isEqualTo: post.ID).get();
+    print(post.ID);
+    getPostsWithSnapshot(snapshot1);
   }
 
-  void getTopicsWithSnapshot(QuerySnapshot value){
+  void getPostsWithSnapshot(QuerySnapshot value){
     value.docs.forEach((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      String topic = data["name"];
-      comments.add(topic);
+      String id = doc.id;
+      String content = data["content"];
+      String user = data["user"];
+      Comment post = Comment(content, user, id);
+      comments.add(post);
     });
   }
 }
@@ -38,36 +43,21 @@ class _PostPageState extends State<PostPage> {
 
   TextEditingController searchController = TextEditingController();
 
-  List<String> filteredTopics = [];
+  List<Comment> filteredComments = [];
 
   bool isSearching = false;
 
   late Timer _everySecond;
 
   void filterTopics(String query) {
-    List<String> temp = [];
+    List<Comment> temp = [];
     widget.comments.forEach((topic) {
-      if (topic.toLowerCase().contains(query.toLowerCase())) {
+      if (topic.content.toLowerCase().contains(query.toLowerCase())) {
         temp.add(topic);
       }
     });
     setState(() {
-      filteredTopics = temp;
-    });
-  }
-
-  @override
-  void initState() {
-    filteredTopics = widget.comments;
-    super.initState();
-
-    var _now = DateTime.now().second.toString();
-
-    // defines a timer
-    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
-      setState(() {
-        _now = DateTime.now().second.toString();
-      });
+      filteredComments = temp;
     });
   }
 
@@ -98,7 +88,7 @@ class _PostPageState extends State<PostPage> {
             onPressed: () {
               setState(() {
                 isSearching = !isSearching;
-                filteredTopics = widget.comments;
+                filteredComments = widget.comments;
                 searchController.clear();
               });
             },
@@ -106,35 +96,76 @@ class _PostPageState extends State<PostPage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: filteredTopics.length,
+        itemCount: filteredComments.length + 2, // Add 2 for the title and post content
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            child: Container(
+          if (index == 0) {
+            // First item is the post title
+            return Container(
               padding: EdgeInsets.all(24.0),
               margin: EdgeInsets.all(18),
               decoration: BoxDecoration(
-                color: Color(0xADD8E6FF),
+              ),
+              child: Align(
+                child: Text(
+                  widget.post.title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            );
+          } else if (index == 1) {
+            // Second item is the post content
+            return Container(
+              padding: EdgeInsets.all(60.0),
+              margin: EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Color(0xFFFFFF),
                 border: Border.all(
                   color: Colors.grey,
                   width: 1,
                 ),
               ),
-              child: Stack(
-                  children: [
-                    Align(
-                      child: Text(
-                        filteredTopics[index],
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ]
+              child: Align(
+                child: Text(
+                  widget.post.content,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            // Remaining items are the comments
+            int commentIndex = index - 2; // Adjust the index to account for the title and post content
+            return GestureDetector(
+              child: Container(
+                padding: EdgeInsets.all(24.0),
+                margin: EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  color: Color(0xADD8E6FF),
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+                ),
+                child: Align(
+                  child: Text(
+                    filteredComments[commentIndex].content,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+
+                  ),
+                ),
+              ),
+            );
+          }
         },
       ),
     );
   }
+
+
 }

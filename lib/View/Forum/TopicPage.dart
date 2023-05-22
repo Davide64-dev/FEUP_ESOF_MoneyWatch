@@ -110,12 +110,12 @@ class _TopicPageState extends State<TopicPage> {
           return GestureDetector(
 
             onTap: () {
-              var topicPage = PostPage(post: filteredPosts[index], user: widget.user, title: 'Post',);
-              //topicPage.getPosts();
+              var postPage = PostPage(post: filteredPosts[index], user: widget.user, title: 'Post');
+              postPage.getPosts();
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => topicPage,
+                  builder: (context) => postPage,
                 ),
               );
             },
