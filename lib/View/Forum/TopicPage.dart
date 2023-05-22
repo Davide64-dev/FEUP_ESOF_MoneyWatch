@@ -7,6 +7,7 @@ import '../../Model/Post.dart';
 import '../../Model/User.dart';
 import 'CreatePostDialog.dart';
 import 'EditPostDialog.dart';
+import 'PostPage.dart';
 class TopicPage extends StatefulWidget {
   final String topic;
   User user;
@@ -106,93 +107,40 @@ class _TopicPageState extends State<TopicPage> {
       body: ListView.builder(
         itemCount: filteredPosts.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ListTile(
-              title: Text(filteredPosts[index].title),
-              subtitle: Text(filteredPosts[index].content),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () async {
-                      Post? editedPost = await showDialog<Post>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return EditPostDialog(post: filteredPosts[index]);
-                        },
-                      );
-                      if (editedPost != null) {
-                        if (editedPost.content.isEmpty || editedPost.title.isEmpty) {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text("Delete Post"),
-                                content: Text("Are you sure you want to delete this post?"),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text("Cancel"),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        filteredPosts.removeAt(index);
-                                        widget.posts = filteredPosts;
-                                      });
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text("Delete"),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        } else {
-                          setState(() {
-                            widget.posts[widget.posts.indexOf(filteredPosts[index])] = editedPost;
-                            filteredPosts[filteredPosts.indexOf(filteredPosts[index])] = editedPost;
-                          });
-                        }
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text("Delete Post"),
-                            content: Text("Are you sure you want to delete this post?"),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text("Cancel"),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    filteredPosts.removeAt(index);
-                                    widget.posts = filteredPosts;
-                                  });
-                                  Navigator.pop(context);
-                                },
-                                child: Text("Delete"),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ],
+          return GestureDetector(
+
+            onTap: () {
+              var topicPage = PostPage(post: filteredPosts[index], user: widget.user, title: 'Post',);
+              //topicPage.getPosts();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => topicPage,
+                ),
+              );
+            },
+
+            child: Container(
+              padding: EdgeInsets.all(24.0),
+              margin: EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Color(0xADD8E6FF),
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+              ),
+              child: Stack(
+                  children: [
+                    Align(
+                      child: Text(
+                        filteredPosts[index].title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ]
               ),
             ),
           );

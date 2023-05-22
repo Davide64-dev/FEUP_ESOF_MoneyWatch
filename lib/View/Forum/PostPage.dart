@@ -1,22 +1,25 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import '../../Model/User.dart';
-import 'CreateTopicPage.dart';
-import 'TopicPage.dart';
 
-class ForumPage extends StatefulWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../../Model/Post.dart';
+import '../../Model/User.dart';
+
+class PostPage extends StatefulWidget {
   final String title;
   User user;
-  List<String> topics = [];
+  List<String> comments = [];
+  Post post;
 
-  ForumPage({required this.title, required this.user});
+  PostPage({required this.title, required this.user, required this.post});
 
   @override
-  _ForumPageState createState() => _ForumPageState();
+  _PostPageState createState() => _PostPageState();
 
   void getTopics() async{
-    CollectionReference topics = FirebaseFirestore.instance.collection('Topics');
+    CollectionReference topics = FirebaseFirestore.instance.collection('Comments');
     QuerySnapshot snapshot1 = await topics.get();
     getTopicsWithSnapshot(snapshot1);
   }
@@ -25,12 +28,12 @@ class ForumPage extends StatefulWidget {
     value.docs.forEach((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       String topic = data["name"];
-      topics.add(topic);
+      comments.add(topic);
     });
   }
 }
 
-class _ForumPageState extends State<ForumPage> {
+class _PostPageState extends State<PostPage> {
 
 
   TextEditingController searchController = TextEditingController();
@@ -43,7 +46,7 @@ class _ForumPageState extends State<ForumPage> {
 
   void filterTopics(String query) {
     List<String> temp = [];
-    widget.topics.forEach((topic) {
+    widget.comments.forEach((topic) {
       if (topic.toLowerCase().contains(query.toLowerCase())) {
         temp.add(topic);
       }
@@ -55,7 +58,7 @@ class _ForumPageState extends State<ForumPage> {
 
   @override
   void initState() {
-    filteredTopics = widget.topics;
+    filteredTopics = widget.comments;
     super.initState();
 
     var _now = DateTime.now().second.toString();
@@ -95,7 +98,7 @@ class _ForumPageState extends State<ForumPage> {
             onPressed: () {
               setState(() {
                 isSearching = !isSearching;
-                filteredTopics = widget.topics;
+                filteredTopics = widget.comments;
                 searchController.clear();
               });
             },
@@ -106,16 +109,6 @@ class _ForumPageState extends State<ForumPage> {
         itemCount: filteredTopics.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-            onTap: () {
-              var topicPage = TopicPage(topic: filteredTopics[index], user: widget.user);
-              topicPage.getPosts();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => topicPage,
-                ),
-              );
-            },
             child: Container(
               padding: EdgeInsets.all(24.0),
               margin: EdgeInsets.all(18),
@@ -127,37 +120,21 @@ class _ForumPageState extends State<ForumPage> {
                 ),
               ),
               child: Stack(
-                children: [
-                  Align(
-                    child: Text(
+                  children: [
+                    Align(
+                      child: Text(
                         filteredTopics[index],
                         style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.bold,
                         ),
+                      ),
                     ),
-                  ),
-                ]
+                  ]
               ),
             ),
           );
         },
       ),
-      /*
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CreateTopicPage(),
-            ),
-          );
-        },
-        tooltip: 'Create New Post',
-        backgroundColor: Colors.green,
-        child: Icon(Icons.add),
-      ),
-
-       */
     );
   }
 }
