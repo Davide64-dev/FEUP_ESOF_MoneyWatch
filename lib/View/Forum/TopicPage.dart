@@ -42,9 +42,9 @@ class TopicPage extends StatefulWidget {
 class _TopicPageState extends State<TopicPage> {
   List<Post> filteredPosts = [];
   bool isSearching = false;
+  bool isSorting = false;
   TextEditingController searchController = TextEditingController();
   late Timer _everySecond;
-
 
   @override
   void initState() {
@@ -53,17 +53,19 @@ class _TopicPageState extends State<TopicPage> {
 
     var _now = DateTime.now().second.toString();
 
-    // defines a timer
+    // Define um timer
     _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
       setState(() {
         _now = DateTime.now().second.toString();
       });
     });
   }
+
   void filterPosts(String query) {
     List<Post> temp = [];
     for (var p in widget.posts) {
-      if (p.title.toLowerCase().contains(query.toLowerCase()) || p.content.toLowerCase().contains(query.toLowerCase())) {
+      if (p.title.toLowerCase().contains(query.toLowerCase()) ||
+          p.content.toLowerCase().contains(query.toLowerCase())) {
         temp.add(p);
       }
     }
@@ -71,6 +73,14 @@ class _TopicPageState extends State<TopicPage> {
       filteredPosts = temp;
     });
   }
+
+  void sortPostsAlphabetically() {
+    setState(() {
+      isSorting = true;
+      filteredPosts.sort((a, b) => a.title.compareTo(b.title));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,15 +112,25 @@ class _TopicPageState extends State<TopicPage> {
               });
             },
           ),
+          IconButton(
+            icon: Icon(
+              Icons.sort,
+            ),
+            onPressed: () {
+              sortPostsAlphabetically(); // Chama a função para ordenar os posts
+            },
+          ),
         ],
       ),
       body: ListView.builder(
         itemCount: filteredPosts.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-
             onTap: () {
-              var postPage = PostPage(post: filteredPosts[index], user: widget.user, title: 'Post');
+              var postPage = PostPage(
+                post: filteredPosts[index],
+                title: 'Post',
+              );
               postPage.getPosts();
               Navigator.push(
                 context,
@@ -119,7 +139,6 @@ class _TopicPageState extends State<TopicPage> {
                 ),
               );
             },
-
             child: Container(
               padding: EdgeInsets.all(24.0),
               margin: EdgeInsets.all(18),
@@ -131,16 +150,16 @@ class _TopicPageState extends State<TopicPage> {
                 ),
               ),
               child: Stack(
-                  children: [
-                    Align(
-                      child: Text(
-                        filteredPosts[index].title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                children: [
+                  Align(
+                    child: Text(
+                      filteredPosts[index].title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ]
+                  ),
+                ],
               ),
             ),
           );
@@ -151,13 +170,12 @@ class _TopicPageState extends State<TopicPage> {
           Post? newPost = await showDialog<Post>(
             context: context,
             builder: (BuildContext context) {
-              return CreatePostDialog(topic: widget.topic, user: widget.user);
+              return CreatePostDialog(topic: widget.topic);
             },
           );
           if (newPost != null) {
             setState(() {
               widget.posts.add(newPost);
-
             });
           }
         },
