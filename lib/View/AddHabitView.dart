@@ -43,7 +43,7 @@ class _AddHabitView extends State<AddHabitView> {
       body: Stack(
         children: [
           Align(
-            alignment: Alignment(0.0, -0.7),
+            alignment: Alignment(0.0, -0.8),
             child: SizedBox(
               width: 300,
               child: TextField(
@@ -62,7 +62,7 @@ class _AddHabitView extends State<AddHabitView> {
             ),
           ),
           Align(
-              alignment: Alignment(0.0, -0.4),
+              alignment: Alignment(0.0, -0.5),
               child: SizedBox(
                 width: 100,
                 //height: 10,
@@ -78,7 +78,7 @@ class _AddHabitView extends State<AddHabitView> {
               )
           ),
           Align(
-            alignment: Alignment(0.0, 0.0),
+            alignment: Alignment(0.0, -0.1),
             child: SizedBox(
               width: 250,
               child: InkWell(
@@ -125,7 +125,7 @@ class _AddHabitView extends State<AddHabitView> {
             ),
           ),
           Align(
-            alignment: Alignment(0, 0.5),
+            alignment: Alignment(0, 0.4),
             child: SizedBox(
               width: 300,
               child: TextField(
@@ -143,8 +143,8 @@ class _AddHabitView extends State<AddHabitView> {
                   }),
             ),
           ),
-          /*Align(
-              alignment: Alignment(0, 0.9),
+          Align(
+              alignment: Alignment(0, 0.8),
 
               child: ElevatedButton.icon(
                   onPressed: () {
@@ -153,8 +153,8 @@ class _AddHabitView extends State<AddHabitView> {
                     if (isValid(widget.amountInput)) {
                       amount = double.parse(widget.amountInput).toDouble();
                       amount = double.parse(amount.toStringAsFixed(2));
-                      widget.user.addPurchasetoDatabase(amount, widget.descriptionInput
-                          , widget.category, nr_daysInput, DateTime.now());
+                      widget.user.addHabittoDatabase(widget.title, widget.descriptionInput
+                          , widget.date, widget.amountInput as double);
                       Navigator.pop(context);
 
                       _showSuccessAdvice();
@@ -167,7 +167,7 @@ class _AddHabitView extends State<AddHabitView> {
                   label: Text("Submit"),
                   key: Key("Submit")
               )
-          ),*/
+          ),
         ],
       ),
     );
