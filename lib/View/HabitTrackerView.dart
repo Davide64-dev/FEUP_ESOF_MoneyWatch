@@ -94,6 +94,18 @@ class _HabitTracker extends State<HabitTrackerView> {
         key: Key("AddHabits"),
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
+        onPress: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  AddHabitView(
+                    title: "Add Habit",
+                    user: widget.user,
+                  ),
+            ),
+          );
+        },
       ),
       /*body: Column(
         children: [
