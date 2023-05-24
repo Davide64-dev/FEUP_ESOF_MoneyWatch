@@ -73,6 +73,15 @@ class User{
     });
   }
 
+  void addPosttoDatabase(String title, String content, String topic){
+    FirebaseFirestore.instance.collection('Posts').add({
+      'category': topic,
+      'content': content,
+      'title': title,
+      'user': this.username
+    });
+  }
+
 
 
   void addPurchase(String id, double amount, String description, String category, nr_days, DateTime datetime){

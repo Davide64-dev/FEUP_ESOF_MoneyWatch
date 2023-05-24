@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../Model/Comment.dart';
 import '../../Model/Post.dart';
 import '../../Model/User.dart';
+import 'CreateCommentPage.dart';
 
 class PostPage extends StatefulWidget {
   final String title;
@@ -48,6 +47,21 @@ class _PostPageState extends State<PostPage> {
   bool isSearching = false;
 
   late Timer _everySecond;
+
+  @override
+  void initState() {
+    filteredComments = widget.comments;
+    super.initState();
+
+    var _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+      });
+    });
+  }
 
   void filterTopics(String query) {
     List<Comment> temp = [];
@@ -144,25 +158,49 @@ class _PostPageState extends State<PostPage> {
                 padding: EdgeInsets.all(24.0),
                 margin: EdgeInsets.all(18),
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
                   color: Color(0xADD8E6FF),
                   border: Border.all(
                     color: Colors.grey,
                     width: 1,
                   ),
                 ),
-                child: Align(
-                  child: Text(
-                    filteredComments[commentIndex].content,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      filteredComments[commentIndex].user,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-
-                  ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      filteredComments[commentIndex].content,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );
+
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          Post? newPost = await showDialog<Post>(
+            context: context,
+            builder: (BuildContext context) {
+              return CreateCommentPage(post: widget.post);
+            },
+          );
+        },
+        tooltip: 'Create New Post',
+        backgroundColor: Colors.green,
+        child: Icon(Icons.add),
       ),
     );
   }

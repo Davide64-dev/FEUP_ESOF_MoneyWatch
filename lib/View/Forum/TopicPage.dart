@@ -151,12 +151,13 @@ class _TopicPageState extends State<TopicPage> {
           Post? newPost = await showDialog<Post>(
             context: context,
             builder: (BuildContext context) {
-              return CreatePostDialog(topic: widget.topic,);
+              return CreatePostDialog(topic: widget.topic, user: widget.user);
             },
           );
           if (newPost != null) {
             setState(() {
               widget.posts.add(newPost);
+
             });
           }
         },
