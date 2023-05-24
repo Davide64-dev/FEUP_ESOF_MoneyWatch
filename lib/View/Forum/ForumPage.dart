@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../Model/User.dart';
-import 'CreateTopicPage.dart';
+import 'CreateCommentPage.dart';
 import 'TopicPage.dart';
 
 class ForumPage extends StatefulWidget {

@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CreateTopicPage extends StatelessWidget {
-  final TextEditingController topicController = TextEditingController();
+import '../../Model/Post.dart';
+import '../../Model/User.dart';
+
+class CreateCommentPage extends StatelessWidget {
+  final Post post;
+  CreateCommentPage({required this.post});
+
+  final TextEditingController commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +16,7 @@ class CreateTopicPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Create New Topic"),
+        title: Text("Create New Comment"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -18,15 +24,17 @@ class CreateTopicPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              controller: topicController,
+              controller: commentController,
               decoration: InputDecoration(
-                hintText: "Enter Topic Name",
+                hintText: "Enter Text",
               ),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, topicController.text);
+                String comment = commentController.text;
+                post.addCommenttoDatabase(comment);
+                Navigator.pop(context);
               },
               child: Text("Create"),
             ),

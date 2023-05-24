@@ -5,8 +5,9 @@ import '../../Model/User.dart';
 
 class CreatePostDialog extends StatelessWidget {
   final String topic;
+  final User user;
 
-  CreatePostDialog({required this.topic});
+  CreatePostDialog({required this.topic, required this.user});
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
@@ -45,8 +46,8 @@ class CreatePostDialog extends StatelessWidget {
           onPressed: () {
             String title = titleController.text;
             String content = contentController.text;
-            Post post = Post(title: '', content: '', comments: [], category: '', ID: '', user: '');
-            Navigator.pop(context, post);
+            user.addPosttoDatabase(title, content, topic);
+            Navigator.pop(context);
           },
           child: Text("Create"),
         ),

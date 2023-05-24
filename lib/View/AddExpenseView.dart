@@ -1,3 +1,7 @@
+
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../Model/User.dart';
 
@@ -16,6 +20,8 @@ class AddExpenseView extends StatefulWidget {
 
 
 class _AddExpenseView extends State<AddExpenseView> {
+  late File imageFile;
+
   bool isValid(var x){
     int count = 0;
     int countZeros = 0;
@@ -138,6 +144,12 @@ class _AddExpenseView extends State<AddExpenseView> {
                     );
                   }),
             ),
+          ),
+
+          Align(
+            alignment: Alignment(0, 0),
+
+
           ),
 
           Align(
