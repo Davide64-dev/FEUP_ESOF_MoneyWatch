@@ -9,7 +9,7 @@ void main() {
       final startDate = DateTime.now();
       const amountPerDay = 2.0;
 
-      final habit = Habit(name, description, startDate, amountPerDay);
+      final habit = Habit(name, description, startDate, amountPerDay as double);
 
       expect(habit.name, equals(name));
       expect(habit.description, equals(description));

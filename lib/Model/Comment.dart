@@ -1,7 +1,8 @@
 class Comment{
   String content;
   String user;
-  Comment(this.content, this.user) {
+  String id;
+  Comment(this.content, this.user, this.id) {
     if (content == '') {
       throw ArgumentError('Content cannot be empty');
     }
