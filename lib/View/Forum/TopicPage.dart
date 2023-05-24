@@ -42,7 +42,7 @@ class TopicPage extends StatefulWidget {
 class _TopicPageState extends State<TopicPage> {
   List<Post> filteredPosts = [];
   bool isSearching = false;
-  bool isSorting = false;
+  bool isSorting = false; // Variável para controlar a ordenação
   TextEditingController searchController = TextEditingController();
   late Timer _everySecond;
 
@@ -129,6 +129,7 @@ class _TopicPageState extends State<TopicPage> {
             onTap: () {
               var postPage = PostPage(
                 post: filteredPosts[index],
+                user: widget.user,
                 title: 'Post',
               );
               postPage.getPosts();
@@ -170,7 +171,7 @@ class _TopicPageState extends State<TopicPage> {
           Post? newPost = await showDialog<Post>(
             context: context,
             builder: (BuildContext context) {
-              return CreatePostDialog(topic: widget.topic);
+              return CreatePostDialog(topic: widget.topic, user: widget.user);
             },
           );
           if (newPost != null) {
