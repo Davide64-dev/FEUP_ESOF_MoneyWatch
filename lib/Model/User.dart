@@ -64,6 +64,12 @@ class User{
     });
   }
 
+  void addHabit(String title, String description, DateTime startdate, double amountperday){
+    Habit habit = Habit(title, description, startdate, amountperday);
+    habits.add(habit);
+    habits.sort();
+    habits = habits.reversed.toList();
+  }
 
   static void addUsertoDatabase(String name, String email, String username){
     FirebaseFirestore.instance.collection('Users').add({
@@ -82,7 +88,23 @@ class User{
     });
   }
 
-
+  void addHabittoDatabase(String title, String description, DateTime startdate, double amountperday){
+    Habit habit = Habit(title, description, startdate, amountperday);
+    FirebaseFirestore.instance.collection('Habit').add({
+      'title': title,
+      'description': description,
+      'date': startdate.toString(),
+      'amount': amountperday,
+      'user': email,
+    }).then((newDocRef) {
+      String docId = newDocRef.id;
+      print('New document added with ID: $docId');
+      //habit.setId(docId);
+      habits.add(habit);
+      habits.sort();
+      habits = habits.reversed.toList();
+    });;
+  }
 
   void addPurchase(String id, double amount, String description, String category, nr_days, DateTime datetime){
     Purchase purchase = Purchase(id, amount, description, category, nr_days, datetime);
