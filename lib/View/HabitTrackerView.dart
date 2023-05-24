@@ -61,32 +61,32 @@ class _HabitTracker extends State<HabitTrackerView> {
               ),
               borderRadius: BorderRadius.circular(10),
             ),
-        child: Container(
-          margin: EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.white,
-          border: Border.all(
-            color: Colors.grey,
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(10),
-          ),
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment(0, 0),
-              child: Text(
-                widget.user.habits[index].name,
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+            child: Container(
+              margin: EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+              border: Border.all(
+                color: Colors.grey,
+                width: 1,
               ),
-            )
-            ],
-        ),
-        ),
+                borderRadius: BorderRadius.circular(10),
+                ),
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment(0, 0),
+                    child: Text(
+                      widget.user.habits[index].name,
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
         ));
       }
     ),

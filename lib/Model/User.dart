@@ -150,8 +150,6 @@ class User{
     return customCategories;
   }
 
-
-
   Map<String, double> getSumPurchases(DateTime startDate, DateTime endDate){
     Map<String, double> ret = {};
     for (Purchase purchase in purchases) {
