@@ -6,6 +6,7 @@ import '../../Model/Comment.dart';
 import '../../Model/Post.dart';
 import '../../Model/User.dart';
 import 'CreateCommentPage.dart';
+import 'package:google_translator/google_translator.dart' as translator;
 
 class PostPage extends StatefulWidget {
   final String title;
@@ -26,7 +27,7 @@ class PostPage extends StatefulWidget {
   }
 
   void getPostsWithSnapshot(QuerySnapshot value){
-    value.docs.forEach((doc) {
+    value.docs.forEach((doc) async {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       String id = doc.id;
       String content = data["content"];
@@ -205,5 +206,6 @@ class _PostPageState extends State<PostPage> {
     );
   }
 
-
 }
+
+
