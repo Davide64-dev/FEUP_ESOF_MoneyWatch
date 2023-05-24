@@ -94,43 +94,14 @@ class _HabitTracker extends State<HabitTrackerView> {
         key: Key("AddHabits"),
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
+        onOpen: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>
+                AddHabitView(title: 'Add Habit', user: widget.user)),
+          );
+        },
       ),
-      /*body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: widget.user.habits.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HabitDetails(
-                          title: "Habit Details",
-                          habit: widget.user.habits[index],
-                          user: widget.user,
-                        ),
-                      ),
-                    );
-                  },
-                  child: ListTile(
-                    title: Text(widget.user.habits[index].name),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Amount per day: ${widget.user.habits[index].amountPerDay.toString()}"),
-                        Text("Description: ${widget.user.habits[index].description}"),
-                      ],
-                    ),
-                    trailing: Text("Start date: ${widget.user.habits[index].startDate.toString()}"),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),*/
     );
   }
 }

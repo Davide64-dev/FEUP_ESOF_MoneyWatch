@@ -7,7 +7,7 @@ void main() {
       const name = 'Coffee';
       const description = 'I drink coffee twice a day';
       final startDate = DateTime.now();
-      const amountPerDay = 2;
+      const amountPerDay = 2.0;
 
       final habit = Habit(name, description, startDate, amountPerDay);
 
