@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../View/StatisticsPageView.dart';
+import 'Budget.dart';
 import 'Habit.dart';
 import 'Post.dart';
 import 'Purchase.dart';
@@ -18,6 +19,7 @@ class User{
   List<Post> posts = [];
   List<String> customCategories = [];
   List<Purchase> purchases = [];
+  List<Budget> budgets = [Budget('edjvnk', 'dvb ', 42.42, 'djkcvdj')];
   String email = "";
 
   User({required this.id, required this.username,required this.habits, required

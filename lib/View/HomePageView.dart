@@ -7,6 +7,7 @@ import 'package:MoneyWatch/View/AddExpenseView.dart';
 import 'package:MoneyWatch/View/StatisticsPageView.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../Model/User.dart';
+import 'BudgetsView.dart';
 import 'Forum/ForumPage.dart';
 
 
@@ -139,6 +140,12 @@ class _HomePageState extends State<HomePage> {
               key: Key("Psychology"),
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BudgetsView(title: "Budgets", user: widget.user))
+                );
+              },
             ),
 
             SpeedDialChild(
