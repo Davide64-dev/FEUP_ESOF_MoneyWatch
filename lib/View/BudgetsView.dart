@@ -16,6 +16,7 @@ class BudgetsView extends StatefulWidget {
   State<BudgetsView> createState() => _BudgetsView();
 
   void getBudgets() async{
+    user.budgets = [];
     CollectionReference budgets = FirebaseFirestore.instance.collection('Budgets');
     QuerySnapshot snapshot1 = await budgets.where('user', isEqualTo: user.email).get();
     getBudgetsWithSnapshot(snapshot1);

@@ -94,6 +94,7 @@ class User{
         'user': this.email,
       }
     );
+    budgets.add(Budget(amount, category));
   }
 
 
