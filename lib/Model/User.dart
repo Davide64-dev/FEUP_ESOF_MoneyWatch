@@ -19,7 +19,7 @@ class User{
   List<Post> posts = [];
   List<String> customCategories = [];
   List<Purchase> purchases = [];
-  List<Budget> budgets = [Budget('edjvnk', 'dvb ', 42.42, 'djkcvdj')];
+  List<Budget> budgets = [Budget('Leisure', 'dvb ', 42.42, 'Leisure')];
   String email = "";
 
   User({required this.id, required this.username,required this.habits, required
