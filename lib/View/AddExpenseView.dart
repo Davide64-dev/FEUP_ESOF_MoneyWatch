@@ -224,3 +224,4 @@ class _AddExpenseView extends State<AddExpenseView> {
     );
   }
 }
+

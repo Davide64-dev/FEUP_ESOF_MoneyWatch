@@ -1,3 +1,4 @@
+import 'package:MoneyWatch/Model/Budget.dart';
 import 'package:MoneyWatch/View/HabitTrackerView.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
@@ -7,6 +8,7 @@ import 'package:MoneyWatch/View/AddExpenseView.dart';
 import 'package:MoneyWatch/View/StatisticsPageView.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../Model/User.dart';
+import 'BudgetsView.dart';
 import 'Forum/ForumPage.dart';
 
 
@@ -139,6 +141,14 @@ class _HomePageState extends State<HomePage> {
               key: Key("Psychology"),
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
+              onTap: () {
+                BudgetsView page = BudgetsView(title: "Budgets", user: widget.user);
+                page.getBudgets();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BudgetsView(title: "Budgets", user: widget.user))
+                );
+              },
             ),
 
             SpeedDialChild(
