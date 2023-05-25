@@ -1,19 +1,14 @@
 import 'dart:async';
 import 'dart:core';
-import 'package:MoneyWatch/View/AddHabitView.dart';
-import 'package:MoneyWatch/View/HabitDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import '../Model/Budget.dart';
 import '../Model/User.dart';
-import '../Model/Habit.dart';
 import 'BudgetDetails.dart';
 import 'CreateBudget.dart';
 
 class BudgetsView extends StatefulWidget {
   User user;
-  List<Budget> budgets = [];
   BudgetsView({super.key, required this.title, required this.user});
   final String title;
 
@@ -32,8 +27,7 @@ class BudgetsView extends StatefulWidget {
       String category = data["category"];
       double amount = data["amount"];
       Budget budget = Budget(amount, category);
-      budgets.add(budget);
-      print(budgets.length);
+      user.budgets.add(budget);
     });
   }
 }
@@ -47,10 +41,8 @@ class _BudgetsView extends State<BudgetsView> {
   void initState() {
     super.initState();
 
-    // sets first value
     var _now = DateTime.now().second.toString();
 
-    // defines a timer
     _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
       setState(() {
         _now = DateTime.now().second.toString();
@@ -65,7 +57,7 @@ class _BudgetsView extends State<BudgetsView> {
         title: Text(widget.title),
       ),
       body: ListView.builder(
-          itemCount: widget.budgets.length,
+          itemCount: widget.user.budgets.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
 
@@ -76,7 +68,7 @@ class _BudgetsView extends State<BudgetsView> {
                       builder: (context) =>
                           BudgetDetails(
                             title: "Budget Details",
-                            budget: widget.budgets[index],
+                            budget: widget.user.budgets[index],
                             user: widget.user,
                           ),
                     ),
@@ -108,7 +100,7 @@ class _BudgetsView extends State<BudgetsView> {
                         Align(
                           alignment: Alignment(0, 0),
                           child: Text(
-                            widget.budgets[index].category,
+                            widget.user.budgets[index].category,
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.black,
