@@ -9,7 +9,7 @@ void main() {
       const user = 'Test User';
 
       // Act
-      final comment = Comment(content, user);
+      final comment = Comment(content, user, "dnfed");
 
       // Assert
       expect(comment.content, equals(content));
@@ -22,7 +22,7 @@ void main() {
       const user = 'Test User';
 
       // Act and Assert
-      expect(() => Comment(content, user), throwsArgumentError);
+      expect(() => Comment(content, user, "dnfed"), throwsArgumentError);
     });
 
     test('user is not null', () {
@@ -31,7 +31,7 @@ void main() {
       const user = '';
 
       // Act and Assert
-      expect(() => Comment(content, user), throwsArgumentError);
+      expect(() => Comment(content, user, "dnfed"), throwsArgumentError);
     });
   });
 }
