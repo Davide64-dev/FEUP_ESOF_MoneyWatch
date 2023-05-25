@@ -1,4 +1,4 @@
-### Elevator Pitch
+## Elevator Pitch
 
 MoneyWatch is the habit tracker designed to help you achieve your financial goals. With MoneyWatch, you can effortlessly save money, monitor your progress, and improve your overall well-being.
 You can check statistics on your spending to understand when and how you spend the most money, add custom categories, set budgets and create habits to check your progress in real-time.
