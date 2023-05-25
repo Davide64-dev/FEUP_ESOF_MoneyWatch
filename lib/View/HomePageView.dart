@@ -1,3 +1,4 @@
+import 'package:MoneyWatch/Model/Budget.dart';
 import 'package:MoneyWatch/View/HabitTrackerView.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
@@ -141,6 +142,8 @@ class _HomePageState extends State<HomePage> {
               child: Icon(Icons.savings),
               backgroundColor: Colors.green,
               onTap: () {
+                BudgetsView page = BudgetsView(title: "Budgets", user: widget.user);
+                page.getBudgets();
                 Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => BudgetsView(title: "Budgets", user: widget.user))

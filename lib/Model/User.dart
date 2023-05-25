@@ -19,7 +19,7 @@ class User{
   List<Post> posts = [];
   List<String> customCategories = [];
   List<Purchase> purchases = [];
-  List<Budget> budgets = [Budget('Leisure', 'dvb ', 42.42, 'Leisure')];
+  List<Budget> budgets = [Budget(42.42, 'Leisure')];
   String email = "";
 
   User({required this.id, required this.username,required this.habits, required
@@ -84,6 +84,16 @@ class User{
       'title': title,
       'user': this.username
     });
+  }
+
+  void addBudgettoDatabase(String category, double amount){
+    FirebaseFirestore.instance.collection('Budgets').add(
+      {
+        'category': category,
+        'amount': amount,
+        'user': this.email,
+      }
+    );
   }
 
 
