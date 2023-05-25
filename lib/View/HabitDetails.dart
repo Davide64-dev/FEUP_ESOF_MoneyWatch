@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:MoneyWatch/View/EditHabitView.dart';
 import 'package:flutter/material.dart';
 import '../Model/Habit.dart';
 import '../Model/User.dart';
@@ -85,7 +86,7 @@ class _HabitDetails extends State<HabitDetails> {
             child: PieChart(
 
               dataMap: ret,
-              centerText: "${amountsaved.toString()} €",
+              centerText: "${amountsaved.toString()} €\nsaved",
               colorList: colorList,
               chartType: ChartType.ring,
               ringStrokeWidth: 25,
@@ -118,10 +119,14 @@ class _HabitDetails extends State<HabitDetails> {
               child: Icon(Icons.edit),
               backgroundColor: Colors.green,
               onPress: () {
-
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>
+                EditHabitView(title: 'Edit Habit', user: widget.user, habit: widget.habit,)),
+                );
               }
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 20),
           SpeedDial(
             key: Key("DeleteHabit"),
             child: Icon(Icons.delete),
@@ -142,6 +147,10 @@ class _HabitDetails extends State<HabitDetails> {
                         ),
                         TextButton(
                           onPressed: () {
+                            setState(() {
+                              widget.user.habits.remove(widget.habit);
+                            });
+                            Navigator.pop(context); // Close the dialog
                             Navigator.pop(context);
                           },
                           child: Text('Delete'),

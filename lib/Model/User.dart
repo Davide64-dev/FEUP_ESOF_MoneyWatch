@@ -123,6 +123,16 @@ class User{
     });
   }
 
+  void removeHabittoDatabase(String name){
+    CollectionReference habitsRef = FirebaseFirestore.instance.collection('Habit');
+    habitsRef.doc(name).delete().then((value) {
+      print('Document with name $name has been deleted');
+      habits.removeWhere((habit) => habit.getName() == name);
+    }).catchError((error) {
+      print('Error deleting document with name $name: $error');
+    });
+  }
+
   void addPurchasetoDatabase(double amount, String description, String category, nr_days, DateTime datetime){
     Purchase purchase = Purchase(" ",amount, description, category, nr_days, datetime);
     FirebaseFirestore.instance.collection('Purchase').add({
