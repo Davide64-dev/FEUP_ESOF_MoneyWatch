@@ -47,6 +47,8 @@ class User{
     );
   }
 
+
+
   void addExpenses() async{
     CollectionReference users = FirebaseFirestore.instance.collection('Purchase');
     QuerySnapshot snapshot1 = await users.where('user', isEqualTo: email).get();
@@ -154,6 +156,28 @@ class User{
     return ret;
   }
 
+  Map<String, double> getPurchasesMTD(Budget budget){
+    Map<String, double> ret = {};
+    for (Purchase purchase in purchases){
+      if (purchase.category != budget.category) continue;
+      else{
+        if (isInCurrentMonth(purchase.datetime)){
+          if (ret[budget.category] == null){
+            ret[budget.category] = purchase.amount.toDouble();
+          }
+          else{
+            ret[budget.category] = ret[budget.category]! + purchase.amount.toDouble()!;
+          }
+        }
+      }
+    }
+    if (ret[budget.category] == null){
+      ret[budget.category] = 0;
+    }
+    ret["not spent"] = budget.amount - ret[budget.category]!;
+    return ret;
+  }
+
   List<BarModel> getBarModel(DateTime startDate, DateTime endDate){
     final random = Random();
     List<BarModel> res = [];
@@ -179,4 +203,14 @@ bool isLessThan(DateTime date1, DateTime date2){
     return date1.month <= date2.month;
   }
   return date1.year <= date2.year;
+}
+
+bool isInCurrentMonth(DateTime date) {
+  // Get the current month and year
+  DateTime now = DateTime.now();
+  int currentMonth = now.month;
+  int currentYear = now.year;
+
+  // Check if the given date's month and year match the current month and year
+  return (date.month == currentMonth && date.year == currentYear);
 }

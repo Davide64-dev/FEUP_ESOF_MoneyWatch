@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import '../Model/User.dart';
 import '../Model/Habit.dart';
+import 'BudgetDetails.dart';
 
 class BudgetsView extends StatefulWidget {
   User user;
@@ -36,22 +37,21 @@ class _BudgetsView extends State<BudgetsView> {
           itemCount: widget.user.budgets.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              /*
+
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          HabitDetails(
-                            title: "Habit Details",
-                            habit: widget.user.budgets[index],
+                          BudgetDetails(
+                            title: "Budget Details",
+                            budget: widget.user.budgets[index],
                             user: widget.user,
                           ),
                     ),
                   );
                 },
 
-               */
                 child: Container(
                   margin: EdgeInsets.all(24),
                   decoration: BoxDecoration(
@@ -92,46 +92,11 @@ class _BudgetsView extends State<BudgetsView> {
           }
       ),
       floatingActionButton: SpeedDial(
-        key: Key("AddHabits"),
+        key: Key("addBudget"),
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
+        // create a page to add a new budget
       ),
-      /*body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: widget.user.habits.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HabitDetails(
-                          title: "Habit Details",
-                          habit: widget.user.habits[index],
-                          user: widget.user,
-                        ),
-                      ),
-                    );
-                  },
-                  child: ListTile(
-                    title: Text(widget.user.habits[index].name),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Amount per day: ${widget.user.habits[index].amountPerDay.toString()}"),
-                        Text("Description: ${widget.user.habits[index].description}"),
-                      ],
-                    ),
-                    trailing: Text("Start date: ${widget.user.habits[index].startDate.toString()}"),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),*/
     );
   }
 }
