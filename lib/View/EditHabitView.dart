@@ -108,6 +108,8 @@ class _EditHabitView extends State<EditHabitView> {
                     if (_amountController.text == ""){
                       widget.user.removeHabitToDatabase(widget.habit.id);
                       Navigator.pop(context);
+                      Navigator.pop(context);
+
                       _showSuccessAdvice('Successfully Removed Habit!');
                     }
 
