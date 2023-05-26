@@ -83,13 +83,16 @@ class User{
     });
   }
 
-  void addPosttoDatabase(String title, String content, String topic){
+  String addPosttoDatabase(String title, String content, String topic){
     FirebaseFirestore.instance.collection('Posts').add({
       'category': topic,
       'content': content,
       'title': title,
       'user': this.username
-    });
+    }).then((newDocRef){
+      return newDocRef.id;
+    });;
+    return '0';
   }
 
   void addHabittoDatabase(String title, String description, DateTime startdate, double amountperday){

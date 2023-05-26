@@ -195,7 +195,7 @@ class _PostPageState extends State<PostPage> {
           Post? newPost = await showDialog<Post>(
             context: context,
             builder: (BuildContext context) {
-              return CreateCommentPage(post: widget.post);
+              return CreateCommentPage(post: widget.post, user: widget.user, comments: widget.comments,);
             },
           );
         },

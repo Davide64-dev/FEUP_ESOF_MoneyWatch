@@ -12,11 +12,14 @@ class Post{
   String user;
   Post({required this.ID, required this.title,required this.content,required this.comments,required this.category, required this.user});
 
-  void addCommenttoDatabase(String content){
+  String addCommenttoDatabase(String content, String user){
     FirebaseFirestore.instance.collection('Comments').add({
       'content': content,
       'post': this.ID,
-      'user': this.user,
-    });
+      'user': user,
+    }).then((newDocRef){
+      return newDocRef.id;
+    });;
+    return '0';
   }
 }
