@@ -35,10 +35,12 @@ class CreateCommentPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 String comment = commentController.text;
-                String id = post.addCommenttoDatabase(comment, user.username);
-                Comment comment1 = Comment(comment, user.username, id);
-                comments.add(comment1);
-                Navigator.pop(context);
+                if (post.ID != "0") {
+                  String id = post.addCommenttoDatabase(comment, user.username);
+                  Comment comment1 = Comment(comment, user.username, id);
+                  comments.add(comment1);
+                  Navigator.pop(context);
+                }
               },
               child: Text("Create"),
             ),
