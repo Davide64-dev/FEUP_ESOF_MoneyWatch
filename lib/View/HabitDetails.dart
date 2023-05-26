@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:MoneyWatch/View/EditHabitView.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../Model/Habit.dart';
 import '../Model/User.dart';
@@ -71,9 +68,9 @@ class _HabitDetails extends State<HabitDetails> {
               showChartValuesInPercentage: false,
               showChartValuesOutside: false,
               chartValueStyle: TextStyle(
-                fontSize: 20, // Adjust the font size to make the text bigger
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.black, // Adjust the color of the text
+                color: Colors.black,
               ),
             ),
             legendOptions: LegendOptions(
@@ -100,9 +97,9 @@ class _HabitDetails extends State<HabitDetails> {
                 showChartValuesInPercentage: false,
                 showChartValuesOutside: false,
                 chartValueStyle: TextStyle(
-                  fontSize: 20, // Adjust the font size to make the text bigger
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black, // Adjust the color of the text
+                  color: Colors.black,
                 ),
               ),
               legendOptions: LegendOptions(
@@ -152,7 +149,7 @@ class _HabitDetails extends State<HabitDetails> {
                             setState(() {
                               widget.user.removeHabitToDatabase(widget.habit.id);
                             });
-                            Navigator.pop(context); // Close the dialog
+                            Navigator.pop(context);
                             Navigator.pop(context);
                           },
                           child: Text('Delete'),

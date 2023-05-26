@@ -24,12 +24,6 @@ class User{
 
   User({required this.id, required this.username,required this.habits, required
     this.posts, required this.customCategories, required this.purchases, required email}) {
-    //if (id == '') {
-      //throw ArgumentError('id cannot be empty');
-    //
-    //if (username == '') {
-    //  throw ArgumentError('username cannot be empty');
-    //}
   }
 
   void setEmail(String email){

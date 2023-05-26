@@ -41,21 +41,15 @@ class HabitTrackerView extends StatefulWidget {
 
 
 class _HabitTracker extends State<HabitTrackerView> {
-  /*
-  List<Habit> habits = [Habit('Smoking', 'Quit smoking', DateTime(2023, 05, 03), 4.0),
-                        Habit('Coffee', 'Drink less coffee', DateTime(2023, 04, 15), 3.0),
-                        Habit('Restaurant', 'Reduce the number of times I eat out', DateTime(2023, 03, 20), 3.0),];
-*/
+
   late Timer _everySecond;
 
   @override
   void initState() {
     super.initState();
 
-    // sets first value
     var _now = DateTime.now().second.toString();
 
-    // defines a timer
     _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
       setState(() {
         _now = DateTime.now().second.toString();

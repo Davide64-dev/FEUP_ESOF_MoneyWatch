@@ -1,13 +1,11 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import '../../Model/Post.dart';
 import '../../Model/User.dart';
 import 'CreatePostDialog.dart';
-import 'EditPostDialog.dart';
 import 'PostPage.dart';
+
 class TopicPage extends StatefulWidget {
   final String topic;
   User user;
@@ -117,7 +115,7 @@ class _TopicPageState extends State<TopicPage> {
               Icons.sort,
             ),
             onPressed: () {
-              sortPostsAlphabetically(); // Chama a função para ordenar os posts
+              sortPostsAlphabetically();
             },
           ),
         ],

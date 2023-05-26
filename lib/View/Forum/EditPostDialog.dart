@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../Model/Post.dart';
 
 class EditPostDialog extends StatefulWidget {

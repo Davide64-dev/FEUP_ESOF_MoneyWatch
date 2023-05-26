@@ -1,4 +1,3 @@
-import 'package:MoneyWatch/Model/Budget.dart';
 import 'package:MoneyWatch/View/HabitTrackerView.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
@@ -158,12 +157,11 @@ class _HomePageState extends State<HomePage> {
               child: Icon(Icons.logout),
               backgroundColor: Colors.green,
               onTap: () => auth.FirebaseAuth.instance.signOut(),
-              //onTap: () => Navigator.pop(context),
             ),
 
           ],
           child: Icon(Icons.attach_money)
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

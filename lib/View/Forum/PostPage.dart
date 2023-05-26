@@ -6,7 +6,7 @@ import '../../Model/Comment.dart';
 import '../../Model/Post.dart';
 import '../../Model/User.dart';
 import 'CreateCommentPage.dart';
-import 'package:google_translator/google_translator.dart' as translator;
+
 
 class PostPage extends StatefulWidget {
   final String title;

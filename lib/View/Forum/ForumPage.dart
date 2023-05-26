@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../Model/User.dart';
-import 'CreateCommentPage.dart';
 import 'TopicPage.dart';
 
 class ForumPage extends StatefulWidget {
@@ -142,22 +141,6 @@ class _ForumPageState extends State<ForumPage> {
           );
         },
       ),
-      /*
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CreateTopicPage(),
-            ),
-          );
-        },
-        tooltip: 'Create New Post',
-        backgroundColor: Colors.green,
-        child: Icon(Icons.add),
-      ),
-
-       */
     );
   }
 }

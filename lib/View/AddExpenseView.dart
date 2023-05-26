@@ -1,7 +1,4 @@
-
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import '../Model/User.dart';
 
@@ -128,28 +125,6 @@ class _AddExpenseView extends State<AddExpenseView> {
 
 
               )
-          ),
-
-          Align(
-            alignment: Alignment(-1, -0.2),
-            child: SizedBox(
-              width: 250,
-              child: SwitchListTile(
-                  title: Text("Recurring Expense"),
-                  value: isSwitched,
-                  onChanged: (value) {
-                    setState(() {
-                      isSwitched = value;
-                    }
-                    );
-                  }),
-            ),
-          ),
-
-          Align(
-            alignment: Alignment(0, 0),
-
-
           ),
 
           Align(
