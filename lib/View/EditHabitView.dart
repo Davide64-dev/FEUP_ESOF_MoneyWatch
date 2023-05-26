@@ -106,9 +106,9 @@ class _EditHabitView extends State<EditHabitView> {
                     var amount;
 
                     if (_amountController.text == ""){
-                      widget.user.removeHabittoDatabase(widget.habit.name);
+                      widget.user.removeHabitToDatabase(widget.habit.id);
                       Navigator.pop(context);
-                      _showSuccessAdvice('Successfully Removed Expense!');
+                      _showSuccessAdvice('Successfully Removed Habit!');
                     }
 
                     else if (isValid(_amountController.text)) {
@@ -120,7 +120,7 @@ class _EditHabitView extends State<EditHabitView> {
                             _descriptionController.text, amount);
                         Navigator.pop(context);
 
-                        _showSuccessAdvice('Successfully Edited Expense!');
+                        _showSuccessAdvice('Successfully Edited Habit!');
                       }
                     }
                     else{

@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:MoneyWatch/View/EditHabitView.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../Model/Habit.dart';
 import '../Model/User.dart';
@@ -142,13 +143,14 @@ class _HabitDetails extends State<HabitDetails> {
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
+
                           },
                           child: Text('Cancel'),
                         ),
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              widget.user.habits.remove(widget.habit);
+                              widget.user.removeHabitToDatabase(widget.habit.id);
                             });
                             Navigator.pop(context); // Close the dialog
                             Navigator.pop(context);

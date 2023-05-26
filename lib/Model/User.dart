@@ -19,7 +19,7 @@ class User{
   List<Post> posts = [];
   List<String> customCategories = [];
   List<Purchase> purchases = [];
-  List<Budget> budgets = [Budget(42.42, 'Leisure')];
+  List<Budget> budgets = [];
   String email = "";
 
   User({required this.id, required this.username,required this.habits, required
@@ -68,8 +68,8 @@ class User{
     });
   }
 
-  void addHabit(String title, String description, DateTime startdate, double amountperday){
-    Habit habit = Habit(title, description, startdate, amountperday);
+  void addHabit(String id, String title, String description, DateTime startdate, double amountperday){
+    Habit habit = Habit(id, title, description, startdate, amountperday);
     habits.add(habit);
     habits.sort();
     habits = habits.reversed.toList();
@@ -93,7 +93,6 @@ class User{
   }
 
   void addHabittoDatabase(String title, String description, DateTime startdate, double amountperday){
-    Habit habit = Habit(title, description, startdate, amountperday);
     FirebaseFirestore.instance.collection('Habits').add({
       'title': title,
       'description': description,
@@ -102,12 +101,23 @@ class User{
       'user': email,
     }).then((newDocRef) {
       String docId = newDocRef.id;
+      Habit habit = Habit(id, title, description, startdate, amountperday);
       print('New document added with ID: $docId');
       //habit.setId(docId);
       habits.add(habit);
       habits.sort();
       habits = habits.reversed.toList();
     });;
+  }
+
+  void removeHabitToDatabase(String id){
+    CollectionReference purchasesRef = FirebaseFirestore.instance.collection('Habits');
+    purchasesRef.doc(id).delete().then((value) {
+      print('Document with ID $id has been deleted');
+      habits.removeWhere((habit) => habit.id == id);
+    }).catchError((error) {
+      print('Error deleting document with ID $id: $error');
+    });
   }
 
   void addBudgettoDatabase(String category, double amount){
@@ -136,16 +146,6 @@ class User{
       purchases.removeWhere((purchase) => purchase.getId() == ID);
     }).catchError((error) {
       print('Error deleting document with ID $ID: $error');
-    });
-  }
-
-  void removeHabittoDatabase(String name){
-    CollectionReference habitsRef = FirebaseFirestore.instance.collection('Habit');
-    habitsRef.doc(name).delete().then((value) {
-      print('Document with name $name has been deleted');
-      habits.removeWhere((habit) => habit.getName() == name);
-    }).catchError((error) {
-      print('Error deleting document with name $name: $error');
     });
   }
 

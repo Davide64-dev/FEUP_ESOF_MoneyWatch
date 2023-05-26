@@ -131,9 +131,11 @@ class _HomePageState extends State<HomePage> {
               child: Icon(Icons.psychology),
               backgroundColor: Colors.green,
               onTap: () {
+                HabitTrackerView page = HabitTrackerView(title: "Habits", user: widget.user);
+                page.getHabits();
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HabitTrackerView(title: "Habits", user: widget.user))
+                    MaterialPageRoute(builder: (context) => page)
                 );
               },
             ),
@@ -146,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 page.getBudgets();
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => BudgetsView(title: "Budgets", user: widget.user))
+                    MaterialPageRoute(builder: (context) => page)
                 );
               },
             ),

@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:core';
 import 'package:MoneyWatch/View/AddHabitView.dart';
 import 'package:MoneyWatch/View/HabitDetails.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import '../Model/User.dart';
@@ -11,21 +13,54 @@ class HabitTrackerView extends StatefulWidget {
   HabitTrackerView({super.key, required this.title, required this.user});
   final String title;
 
+  void getHabits() async{
+    user.habits = [];
+    CollectionReference budgets = FirebaseFirestore.instance.collection('Habits');
+    QuerySnapshot snapshot1 = await budgets.where('user', isEqualTo: user.email).get();
+    getHabitsWithSnapshot(snapshot1);
+  }
+
+  void getHabitsWithSnapshot(QuerySnapshot value){
+    value.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      String id = doc.id;
+      DateTime date = DateTime.parse(data['date']);
+      double amount = data["amount"];
+      String description = data["description"];
+      String title = data["title"];
+      Habit habit = Habit(id, title, description, date, amount);
+      user.habits.add(habit);
+    });
+  }
+
+
+
   @override
   State<HabitTrackerView> createState() => _HabitTracker();
 }
 
 
 class _HabitTracker extends State<HabitTrackerView> {
-
+  /*
   List<Habit> habits = [Habit('Smoking', 'Quit smoking', DateTime(2023, 05, 03), 4.0),
                         Habit('Coffee', 'Drink less coffee', DateTime(2023, 04, 15), 3.0),
                         Habit('Restaurant', 'Reduce the number of times I eat out', DateTime(2023, 03, 20), 3.0),];
+*/
+  late Timer _everySecond;
 
   @override
   void initState() {
-    widget.user.habits = habits;
     super.initState();
+
+    // sets first value
+    var _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+      });
+    });
   }
 
   @override
