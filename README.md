@@ -9,6 +9,7 @@ You can find here details about the product (or mini-app or module), from a high
    	- [Vision Statement](docs/ProductVision.md#Vision-Statement)
 	- [Main Features](docs/ProductVision.md#Main-Features)
 	- [Assumptions and dependencies](docs/ProductVision.md#Assumptions-and-dependencies)
+	- [Elevator Pitch](docs/ElevatorPitch.md)
 	
 
 - [Requirements](docs/requirements.md)
