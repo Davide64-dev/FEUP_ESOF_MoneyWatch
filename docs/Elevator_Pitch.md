@@ -4,3 +4,12 @@ MoneyWatch is the habit tracker designed to help you achieve your financial goal
 You can check statistics on your spending to understand when and how you spend the most money, add custom categories, set budgets and create habits to check your progress in real-time.
 MoneyWatch empowers you to set financial goals and track and monitor your habits - you can see how much money you've saved and the number of days since you quit to stay motivated throughout your journey.
 MoneyWatch also allows you to connect with other users through a forum to talk about the products you love the most. Create posts and comments, and help others by sharing your experiences while reaching financial freedom.
+
+<p align="center">
+  <img src="pitch.gif" width = "300"/>
+</p>
+<p align="center">
+  <b><i>Gif 1. Small walk for the application</i></b>
+</p>
+<br>
+<br />
