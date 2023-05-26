@@ -153,8 +153,8 @@ class _AddHabitView extends State<AddHabitView> {
                     if (isValid(widget.amountInput)) {
                       amount = double.parse(widget.amountInput).toDouble();
                       amount = double.parse(amount.toStringAsFixed(2));
-                      widget.user.addHabittoDatabase(widget.title, widget.descriptionInput
-                          , widget.date, widget.amountInput as double);
+                      widget.user.addHabittoDatabase(widget.nameInput, widget.descriptionInput
+                          , widget.date, amount);
                       Navigator.pop(context);
 
                       _showSuccessAdvice();
@@ -176,7 +176,7 @@ class _AddHabitView extends State<AddHabitView> {
   void _showSuccessAdvice() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Successfully Added Expense!'),
+        content: Text('Successfully Added Habit!'),
         duration: Duration(seconds: 3),
         backgroundColor: Colors.green,
       ),

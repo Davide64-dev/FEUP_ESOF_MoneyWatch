@@ -94,7 +94,7 @@ class User{
 
   void addHabittoDatabase(String title, String description, DateTime startdate, double amountperday){
     Habit habit = Habit(title, description, startdate, amountperday);
-    FirebaseFirestore.instance.collection('Habit').add({
+    FirebaseFirestore.instance.collection('Habits').add({
       'title': title,
       'description': description,
       'date': startdate.toString(),
